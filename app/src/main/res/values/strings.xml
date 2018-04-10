@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">打卡备忘</string>
+    <string name="activity_sign_in">打卡</string>
+    <string name="action_settings">设置</string>
+
+    <string name="hello_blank_fragment">空页面</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+    <string name="null_space"></string>
+    <string name="loading">登录</string>
+    <string name="vertical">丨</string>
+    <string name="register">注册</string>
+    <string name="personal_account">账号管理</string>
+    <string name="help_and_feedback">帮助与反馈</string>
+    <string name="accout_info">账号信息</string>
+    <string name="service_num">1</string>
+    <string name="my_order">我的订单</string>
+    <string name="bind_centra_machine">绑定中控主机</string>
+    <string name="personal_about_software">关于软件</string>
+    <string name="message_center">消息中心</string>
+    <string name="my_doctor">我的医生</string>
+    <string name="setting">设置</string>
+    <string name="personal_exit">退出登录</string>
+    <string name="message_setting">消息设置</string>
+    <string name="version_update">版本更新</string>
+    <string name="send_msg">发送</string>
+    <string name="contact_number">联系电话</string>
+    <string name="please_enter_contact_inform">请输入联系方式</string>
+    <string name="update_rightnow">立即更新</string>
+    <string name="doctor_appointment">医生预约</string>
+    <string name="housekeeping">家政服务</string>
+    <string name="care_services">护理服务</string>
+    <string name="takeaway">外卖快餐</string>
+    <string name="Preferably_recommended">优选推荐</string>
+    <string name="telephone_number">手机号码</string>
+    <string name="telephone_num">手机号</string>
+    <string name="telephone_hint">请输入手机号</string>
+    <string name="getverifycode">获取验证码</string>
+    <string name="password">密码</string>
+    <string name="newpassword">新密码</string>
+    <string name="username">用户名</string>
+    <string name="verifycode">验证码</string>
+    <string name="please_enter_verifycode">请输入验证码</string>
+    <string name="register_succeed">注册成功</string>
+    <string name="country">+86</string>
+    <string name="forgetpassword">忘记密码</string>
+    <string name="please_enter_newpassword">请输入新密码</string>
+    <string name="goto_register">去注册</string>
+    <string name="havealook">先逛逛</string>
+    <string name="getbackpassword">找回密码</string>
+    <string name="zhiqujialogin">智趣家账号登录</string>
+    <string name="zhiqujia_username_login">智趣家账号/昵称登录</string>
+    <string name="please_enteryour_password">请输入密码</string>
+    <string name="all_hospital">所有医院</string>
+    <string name="registered">挂号</string>
+    <string name="queue">排队</string>
+    <string name="payment">缴费</string>
+    <string name="examination">检查</string>
+    <string name="please_enter_phone_number">请输入手机号</string>
+
+    <string name="pre_refresh_data" translatable="false">refresh_data</string>
+    <string name="pre_get_image" translatable="false">get_image</string>
+    <string name="pre_cache_size" translatable="false">cache_size</string>
+    <string name="pre_feedback" translatable="false">feedback</string>
+    <string name="pre_author" translatable="false">author</string>
+    <string name="pre_version" translatable="false">version</string>
+    <string name="pre_nav_color" translatable="false">pre_nav_color</string>
+    <string name="pre_use_local" translatable="false">pre_use_local</string>
+    <string name="pre_status_bar" translatable="false">pre_status_bar</string>
+
+    <string name="open_with_browser">使用浏览器打开</string>
+    <string name="share">分享到</string>
+    <string name="share_tail">\r\n(分享自"打卡助手"，新闻精选！)</string>
+    <string name="default_description">生活的美好，需要你用心去发现，用眼去摄录。</string>
+    <string name="activity_setting_title">设置</string>
+    <string name="activity_change_channel_title">更改栏目</string>
+    <string name="common_set_read">标记为已读</string>
+    <string name="common_set_unread">标记为未读</string>
+
+    <string name="toast_wifi_refresh_data">非WIFI下不自动加载数据！</string>
+    <string name="common_loading">正在加载…</string>
+    <string name="common_loading_error">加载失败，请检查网络！</string>
+    <string name="common_view_loading">正在拼命加载数据…</string>
+    <string name="common_view_release">释放加载</string>
+    <string name="common_view_loading_ok">加载成功</string>
+    <string name="common_i_know">知道了</string>
+    <string name="comon_retry">重试</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_swipe_to_load_more">上拉加载更多</string>
+    <string name="common_load_more">加载更多</string>
+    <string name="common_load_complete">加载完成</string>
+    <string name="common_refresh_complete">刷新完成</string>
+    <string name="common_swipe_to_refresh">下拉刷新</string>
+
+    <string name="all_comment">所有评论</string>
+    <string name="server_record">物业服务记录</string>
+    <string name="no_news_record">暂时没有新闻</string>
+    <string name="title_alert">提示信息</string>
+    <string name="listfooterview_normal">查看更多</string>
+    <string name="listfooterview_ready">松开载入更多</string>
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+
+    android:clickable="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/title_alert"
+            android:textColor="#202020"
+            android:textSize="16sp"
+            android:maxEms="15"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.5"
+                android:paddingLeft="20.0dip"
+                android:paddingRight="20.0dip"
+                android:textColor="#202020"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/negativeButton"
+                android:layout_width="110dip"
+                android:layout_height="42dp"
+                android:background="@drawable/account_btn_cancle_selector"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="#202020"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/positiveButton"
+                android:layout_width="110dip"
+                android:layout_height="42dp"
+                android:layout_marginLeft="23dip"
+                android:background="@drawable/account_btn_confirm_selector"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

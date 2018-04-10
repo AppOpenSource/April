@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#898989"
+        android:visibility="gone"
+        android:layout_marginTop="15dp" >
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="62dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="@color/text_color_white"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color_gray"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:autoLink="email|phone|web"
+                android:lineSpacingExtra="3dp"
+                android:textColor="@color/text_color_black"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="1324评"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_comment_num"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|right"
+                    android:layout_marginRight="5dp"
+                    android:text="..."
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/img_parent"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"
+            android:weightSum="5" >
+
+            <com.point.april.ui.view.FeedGridView
+                android:id="@+id/fgv_wannanty_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@color/transparent"
+                android:scrollbars="none"
+                android:stretchMode="none"
+                android:verticalSpacing="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

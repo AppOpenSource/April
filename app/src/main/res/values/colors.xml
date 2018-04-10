@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white_transparent">#66ffffff</color>
+    <color name="air_original_color">#1E293B</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="lightred">#70ff0000</color>
+    <color name="black">#ff000000</color>
+    <color name="gray">#88E4E4E4</color>
+    <color name="cl88f2f2f2">#88f2f2f2</color>
+    <color name="blue">#3867FA</color>
+    <color name="light_blue">#6593cb</color>
+    <color name="tcl_title_bar_color">#ff444346</color>
+    <color name="tcl_transparent">#00000000</color>
+    <!-- 公用蓝色 -->
+    <color name="common_blue">#66cc99</color>
+    <!-- 公用灰色蓝色 -->
+    <color name="common_gray_bg">#e4e4e4</color>
+    <!-- 公用灰色文字 -->
+    <color name="common_gray_text">#949494</color>
+    <!-- 公用黑色文字 -->
+    <color name="common_black_text">#333333</color>
+    <!-- 公用白色文字 -->
+    <color name="common_white_text">#ffffff</color>
+    <!-- 公用红文字 -->
+    <color name="common_red_text">#88ff0000</color>
+    <color name="lightwhite">#ffffff</color>
+    <color name="red">#f00fff</color>
+    <color name="text_color_scenelist">#333333</color>
+    <color name="text_color_scene_enquiry_light">#333333</color>
+    <color name="common_tab_color_nor_text">#9c9c9c</color>
+    <color name="common_tab_color_sel_text">#202020</color>
+    <color name="text_color_login">#333333</color>
+    <color name="text_color_scene_start_time">#A1A1A1</color>
+    <color name="property_color_transparent">#00000000</color>
+    <color name="property_color_red">#F5455A</color>
+    <color name="colorBlueDark">#1186D7</color>
+
+    <!-- Frequently use -->
+    <color name="text_color_blue">#7f9eb7</color>
+    <color name="text_full_red">#fc8b9d</color>
+    <color name="text_color_red">#F32C4B</color>
+    <color name="text_color_white">#FFFFFF</color>
+    <color name="text_color_black">#202020</color>
+    <color name="text_color_intercom">#F85357</color>
+    <color name="divider_color">#E4E4E4</color>
+    <color name="text_color_gray">#787878</color>
+    <color name="unable_black_button">#59687f</color>
+    <color name="unable_white_button">#9c9c9c</color>
+    <color name="unable_red_button">#fabec4</color>
+    <color name="text_gray">#fabec4</color>
+
+    <color name="line_gray">#9c9c9c</color>
+    <color name="bg_gray">#f3f8f8</color>
+    <color name="bg_key_broad">#d2d5dc</color>
+    <color name="app_bg">#f1f5f6</color>
+    <color name="reminder_blue">#0079ff</color>
+
+    <color name="titlebar_bg">#f32c4b</color>
+    <color name="verify_code">#f32b4b</color>
+    <color name="listview_gray">#f2f5f6</color>
+    <color name="listview_tran">#3dccb4</color>
+
+    <color name="color_best">#06b564</color>
+    <color name="color_good">#e7bb00</color>
+    <color name="color_mild">#f89f15</color>
+    <color name="color_moderate">#f67c33</color>
+    <color name="color_thick">#f54746</color>
+    <color name="color_serious">#2e284e</color>
+
+    <color name="color_blue_dark">#1186D7</color>
+    <color name="color_dialog">#000000</color>
+
+    <!-- start add for zxing -->
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="viewfinder_frame">#2477ab</color>
+    <!-- end add for zxing -->
+
+    <color name="tcl_main_bottomColor">#c3c3c3</color>
+    <color name="tcl_main_bg">#f3f8f8</color>
+    <color name="tcl_commmon_line_color">#dddddd</color>
+    <color name="tcl_main_botton_text_blue">#2ea7e0</color>
+    <color name="tcl_title_right_textcolor">#3867fa</color>
+    <color name="tcl_dialog_text_pressed">#dddddd</color>
+    <color name="tcl_yellow">#0000ff</color>
+    <color name="tcl_dialog_textColor">#2ea7e0</color>
+    <color name="tcl_hintcolor">#9c9c9c</color>
+
+    //smarhome
+    <color name="device_control_bg">#1186D7</color>
+    <color name="device_control_item_center_text">#babbbb</color>
+    <color name="device_control_item_left_text">#373738</color>
+    <color name="device_history_bgline">#e0e0e6</color>
+    <color name="device_history_textcolor">#8b8b88</color>
+    <color name="vseekbar_text_color">#aaaaaa</color>
+
+    <color name="devicelist_item_name_online_color">#333333</color>
+    <color name="devicelist_item_statu_online_color">#999999</color>
+
+    <color name="holo_red_light">#ffef4d43</color>
+
+    <color name="msg_line_tv_color">#333333</color>
+    <color name="colorTitleTextColor">#ff333333</color>
+    <color name="dividerLineColor">#dddddd</color>
+    <color name="black_transparent">#50000000</color>
+    <color name="dark_gray_bg">#ffD9D7D7</color>
+
+    <color name="fbutton_default_color">#3eadeb</color>
+    <color name="fbutton_default_shadow_color">#ff3493c8</color>
+    <color name="fbutton_color_turquoise">#1abc9c</color>
+    <color name="fbutton_color_green_sea">#16a085</color>
+    <color name="fbutton_color_emerald">#2ecc71</color>
+    <color name="fbutton_color_nephritis">#27ae60</color>
+    <color name="fbutton_color_peter_river">#3498db</color>
+    <color name="fbutton_color_belize_hole">#2980b9</color>
+    <color name="fbutton_color_amethyst">#9b59b6</color>
+    <color name="fbutton_color_wisteria">#8e44ad</color>
+    <color name="fbutton_color_wet_asphalt">#34495e</color>
+    <color name="fbutton_color_midnight_blue">#2c3e50</color>
+    <color name="fbutton_color_sun_flower">#f1c40f</color>
+    <color name="fbutton_color_orange">#f39c12</color>
+    <color name="fbutton_color_carrot">#e67e22</color>
+    <color name="fbutton_color_pumpkin">#d35400</color>
+    <color name="fbutton_color_alizarin">#e74c3c</color>
+    <color name="fbutton_color_pomegranate">#c0392b</color>
+    <color name="fbutton_color_clouds">#ecf0f1</color>
+    <color name="fbutton_color_silver">#bdc3c7</color>
+    <color name="fbutton_color_concrete">#95a5a6</color>
+    <color name="fbutton_color_asbestos">#7f8c8d</color>
+    <color name="fbutton_color_transparent">@android:color/transparent</color>
+    <color name="title_color">#393A3E</color>
+
+</resources>
