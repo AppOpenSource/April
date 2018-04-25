@@ -1,1 +1,1 @@
-include ':app', ':base', ':swipebackactivity', ':okhttp', ':okhttp', ':retrofit2'
+include ':app', ':base'
