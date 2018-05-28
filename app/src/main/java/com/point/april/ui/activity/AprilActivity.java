@@ -22,7 +22,9 @@ import com.point.april.ui.activity.personal.NotificationActivity;
 import com.point.april.util.StatusBarCompat;
 
 /**
- * APP首页
+ * @描述： @App首页
+ * @作者： @黄卫旗
+ * @创建时间： @28/05/2018
  */
 public class AprilActivity extends BaseActivity implements View.OnClickListener {
 

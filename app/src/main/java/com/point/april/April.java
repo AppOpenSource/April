@@ -52,11 +52,8 @@ public class April extends Application {
         // 记录APP打开次数
         int count = PreferencesUtil.getInt(this, GlobalConstant.SHARE_KEY_APP_OPEN_COUNT);
         PreferencesUtil.write(this, GlobalConstant.SHARE_KEY_APP_OPEN_COUNT, ++count);
-
         NetworkManager.getInstace().init(this);
-
         ConfigManager.getInstance().init(getApplicationContext());
-
         ImageLoaderManager.getInstance().init(getApplicationContext());
     }
 
