@@ -8,12 +8,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.swipebackactivity.app.SwipeBackActivity;
 import com.point.april.R;
 import com.point.april.common.SystemBarTintManager;
 import com.point.april.util.SharePreferenceUtil;
@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 /**
  * 页面基类
  */
-public class BaseActivity extends SwipeBackActivity {
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

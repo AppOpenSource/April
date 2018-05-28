@@ -21,17 +21,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.point.april.R;
 import com.point.april.bean.ErrorInfo;
 import com.point.april.bean.News;
 import com.point.april.common.log.LogManager;
 import com.point.april.contract.NewsContract;
 import com.point.april.global.GlobalParams;
-import com.point.april.network.NetworkManager;
 import com.point.april.network.NetworkUtil;
 import com.point.april.presenter.NewsPresenterImpl;
 import com.point.april.ui.UIConstant;
@@ -74,7 +69,8 @@ public class NewsActivity extends BaseActivity implements
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient mClient;
+    // TODO
+    // private GoogleApiClient mClient;
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
@@ -151,7 +147,8 @@ public class NewsActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        // TODO
+        // mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         if (NetworkUtil.isNetworkConnected(this)) {
             mTopTips.setVisibility(View.GONE);
@@ -166,7 +163,8 @@ public class NewsActivity extends BaseActivity implements
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    public Action getIndexApiAction() {
+    // TODO
+    /*public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
                 .setName("News Page") // TODO: Define a title for the content shown.
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]")) // TODO: Make sure this auto-generated URL is correct.
@@ -175,7 +173,7 @@ public class NewsActivity extends BaseActivity implements
                 .setObject(object)
                 .setActionStatus(Action.STATUS_TYPE_COMPLETED)
                 .build();
-    }
+    }*/
 
     @Override
     public void onStart() {
@@ -183,8 +181,9 @@ public class NewsActivity extends BaseActivity implements
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        mClient.connect();
-        AppIndex.AppIndexApi.start(mClient, getIndexApiAction());
+        // TODO
+        /*mClient.connect();
+        AppIndex.AppIndexApi.start(mClient, getIndexApiAction());*/
     }
 
     @Override
@@ -421,14 +420,15 @@ public class NewsActivity extends BaseActivity implements
     protected void onStop() {
         super.onStop();// ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(mClient, getIndexApiAction());
+        // TODO
+        /*AppIndex.AppIndexApi.end(mClient, getIndexApiAction());
         String tag = "volley_get";
         if (!"".equals(tag)) {
             NetworkManager.getInstace().cancelRequest(tag);
         }
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        mClient.disconnect();
+        mClient.disconnect();*/
     }
 
     @Override
