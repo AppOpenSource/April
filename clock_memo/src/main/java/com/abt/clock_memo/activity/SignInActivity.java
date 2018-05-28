@@ -1,4 +1,4 @@
-package com.point.april.ui.activity;
+package com.abt.clock_memo.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.abt.clock_memo.R;
 import com.j256.ormlite.dao.Dao;
 import com.point.april.R;
 import com.point.april.bean.SignIn;
@@ -65,8 +66,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         mSignInList = FileManager.read(SignInActivity.this, GlobalConstant.FILE_NAME_SIGN_IN);
         if (mSignInList != null) {
             Log.d(TAG, "mSignInList: " + mSignInList.size());
-            for (int i=0; i<mSignInList.size(); i++) {
-                Log.d(TAG, "mSignInList("+i+")-->time: "+mSignInList.get(i).getTime());
+            for (int i = 0; i < mSignInList.size(); i++) {
+                Log.d(TAG, "mSignInList(" + i + ")-->time: " + mSignInList.get(i).getTime());
             }
         }
         mAdapter = new SignInListAdapter(this, mSignInList);
@@ -74,7 +75,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         mSignInListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SignInActivity.this, "第"+(position+1)+"条记录", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this, "第" + (position + 1) + "条记录", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -141,18 +142,18 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         // 处理中 Signing
         LocationUtil util = LocationUtil.getInstance();
         boolean res = util.signIn(this);
-        Log.d(TAG, "signIn res: "+res);
+        Log.d(TAG, "signIn res: " + res);
 
         // 处理后
         SignIn in = new SignIn();
         long time = System.currentTimeMillis();
         String nickName = PreferencesUtil.getString(SignInActivity.this, GlobalConstant.SHARE_KEY_NICK_NAME);
-        int count = PreferencesUtil.getInt(this, GlobalConstant.SHARE_KEY_SIGN_IN_COUNT)+1;
+        int count = PreferencesUtil.getInt(this, GlobalConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
         if (TextUtils.isEmpty(nickName)) {
-            nickName = "第"+count+"条记录";
+            nickName = "第" + count + "条记录";
         }
         in.setName(nickName);
-        in.setTime(time+"");
+        in.setTime(time + "");
         if (res) { // 打卡成功
             // TODO 更新打卡记录
             in.setStatus("刷卡成功");
@@ -165,7 +166,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             mAdapter.notifyDataSetChanged();
             FileManager.write(SignInActivity.this, GlobalConstant.FILE_NAME_SIGN_IN, mSignInList);
             //FileHelper.saveStorage2SDCard(mSignInList, GlobalConstant.FILE_NAME_SIGN_IN);
-            Log.d(TAG, "mAdapter.notifyDataSetChanged(): "+mSignInList.size());
+            Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
         }
         if (mDialog != null) {
             mSignInBtn.postDelayed(new Runnable() {
@@ -173,7 +174,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                 public void run() {
                     mDialog.dismiss();
                 }
-            }, 1*1000);
+            }, 1 * 1000);
         }
     }
 
@@ -200,9 +201,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     /**
      * 查看记录项
+     *
      * @param position
      */
-    private void viewListViewItem(int position){
+    private void viewListViewItem(int position) {
         mSignIn = mSignInList.get(position);
         Intent intent = new Intent();
         intent.setClass(this, SignInActivity.class);
@@ -214,7 +216,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     /**
      * 编辑记录项
      */
-    private void editListViewItem(int position){
+    private void editListViewItem(int position) {
         mSignIn = mSignInList.get(position);
         Intent intent = new Intent();
         intent.setClass(this, SignInActivity.class);
@@ -225,9 +227,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     /**
      * 删除记录项
+     *
      * @param position
      */
-    private void deleteListViewItem(int position){
+    private void deleteListViewItem(int position) {
         final int pos = position;
         AlertDialog.Builder builder2 = new AlertDialog.Builder(SignInActivity.this);
         builder2.setIcon(android.R.drawable.ic_dialog_alert)

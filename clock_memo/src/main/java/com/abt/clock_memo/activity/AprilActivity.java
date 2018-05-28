@@ -1,4 +1,4 @@
-package com.point.april.ui.activity;
+package com.abt.clock_memo.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.abt.clock_memo.R;
 import com.j256.ormlite.support.ConnectionSource;
 import com.point.april.R;
 import com.point.april.common.log.LogManager;
@@ -26,7 +27,7 @@ import com.point.april.util.StatusBarCompat;
  * @作者： @黄卫旗
  * @创建时间： @28/05/2018
  */
-public class AprilActivity extends BaseActivity implements View.OnClickListener {
+public class AprilActivity extends com.point.april.ui.activity.BaseActivity implements View.OnClickListener {
 
     private static final String TAG = AprilActivity.class.getSimpleName();
     private TextView mTitle;
@@ -143,12 +144,12 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
                 this.finish();
                 break;
             case R.id.sign_in:
-                Intent iSign = new Intent(this, SignInActivity.class);
+                Intent iSign = new Intent(this, com.point.april.ui.activity.SignInActivity.class);
                 iSign.putExtra(GlobalConstant.SIGN_IN_OR_NOT, "yes");
                 startActivity(iSign);
                 break;
             case R.id.sign_record:
-                Intent signRecord = new Intent(this, SignInActivity.class);
+                Intent signRecord = new Intent(this, com.point.april.ui.activity.SignInActivity.class);
                 signRecord.putExtra(GlobalConstant.SIGN_IN_OR_NOT, "no");
                 startActivity(signRecord);
                 break;
@@ -184,11 +185,11 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
                     mTitle.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                           mCount = 0;
+                            mCount = 0;
                         }
                     }, 1000);
                 }
-                Toast.makeText(this, "再按一次退出"+getResources().getText(R.string.app_name), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "再按一次退出" + getResources().getText(R.string.app_name), Toast.LENGTH_SHORT).show();
                 mCount++;
             }
             return true;

@@ -1,4 +1,4 @@
-package com.point.april.ui.activity;
+package com.abt.clock_memo.activity;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,11 +13,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.point.april.R;
-import com.point.april.common.SystemBarTintManager;
-import com.point.april.util.SharePreferenceUtil;
-import com.point.base.control.StatusBarUtil;
-
+import com.abt.clock_memo.R;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -107,7 +102,7 @@ public class BaseActivity extends AppCompatActivity {
             darkModeFlag = field.getInt(layoutParams);
             Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
             if (true) {
-                extraFlagField.invoke(this.getWindow(),darkModeFlag,darkModeFlag);//状态栏透明且黑色字体
+                extraFlagField.invoke(this.getWindow(), darkModeFlag, darkModeFlag);//状态栏透明且黑色字体
             } else {
                 extraFlagField.invoke(this.getWindow(), 0, darkModeFlag);//清除黑色字体
             }

@@ -1,4 +1,4 @@
-package com.point.april.ui.activity;
+package com.abt.clock_memo.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.point.april.R;
-import com.point.april.data.PreferencesUtil;
-import com.point.april.global.GlobalConstant;
+import com.abt.clock_memo.R;
+import com.abt.clock_memo.global.GlobalConstant;
+import com.abt.clock_memo.util.PreferencesUtil;
 
 /**
  * 应用数据统计页
@@ -48,13 +48,13 @@ public class AppCountActivity extends AppCompatActivity implements View.OnClickL
                 openNewsCount + notificationCount;
 
         StringBuilder sb = new StringBuilder();
-        sb.append("应用打开次数："+appOpenCount+"次\n\n");
-        sb.append("打卡次数："+signInCount+"次\n\n");
-        sb.append("查看打卡记录次数："+browseSignInRecordCount+"次\n\n");
-        sb.append("打开教练点评次数："+openCoachReviewCount+"次\n\n");
-        sb.append("打开新闻精选次数："+openNewsCount+"次\n\n");
-        sb.append("打开通知中心次数："+notificationCount+"次\n\n");
-        sb.append("总操作次数："+total+"次\n\n");
+        sb.append("应用打开次数：" + appOpenCount + "次\n\n");
+        sb.append("打卡次数：" + signInCount + "次\n\n");
+        sb.append("查看打卡记录次数：" + browseSignInRecordCount + "次\n\n");
+        sb.append("打开教练点评次数：" + openCoachReviewCount + "次\n\n");
+        sb.append("打开新闻精选次数：" + openNewsCount + "次\n\n");
+        sb.append("打开通知中心次数：" + notificationCount + "次\n\n");
+        sb.append("总操作次数：" + total + "次\n\n");
 
         mAppCount.setText(sb.toString());
     }
@@ -64,7 +64,7 @@ public class AppCountActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.go_back:
                 this.finish();
-            break;
+                break;
         }
     }
 }
