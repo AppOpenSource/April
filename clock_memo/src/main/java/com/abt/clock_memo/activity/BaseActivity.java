@@ -1,21 +1,11 @@
 package com.abt.clock_memo.activity;
 
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.abt.clock_memo.R;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 /**
  * 页面基类
@@ -58,6 +48,7 @@ public class BaseActivity extends AppCompatActivity {
         // Bugtags.onDispatchTouchEvent(this, event);
         return super.dispatchTouchEvent(event);
     }
+/*
 
     public int setToolBar(FloatingActionButton floatingActionButton, Toolbar toolbar, boolean isChangeToolbar, boolean isChangeStatusBar, DrawerLayout drawerLayout) {
         int vibrantColor = getSharedPreferences(SharePreferenceUtil.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE).getInt(SharePreferenceUtil.VIBRANT, 0);
@@ -110,6 +101,7 @@ public class BaseActivity extends AppCompatActivity {
 
         }
     }
+*/
 
     @TargetApi(19)
     private void setTranslucentStatus(boolean on) {

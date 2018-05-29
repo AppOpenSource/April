@@ -1,34 +1,20 @@
 package com.abt.clock_memo.activity;
 
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.abt.clock_memo.R;
-import com.j256.ormlite.support.ConnectionSource;
-import com.point.april.R;
-import com.point.april.common.log.LogManager;
-import com.point.april.data.db.mysql.MySQLHelper;
-import com.point.april.global.GlobalConstant;
-import com.point.april.ui.activity.coach.CoachActivity;
-import com.point.april.ui.activity.news.NewsActivity;
-import com.point.april.ui.activity.personal.NotificationActivity;
-import com.point.april.util.StatusBarCompat;
 
 /**
  * @描述： @App首页
  * @作者： @黄卫旗
  * @创建时间： @28/05/2018
  */
-public class AprilActivity extends com.point.april.ui.activity.BaseActivity implements View.OnClickListener {
+public class AprilActivity extends AppCompatActivity implements View.OnClickListener {
+//public class AprilActivity extends com.point.april.ui.activity.BaseActivity implements View.OnClickListener {
+    @Override
+    public void onClick(View v) {
 
+    }
+/*
     private static final String TAG = AprilActivity.class.getSimpleName();
     private TextView mTitle;
     private LinearLayout mGoBack;
@@ -121,11 +107,11 @@ public class AprilActivity extends com.point.april.ui.activity.BaseActivity impl
             Log.d("AprilActivity", "doInBackground : ");
             ConnectionSource connection = MySQLHelper.getConnSrc();
             if (connection != null) {
-                /*List<Dish> list = MySQLHelper.getDish();
+                *//*List<Dish> list = MySQLHelper.getDish();
                 if (list != null) {
                     Log.d("AprilActivity", "list : "+list.size());
 
-                }*/
+                }*//*
             }
             return null;
         }
@@ -198,7 +184,7 @@ public class AprilActivity extends com.point.april.ui.activity.BaseActivity impl
     }
 
     // 计时线程
-    /*private Runnable mCountingTimeTask = new Runnable() {
+    *//*private Runnable mCountingTimeTask = new Runnable() {
 
         @Override
         public void run() {
@@ -226,10 +212,10 @@ public class AprilActivity extends com.point.april.ui.activity.BaseActivity impl
             // 反复调用自己进行检查
             mCountingHandler.postDelayed(mCountingTimeTask, intervalKeypadeSaver);
         }
-    };*/
+    };*//*
 
     // 持续屏保显示线程
-    /*private Runnable mDiaplyTask = new Runnable() {
+    *//*private Runnable mDiaplyTask = new Runnable() {
         @Override
         public void run() {
             LogManager.d(TAG, "mDiaplyTask run----->");
@@ -241,16 +227,16 @@ public class AprilActivity extends com.point.april.ui.activity.BaseActivity impl
                 mDisplayHandler.removeCallbacks(mDiaplyTask);  //如果屏保没有显示则移除线程
             }
         }
-    };*/
+    };*//*
 
     // 显示屏保
-    /*private void showScreenSaver() {
+    *//*private void showScreenSaver() {
         isRunningSaver = true;
         LogManager.d(TAG, "showScreenSaver 显示屏保------>");
         Intent intent = new Intent(AprilActivity.this, DisplayInputActivity.class);
         startActivity(intent);
         this.finish();
-    }*/
+    }*//*
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
@@ -260,7 +246,7 @@ public class AprilActivity extends com.point.april.ui.activity.BaseActivity impl
     }
 
     //用户有操作的时候不断重置静止时间和上次操作的时间
-    /*public void updateUserActionTime() {
+    *//*public void updateUserActionTime() {
         LogManager.d(TAG, "updateUserActionTime--->");
         Date timeNow = new Date(System.currentTimeMillis());
         timePeriod = timeNow.getTime() - lastUpdateTime.getTime();

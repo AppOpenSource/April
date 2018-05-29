@@ -1,20 +1,17 @@
 package com.abt.clock_memo.activity;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.abt.clock_memo.R;
-import com.abt.clock_memo.global.GlobalConstant;
-import com.abt.clock_memo.util.PreferencesUtil;
 
 /**
  * 应用数据统计页
  */
 public class AppCountActivity extends AppCompatActivity implements View.OnClickListener {
+    @Override
+    public void onClick(View v) {
 
+    }
+/*
     private TextView mTitle;
     private TextView mAppCount;
     private LinearLayout mGoBack;
@@ -66,5 +63,5 @@ public class AppCountActivity extends AppCompatActivity implements View.OnClickL
                 this.finish();
                 break;
         }
-    }
+    }*/
 }

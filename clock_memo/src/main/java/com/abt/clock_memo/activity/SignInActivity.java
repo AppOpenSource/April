@@ -1,38 +1,17 @@
 package com.abt.clock_memo.activity;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.SQLException;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.abt.clock_memo.R;
-import com.j256.ormlite.dao.Dao;
-import com.point.april.R;
-import com.point.april.bean.SignIn;
-import com.point.april.common.location.LocationUtil;
-import com.point.april.data.PreferencesUtil;
-import com.point.april.data.file.FileManager;
-import com.point.april.global.GlobalConstant;
-import com.point.april.ui.adapter.SignInListAdapter;
-import com.point.april.util.StatusBarCompat;
-
-import java.util.List;
 
 /**
  * 打卡记录页面
  */
-public class SignInActivity extends BaseActivity implements View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
+//public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
     private String TAG = SignInActivity.class.getSimpleName();
     private TextView mTitle;
@@ -40,7 +19,12 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     private Button mSignInBtn;
     private ProgressDialog mDialog;
 
-    private ListView mSignInListView;
+    @Override
+    public void onClick(View v) {
+
+    }
+
+   /* private ListView mSignInListView;
     private SignInListAdapter mAdapter;
     private List<SignIn> mSignInList;
 
@@ -178,10 +162,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    /**
+    *//**
      * 查询记录项
-     */
-    /*private void queryListViewItem() {
+     *//*
+    *//*private void queryListViewItem() {
         try {
             stuDao = getHelper().getStudentDao();
             //查询所有的记录项
@@ -197,13 +181,13 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-    }*/
+    }*//*
 
-    /**
+    *//**
      * 查看记录项
      *
      * @param position
-     */
+     *//*
     private void viewListViewItem(int position) {
         mSignIn = mSignInList.get(position);
         Intent intent = new Intent();
@@ -213,9 +197,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         startActivity(intent);
     }
 
-    /**
+    *//**
      * 编辑记录项
-     */
+     *//*
     private void editListViewItem(int position) {
         mSignIn = mSignInList.get(position);
         Intent intent = new Intent();
@@ -225,11 +209,11 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         startActivity(intent);
     }
 
-    /**
+    *//**
      * 删除记录项
      *
      * @param position
-     */
+     *//*
     private void deleteListViewItem(int position) {
         final int pos = position;
         AlertDialog.Builder builder2 = new AlertDialog.Builder(SignInActivity.this);
@@ -260,6 +244,6 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             }
         });
         builder2.show();
-    }
+    }*/
 
 }

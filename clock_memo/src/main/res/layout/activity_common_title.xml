@@ -14,7 +14,6 @@
             android:id="@+id/go_back"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@drawable/back_arrow_selector"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -24,8 +23,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/app_name"
-                android:scaleType="center"
-                android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
+                android:scaleType="center" />
 
             <TextView
                 android:layout_width="wrap_content"
