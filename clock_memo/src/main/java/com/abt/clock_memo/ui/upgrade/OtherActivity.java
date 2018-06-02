@@ -1,4 +1,4 @@
-package com.abt.clock_memo.upgrade;
+package com.abt.clock_memo.ui.upgrade;
 
 import android.app.Activity;
 import android.os.Bundle;

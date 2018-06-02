@@ -18,7 +18,7 @@
         android:name=".ClockMemoApp"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".upgrade.UpgradeHolderActivity">
+        <activity android:name=".ui.upgrade.UpgradeHolderActivity">
 
         </activity>
 
@@ -49,8 +49,8 @@
         </provider>
 
         <!--测试Activity-->
-        <activity android:name=".upgrade.OtherActivity"/>
-        <activity android:name=".upgrade.UpgradeActivity"/>
+        <activity android:name=".ui.upgrade.OtherActivity"/>
+        <activity android:name=".ui.upgrade.UpgradeActivity"/>
 
     </application>
 

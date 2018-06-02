@@ -1,4 +1,4 @@
-package com.abt.clock_memo.upgrade;
+package com.abt.clock_memo.ui.upgrade;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

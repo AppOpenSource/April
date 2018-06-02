@@ -5,7 +5,7 @@ import android.os.Environment;
 import com.abt.clock_memo.R;
 import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.config.AppConfig;
-import com.abt.clock_memo.upgrade.UpgradeHolderActivity;
+import com.abt.clock_memo.ui.upgrade.UpgradeHolderActivity;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 
