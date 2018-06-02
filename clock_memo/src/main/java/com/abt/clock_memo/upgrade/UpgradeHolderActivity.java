@@ -12,10 +12,11 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.UpgradeInfo;
 
 /**
- * init方法自动检查更新，checkUpdate方法手动检查更新
- * Created by wenjiewu on 2016/5/23.
+ * @描述： @init方法自动检查更新，checkUpdate方法手动检查更新
+ * @作者： @黄卫旗
+ * @创建时间： @20/05/2018
  */
-public class MainActivity extends AppCompatActivity {
+public class UpgradeHolderActivity extends AppCompatActivity {
 
     private Button btnCheckUpdate;
     private Button btnLoadUpgradeInfo;

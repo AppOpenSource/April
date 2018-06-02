@@ -1,24 +1,22 @@
-package com.abt.clock_memo.upgrade;
+package com.abt.clock_memo.util;
 
-import android.app.Application;
 import android.os.Environment;
 
 import com.abt.clock_memo.R;
+import com.abt.clock_memo.base.BaseApplication;
+import com.abt.clock_memo.config.AppConfig;
+import com.abt.clock_memo.upgrade.UpgradeHolderActivity;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 
 /**
- * Created by wenjiewu on 2016/5/23.
+ * @描述： @BuglyUtil
+ * @作者： @黄卫旗
+ * @创建时间： @02/06/2018
  */
-public class MyApplication extends Application {
+public class BuglyUtil {
 
-    public static final String APP_ID = "d58b2318c3"; // TODO 替换成bugly上注册的appid
-    public static final String APP_CHANNEL = "DEBUG"; // TODO 自定义渠道
-    private static final String TAG = "OnUILifecycleListener";
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
+    public static void init () {
 
         /**** Beta高级设置*****/
         /**
@@ -36,7 +34,7 @@ public class MyApplication extends Application {
         Beta.autoCheckUpgrade = true;
 
         /**
-         * 设置升级周期为60s（默认检查周期为0s），60s内SDK不重复向后天请求策略
+         * 设置升级周期为60s（默认检查周期为0s），60s内SDK不重复向后台请求策略
          */
         Beta.initDelay = 1 * 1000;
 
@@ -49,7 +47,6 @@ public class MyApplication extends Application {
          * 设置状态栏小图标，smallIconId为项目中的图片资源id;
          */
         Beta.smallIconId = R.mipmap.ic_launcher;
-
 
         /**
          * 设置更新弹窗默认展示的banner，defaultBannerId为项目中的图片资源Id;
@@ -72,7 +69,7 @@ public class MyApplication extends Application {
          * 只允许在MainActivity上显示更新弹窗，其他activity上不显示弹窗;
          * 不设置会默认所有activity都可以显示弹窗;
          */
-        Beta.canShowUpgradeActs.add(MainActivity.class);
+        Beta.canShowUpgradeActs.add(UpgradeHolderActivity.class);
 
 
         /**
@@ -182,7 +179,7 @@ public class MyApplication extends Application {
          * 参数2：appId
          * 参数3：是否开启debug
          */
-        Bugly.init(getApplicationContext(), APP_ID, true);
+        Bugly.init(BaseApplication.getAppContext(), AppConfig.APP_ID, true);
 
         /**
          * 如果想自定义策略，按照如下方式设置
@@ -196,6 +193,6 @@ public class MyApplication extends Application {
         //        strategy.setAppChannel(APP_CHANNEL);
 
         //        Bugly.init(getApplicationContext(), APP_ID, true, strategy);
-
     }
+
 }

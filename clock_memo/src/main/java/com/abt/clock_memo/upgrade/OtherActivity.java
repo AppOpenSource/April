@@ -6,9 +6,11 @@ import android.os.Bundle;
 import com.abt.clock_memo.R;
 
 /**
- * Created by wenjiewu on 2016/6/2.
+ * @描述： @OtherActivity
+ * @作者： @黄卫旗
+ * @创建时间： @20/05/2018
  */
-public class OtherActivity extends Activity{
+public class OtherActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

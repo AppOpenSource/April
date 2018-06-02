@@ -13,7 +13,9 @@ import com.tencent.bugly.beta.download.DownloadListener;
 import com.tencent.bugly.beta.download.DownloadTask;
 
 /**
- * 自定义Activity.
+ * @描述： @UpgradeActivity
+ * @作者： @黄卫旗
+ * @创建时间： @20/05/2018
  */
 public class UpgradeActivity extends Activity {
     private TextView tv;
