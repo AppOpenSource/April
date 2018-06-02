@@ -1,17 +1,39 @@
 package com.point.april.ui.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.j256.ormlite.dao.Dao;
+import com.point.april.R;
+import com.point.april.bean.SignIn;
+import com.point.april.common.location.LocationUtil;
+import com.point.april.data.PreferencesUtil;
+import com.point.april.data.db.DatabaseHelper;
+import com.point.april.data.file.FileManager;
+import com.point.april.global.GlobalConstant;
+import com.point.april.ui.adapter.SignInListAdapter;
+import com.point.april.util.StatusBarCompat;
+
+import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * 打卡记录页面
  */
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
-//public class SignInActivity extends BaseActivity implements View.OnClickListener {
+public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
     private String TAG = SignInActivity.class.getSimpleName();
     private TextView mTitle;
@@ -19,12 +41,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private Button mSignInBtn;
     private ProgressDialog mDialog;
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
-   /* private ListView mSignInListView;
+    private ListView mSignInListView;
     private SignInListAdapter mAdapter;
     private List<SignIn> mSignInList;
 
@@ -34,17 +51,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_sign_in);
         StatusBarCompat.compat(this, 0xFF393A3E);
-
         onInitView();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         //mSignInList = getRecordList();
         //mSignInList = FileHelper.getStorageEntities(GlobalConstant.FILE_NAME_SIGN_IN);
         mSignInList = FileManager.read(SignInActivity.this, GlobalConstant.FILE_NAME_SIGN_IN);
@@ -109,7 +123,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         LocationUtil util = LocationUtil.getInstance();
         util.stopLocate();
     }
@@ -162,12 +175,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    *//**
+    /**
      * 查询记录项
-     *//*
-    *//*private void queryListViewItem() {
+     */
+    private void queryListViewItem() {
         try {
-            stuDao = getHelper().getStudentDao();
+            DatabaseHelper helper = new DatabaseHelper(this);
+            stuDao = helper.getStudentDao();
             //查询所有的记录项
             mSignInList = stuDao.queryForAll();
             for (Iterator iterator = mSignInList.iterator(); iterator.hasNext();) {
@@ -178,16 +192,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
         }
-    }*//*
+    }
 
-    *//**
+    /**
      * 查看记录项
-     *
      * @param position
-     *//*
+     */
     private void viewListViewItem(int position) {
         mSignIn = mSignInList.get(position);
         Intent intent = new Intent();
@@ -197,9 +208,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         startActivity(intent);
     }
 
-    *//**
+    /**
      * 编辑记录项
-     *//*
+     */
     private void editListViewItem(int position) {
         mSignIn = mSignInList.get(position);
         Intent intent = new Intent();
@@ -209,11 +220,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         startActivity(intent);
     }
 
-    *//**
+    /**
      * 删除记录项
-     *
      * @param position
-     *//*
+     */
     private void deleteListViewItem(int position) {
         final int pos = position;
         AlertDialog.Builder builder2 = new AlertDialog.Builder(SignInActivity.this);
@@ -221,7 +231,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 .setTitle("警告")
                 .setMessage("确定要删除该记录");
         builder2.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SignIn mDelStudent = (SignIn) mSignInListView.getAdapter().getItem(pos);
@@ -230,20 +239,17 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     // queryListViewItem();
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (java.sql.SQLException e) {
-                    e.printStackTrace();
                 }
 
             }
         });
         builder2.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
         builder2.show();
-    }*/
+    }
 
 }

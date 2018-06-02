@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.bugtags.library.Bugtags;
 import com.point.april.R;
 import com.point.april.common.SystemBarTintManager;
 import com.point.april.util.SharePreferenceUtil;
@@ -40,27 +41,26 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        // setStatusBar();
+        setStatusBar();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Bugtags.onResume(this);
+         Bugtags.onResume(this);
         // MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // Bugtags.onPause(this);
+        Bugtags.onPause(this);
         // MobclickAgent.onPause(this);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        // Bugtags.onDispatchTouchEvent(this, event);
+        Bugtags.onDispatchTouchEvent(this, event);
         return super.dispatchTouchEvent(event);
     }
     public int setToolBar(FloatingActionButton floatingActionButton, Toolbar toolbar, boolean isChangeToolbar, boolean isChangeStatusBar, DrawerLayout drawerLayout) {

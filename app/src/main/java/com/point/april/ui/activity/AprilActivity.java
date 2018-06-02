@@ -1,20 +1,37 @@
 package com.point.april.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.j256.ormlite.support.ConnectionSource;
+import com.point.april.R;
+import com.point.april.common.log.LogManager;
+import com.point.april.data.db.mysql.MySQLHelper;
+import com.point.april.global.GlobalConstant;
+import com.point.april.ui.activity.coach.CoachActivity;
+import com.point.april.ui.activity.news.NewsActivity;
+import com.point.april.ui.activity.personal.NotificationActivity;
+import com.point.april.ui.activity.screensaver.DisplayInputActivity;
+import com.point.april.util.StatusBarCompat;
+
+import java.util.Date;
 
 /**
  * @描述： @App首页
  * @作者： @黄卫旗
  * @创建时间： @28/05/2018
  */
-public class AprilActivity extends AppCompatActivity implements View.OnClickListener {
-//public class AprilActivity extends com.point.april.ui.activity.BaseActivity implements View.OnClickListener {
-    @Override
-    public void onClick(View v) {
+public class AprilActivity extends BaseActivity implements View.OnClickListener {
 
-    }
-/*
     private static final String TAG = AprilActivity.class.getSimpleName();
     private TextView mTitle;
     private LinearLayout mGoBack;
@@ -28,42 +45,35 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
 
     private int mCount = 0; //返回键计数器
 
-//    private Handler mCountingHandler = new Handler();
-//    private Handler mDisplayHandler = new Handler();
-//    private Date lastUpdateTime;//上一次User有动作的TimeStamp
-//
-//    private long intervalScreenSaver = 1000;//时间间隔
-//    private long intervalKeypadeSaver = 1000;
-//    private long timePeriod;//计算User有几秒没有动作的
-//
-//    private float mHoldStillTime = 35;//静止超过N秒将自动进入屏保
-//    private boolean isRunScreenSaver;//识当前是否进入了屏保
-//    public static boolean isRunningSaver;
+    private Handler mCountingHandler = new Handler();
+    private Handler mDisplayHandler = new Handler();
+    private Date lastUpdateTime;//上一次User有动作的TimeStamp
+
+    private long intervalScreenSaver = 1000;//时间间隔
+    private long intervalKeypadeSaver = 1000;
+    private long timePeriod;//计算User有几秒没有动作的
+
+    private float mHoldStillTime = 35;//静止超过N秒将自动进入屏保
+    private boolean isRunScreenSaver;//识当前是否进入了屏保
+    public static boolean isRunningSaver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_april);
         StatusBarCompat.compat(this, 0xFF393A3E);
-
         onInitView();
-
         new AddTask().execute();
-
         // 初始取得User可触碰屏幕的时间
         // lastUpdateTime = new Date(System.currentTimeMillis());
-
         // setStatusBar();
-
     }
 
     @Override
     protected void onInitView() {
         super.onInitView();
-
         mTitle = (TextView) findViewById(R.id.title_content);
         mTitle.setText(getResources().getText(R.string.app_name));
-
         mGoBack = (LinearLayout) findViewById(R.id.go_back);
         mGoBack.setOnClickListener(this);
         mGoBack.setVisibility(View.GONE);
@@ -83,7 +93,6 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
         mReWrite = (Button) findViewById(R.id.re_write);
         mReWrite.setOnClickListener(this);
     }
-
 
     @Override
     protected void onResume() {
@@ -107,11 +116,11 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
             Log.d("AprilActivity", "doInBackground : ");
             ConnectionSource connection = MySQLHelper.getConnSrc();
             if (connection != null) {
-                *//*List<Dish> list = MySQLHelper.getDish();
+                /*List<Dish> list = MySQLHelper.getDish();
                 if (list != null) {
                     Log.d("AprilActivity", "list : "+list.size());
 
-                }*//*
+                }*/
             }
             return null;
         }
@@ -184,8 +193,7 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
     }
 
     // 计时线程
-    *//*private Runnable mCountingTimeTask = new Runnable() {
-
+    private Runnable mCountingTimeTask = new Runnable() {
         @Override
         public void run() {
             LogManager.d(TAG, "mCountingTimeTask run()");
@@ -212,10 +220,10 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
             // 反复调用自己进行检查
             mCountingHandler.postDelayed(mCountingTimeTask, intervalKeypadeSaver);
         }
-    };*//*
+    };
 
     // 持续屏保显示线程
-    *//*private Runnable mDiaplyTask = new Runnable() {
+    private Runnable mDiaplyTask = new Runnable() {
         @Override
         public void run() {
             LogManager.d(TAG, "mDiaplyTask run----->");
@@ -227,16 +235,16 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
                 mDisplayHandler.removeCallbacks(mDiaplyTask);  //如果屏保没有显示则移除线程
             }
         }
-    };*//*
+    };
 
     // 显示屏保
-    *//*private void showScreenSaver() {
+    private void showScreenSaver() {
         isRunningSaver = true;
         LogManager.d(TAG, "showScreenSaver 显示屏保------>");
         Intent intent = new Intent(AprilActivity.this, DisplayInputActivity.class);
         startActivity(intent);
         this.finish();
-    }*//*
+    }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
@@ -246,12 +254,11 @@ public class AprilActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //用户有操作的时候不断重置静止时间和上次操作的时间
-    *//*public void updateUserActionTime() {
+    public void updateUserActionTime() {
         LogManager.d(TAG, "updateUserActionTime--->");
         Date timeNow = new Date(System.currentTimeMillis());
         timePeriod = timeNow.getTime() - lastUpdateTime.getTime();
         lastUpdateTime.setTime(timeNow.getTime());
-    }*/
-
+    }
 
 }
