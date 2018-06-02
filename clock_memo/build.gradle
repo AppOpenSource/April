@@ -70,7 +70,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
@@ -80,6 +80,13 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:27.1.0'
     implementation 'com.android.library:lib:+'
     //compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
-    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
-    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+    implementation files('libs/mysql-connector-java-5.1.30-bin.jar')
+    implementation files('libs/ormlite-android-4.48.jar')
+    implementation files('libs/ormlite-core-4.48.jar')
+    implementation files('libs/ormlite-jdbc-4.48.jar')
+    compile project(path: ':app')
 }

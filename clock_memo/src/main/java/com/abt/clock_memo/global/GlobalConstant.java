@@ -22,4 +22,10 @@ public class GlobalConstant {
 	public static final String TX_APP_KEY = "1ae28fc9dd5afadc696ad94cd59426d8";
 	public static final String WEIXIN = "weixin";
 	public static final String DB__IS_READ_NAME = "IsRead";
+
+	public static final String LAST_LOCATION_TIME = "LAST_LOCATION_TIME";
+	public static final String LOCATION = "location";
+	public static final String LOCATION_ACTION = "locationAction";
+	public static final String KEY_ID = "id";
+	public static final String KEY_TYPE = "type";
 }
