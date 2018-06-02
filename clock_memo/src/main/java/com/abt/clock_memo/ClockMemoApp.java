@@ -2,7 +2,7 @@ package com.abt.clock_memo;
 
 import android.app.Application;
 
-import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.bugly.Bugly;
 
 /**
  * @描述： @ClockMemoApp
@@ -20,9 +20,13 @@ public class ClockMemoApp extends Application {
          * 第三个参数为SDK调试模式开关
          * 建议在测试阶段建议设置成true，发布时设置为false。
          */
-        CrashReport.initCrashReport(getApplicationContext(), APP_ID, true);
+        //CrashReport.initCrashReport(getApplicationContext(), APP_ID, true);
+        Bugly.init(getApplicationContext(), APP_ID, true);
 
-        CrashReport.testJavaCrash();
+        /**
+         * 模拟提交崩溃
+         */
+        //CrashReport.testJavaCrash();
     }
 
 }
