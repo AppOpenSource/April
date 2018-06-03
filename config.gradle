@@ -48,8 +48,8 @@ project.ext {
     //clock_memo
     clock_memo = [
             applicationId    : "com.abt.clock_memo",
-            versionCode      : 1,
-            versionName      : "2.0.0"
+            versionCode      : 2,
+            versionName      : "2.0.1"
     ]
 
     //basic模块
