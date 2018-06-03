@@ -24,8 +24,8 @@ def pluginVersion       = "1.0.0"
 def converterGsonVersion= "2.0.2"
 
 //test模块
-def testRunnerVersion   = "1.0.1"
-def testEspressoVersion = "3.0.1"
+def testRunnerVersion   = "1.0.2"
+def testEspressoVersion = "3.0.2"
 def testJunitVersion    = "4.12"
 
 //----------------------------------------------------------------------- 直播SDK配置------------------------------------------------------------------------------------
@@ -35,6 +35,10 @@ def fbSdkVersion        = "4.30.0"
 def wbLoginVersion      = "4.1.4"
 //youtube模块
 def ytDataAPIVersion    = "1.23.0"
+
+// bugly
+def crashUpgradeVersion    = "latest.release"
+def nativeCrashVersion     = "latest.release"
 
 //----------------------------------------------------------------------- 直播SDK配置------------------------------------------------------------------------------------
 
@@ -77,7 +81,7 @@ project.ext {
     ]
 
     //----------------------------------------------------------------------- test配置------------------------------------------------------------------------------------
-    test   = [
+    test = [
             "runner"          : "com.android.support.test:runner:${testRunnerVersion}",
             "espresso"        : "com.android.support.test.espresso:espresso-core:${testEspressoVersion}",
             "junit"           : "junit:junit:${testJunitVersion}",
@@ -171,6 +175,11 @@ project.ext {
             "google-oauth-client-jetty"      : "com.google.oauth-client:google-oauth-client-jetty:${ytDataAPIVersion}",
             "google-api-services-youtube"    : "com.google.apis:google-api-services-youtube:v3-rev192-${ytDataAPIVersion}",
             //---------------------------------------------------------------------- 直播SDK依赖------------------------------------------------------------------------------------
+
+            //bugly
+            "crashreport_upgrade"            : "com.tencent.bugly:crashreport_upgrade:${crashUpgradeVersion}",
+            "nativecrashreport"              : "com.tencent.bugly:nativecrashreport:${nativeCrashVersion}",
+
     ]
 
 }
