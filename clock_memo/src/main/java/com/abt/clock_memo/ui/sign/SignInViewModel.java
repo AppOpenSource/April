@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.clock_memo.R;
-import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.bean.SignIn;
 import com.abt.clock_memo.global.MainConstant;
 import com.abt.clock_memo.global.PreferenceConstant;
@@ -18,6 +17,7 @@ import com.abt.clock_memo.model.ISignInModel;
 import com.abt.clock_memo.model.SignInModelImpl;
 import com.abt.clock_memo.ui.sign.adapter.SignInAdapter;
 import com.abt.clock_memo.ui.sign.listener.SignInListener;
+import com.abt.common.app.BasicApplication;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -53,7 +53,7 @@ public class SignInViewModel extends BaseObservable implements
 
     @Override
     public void initialize() {
-        Resources resources = BaseApplication.getAppContext().getResources();
+        Resources resources = BasicApplication.getAppContext().getResources();
         text.set(resources.getString(R.string.clock_record));
     }
 

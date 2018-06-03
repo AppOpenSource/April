@@ -3,9 +3,9 @@ package com.abt.clock_memo.util;
 import android.os.Environment;
 
 import com.abt.clock_memo.R;
-import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.config.AppConfig;
 import com.abt.clock_memo.ui.upgrade.UpgradeHolderActivity;
+import com.abt.common.app.BasicApplication;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 
@@ -179,7 +179,7 @@ public class BuglyUtil {
          * 参数2：appId
          * 参数3：是否开启debug
          */
-        Bugly.init(BaseApplication.getAppContext(), AppConfig.APP_ID, true);
+        Bugly.init(BasicApplication.getAppContext(), AppConfig.APP_ID, true);
 
         /**
          * 如果想自定义策略，按照如下方式设置

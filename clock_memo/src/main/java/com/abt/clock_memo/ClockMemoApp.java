@@ -1,7 +1,8 @@
 package com.abt.clock_memo;
 
-import com.abt.clock_memo.base.BaseApplication;
-import com.abt.clock_memo.util.LocationUtil;
+import com.abt.clock_memo.util.BuglyUtil;
+import com.abt.common.app.BasicApplication;
+import com.abt.common.util.LocationUtil;
 import com.tencent.bugly.Bugly;
 
 /**
@@ -9,13 +10,13 @@ import com.tencent.bugly.Bugly;
  * @作者： @黄卫旗
  * @创建时间： @01/06/2018
  */
-public class ClockMemoApp extends BaseApplication {
+public class ClockMemoApp extends BasicApplication {
 
     private static final String APP_ID = "d58b2318c3";
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    public void initComplete() {
+        BuglyUtil.init();
         LocationUtil.getInstance().init();
     }
 

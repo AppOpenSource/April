@@ -3,7 +3,6 @@ package com.abt.clock_memo.data;
 import android.util.Log;
 
 import com.abt.clock_memo.data.file.FileHelper;
-import com.abt.clock_memo.data.preference.PreferenceHelper;
 
 public class DataManager {
 
@@ -11,8 +10,7 @@ public class DataManager {
 	private DataManager mManager;
 	
 	private FileHelper mFileHelper;
-	private PreferenceHelper mPreHelper;
-	
+
 	public DataManager getInstance() {
 		if (mManager == null) {
 			mManager = new DataManager();
@@ -22,11 +20,9 @@ public class DataManager {
 	
 	public void init() {
 		mFileHelper = new FileHelper();
-		mPreHelper = new PreferenceHelper();
 	}
 	
 	public void test() {
 		Log.d(TAG, mFileHelper.toString());
-		Log.d(TAG, mPreHelper.toString());
 	}
 }

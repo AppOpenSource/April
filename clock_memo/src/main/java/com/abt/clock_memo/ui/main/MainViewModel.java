@@ -4,8 +4,8 @@ import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
-import com.abt.clock_memo.base.BaseApplication;
-import com.abt.clock_memo.util.VersionUtils;
+import com.abt.common.app.BasicApplication;
+import com.abt.common.util.VersionUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -21,8 +21,8 @@ public class MainViewModel extends BaseObservable implements IViewModel<MainNavi
 
     @Override
     public void initialize() {
-        String code = VersionUtils.getVersionCode(BaseApplication.getAppContext());
-        String name = VersionUtils.getVersionName(BaseApplication.getAppContext());
+        String code = VersionUtils.getVersionCode(BasicApplication.getAppContext());
+        String name = VersionUtils.getVersionName(BasicApplication.getAppContext());
         txt.set("version_"+name+"_versionCode_"+code);
     }
 

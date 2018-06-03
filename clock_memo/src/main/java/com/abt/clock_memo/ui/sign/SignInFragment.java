@@ -12,9 +12,9 @@ import com.abt.basic.arch.mvvm.view.BaseFragment;
 import com.abt.basic.arch.mvvm.viewmodel.ToolbarViewModel;
 import com.abt.clock_memo.R;
 import com.abt.clock_memo.databinding.FragmentSigninBinding;
-import com.abt.clock_memo.helper.DialogHelper;
 import com.abt.clock_memo.ui.sign.adapter.SignInAdapter;
-import com.abt.clock_memo.util.ToastUtils;
+import com.abt.common.helper.DialogHelper;
+import com.abt.common.util.ToastUtils;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 

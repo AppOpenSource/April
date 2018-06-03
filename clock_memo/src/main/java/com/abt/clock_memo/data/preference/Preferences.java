@@ -12,27 +12,27 @@ import java.io.Serializable;
  */
 public interface Preferences {
 
-	public SharedPreferences getSharedPreferences();
+	SharedPreferences getSharedPreferences();
 
 	/**
 	 * 获取保存的数据
 	 */
-	public <T> T get(Context context, String key, Class<T> c);
+	<T> T get(Context context, String key, Class<T> c);
 
 	/**
 	 * 保存数据，持久化
 	 */
-	public boolean save(Context context, String key, Serializable obj);
+	boolean save(Context context, String key, Serializable obj);
 
-	public void setAccountId(String accountId);
+	void setAccountId(String accountId);
 
-	public String getAccountId();
+	String getAccountId();
 
-	public String getToken();
+	String getToken();
 
-	public void setToken(String token);
+	void setToken(String token);
 
-	public static final class Factory {
+	static final class Factory {
 		public static final Preferences getInstance(Context context) {
 			return MemoryPreferences.getInstance(context);
 		}

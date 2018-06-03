@@ -3,7 +3,7 @@
 
     <data>
         <import type="com.abt.clock_memo.R" />
-        <import type="com.abt.clock_memo.util.DateChangeUtil" />
+        <import type="com.abt.common.util.DateChangeUtil" />
 
         <variable
             name="signIn"

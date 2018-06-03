@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import java.util.logging.LogManager;
-
 public class KeyboardLayout extends RelativeLayout {
 	
 	private static final String TAG = KeyboardLayout.class.getSimpleName();

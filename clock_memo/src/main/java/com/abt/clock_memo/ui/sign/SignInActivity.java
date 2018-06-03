@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import com.abt.basic.arch.mvvm.view.BaseActivity;
 import com.abt.basic.arch.mvvm.viewmodel.ToolbarViewModel;
 import com.abt.clock_memo.global.PreferenceConstant;
-import com.abt.clock_memo.util.LocationUtil;
+import com.abt.common.util.LocationUtil;
 
 /**
  * @描述： @打卡记录页面

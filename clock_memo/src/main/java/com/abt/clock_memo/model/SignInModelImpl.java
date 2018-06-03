@@ -5,15 +5,15 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.bean.SignIn;
 import com.abt.clock_memo.data.file.FileHelper;
 import com.abt.clock_memo.data.file.FileManager;
 import com.abt.clock_memo.global.PreferenceConstant;
 import com.abt.clock_memo.global.SignInConstant;
 import com.abt.clock_memo.ui.sign.listener.SignInListener;
-import com.abt.clock_memo.util.LocationUtil;
-import com.abt.clock_memo.util.PreferencesUtil;
+import com.abt.common.app.BasicApplication;
+import com.abt.common.util.LocationUtil;
+import com.abt.common.util.PreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class SignInModelImpl implements ISignInModel {
         loadListener.loadStart();
         //mSignInList = getRecordList();
         mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
-        mSignInList = FileManager.read(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
+        mSignInList = FileManager.read(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
         if (mSignInList != null) {
             Log.d(TAG, "mSignInList: " + mSignInList.size());
             for (int i = 0; i < mSignInList.size(); i++) {
@@ -59,8 +59,8 @@ public class SignInModelImpl implements ISignInModel {
     public void sign(String type, final SignInListener<SignIn> signInListener) {
         if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase(SignInConstant.NO)) {
             // 记录浏览打卡记录次数
-            int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT);
-            PreferencesUtil.write(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT, ++count);
+            int count = PreferencesUtil.getInt(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT);
+            PreferencesUtil.write(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT, ++count);
             return;
         }
 
@@ -68,19 +68,19 @@ public class SignInModelImpl implements ISignInModel {
 
         // 处理中 Signing
         LocationUtil util = LocationUtil.getInstance();
-        boolean res = util.signIn(BaseApplication.getAppContext());
+        boolean res = util.signIn(BasicApplication.getAppContext());
         Log.d(TAG, "signIn res: " + res);
 
         // 处理后
         SignIn in = new SignIn();
         long time = System.currentTimeMillis();
-        String nickName = PreferencesUtil.getString(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
-        int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
+        String nickName = PreferencesUtil.getString(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
+        int count = PreferencesUtil.getInt(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
         if (TextUtils.isEmpty(nickName)) {
             nickName = "第" + count + "条记录";
         }
         // 记录打卡次数
-        PreferencesUtil.write(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT, count);
+        PreferencesUtil.write(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT, count);
         in.setName(nickName);
         in.setTime(time + "");
         if (res) { // 打卡成功
@@ -90,7 +90,7 @@ public class SignInModelImpl implements ISignInModel {
         }
         if (mSignInList != null) {
             mSignInList.add(0, in);
-            FileManager.write(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
+            FileManager.write(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
             FileHelper.saveStorage2SDCard(mSignInList, PreferenceConstant.FILE_NAME_SIGN_IN);
             Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
 
@@ -108,7 +108,7 @@ public class SignInModelImpl implements ISignInModel {
         Log.d(TAG, "signIn()");
         //mSignInList = MockData.getRecordList();
         mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
-        mSignInList = FileManager.read(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
+        mSignInList = FileManager.read(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
 
         // 处理前 Loading
         /*mDialog = new ProgressDialog(SignInActivity.this);
@@ -119,14 +119,14 @@ public class SignInModelImpl implements ISignInModel {
 
         // 处理中 Signing
         LocationUtil util = LocationUtil.getInstance();
-        boolean res = util.signIn(BaseApplication.getAppContext());
+        boolean res = util.signIn(BasicApplication.getAppContext());
         Log.d(TAG, "signIn res: " + res);
 
         // 处理后
         SignIn in = new SignIn();
         long time = System.currentTimeMillis();
-        String nickName = PreferencesUtil.getString(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
-        int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
+        String nickName = PreferencesUtil.getString(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
+        int count = PreferencesUtil.getInt(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
         if (TextUtils.isEmpty(nickName)) {
             nickName = "第" + count + "条记录";
         }
@@ -142,7 +142,7 @@ public class SignInModelImpl implements ISignInModel {
         if (mSignInList != null) {
             mSignInList.add(0, in);
             //mAdapter.notifyDataSetChanged();
-            FileManager.write(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
+            FileManager.write(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
             FileHelper.saveStorage2SDCard(mSignInList, PreferenceConstant.FILE_NAME_SIGN_IN);
             Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
         }
