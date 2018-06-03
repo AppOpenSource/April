@@ -1,6 +1,7 @@
 package com.abt.clock_memo.util;
 
 import android.os.Environment;
+import android.os.Handler;
 
 import com.abt.clock_memo.R;
 import com.abt.clock_memo.config.AppConfig;
@@ -16,8 +17,19 @@ import com.tencent.bugly.beta.Beta;
  */
 public class BuglyUtil {
 
-    public static void init () {
+    /**
+     * 2秒钟后，等Bugly初始化完成区检测更新
+     */
+    public static void checkUpgrade() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Beta.checkUpgrade();
+            }
+        }, 2 * 1000);
+    }
 
+    public static void init () {
         /**** Beta高级设置*****/
         /**
          * true表示app启动自动初始化升级模块；
@@ -41,18 +53,18 @@ public class BuglyUtil {
         /**
          * 设置通知栏大图标，largeIconId为项目中的图片资源；
          */
-        Beta.largeIconId = R.mipmap.ic_launcher;
+        Beta.largeIconId = R.mipmap.clock_memo;
 
         /**
          * 设置状态栏小图标，smallIconId为项目中的图片资源id;
          */
-        Beta.smallIconId = R.mipmap.ic_launcher;
+        Beta.smallIconId = R.mipmap.clock_memo;
 
         /**
          * 设置更新弹窗默认展示的banner，defaultBannerId为项目中的图片资源Id;
          * 当后台配置的banner拉取失败时显示此banner，默认不设置则展示“loading“;
          */
-        Beta.defaultBannerId = R.mipmap.ic_launcher;
+        Beta.defaultBannerId = R.mipmap.clock_memo;
 
         /**
          * 设置sd卡的Download为更新资源保存目录;
@@ -71,7 +83,6 @@ public class BuglyUtil {
          */
         Beta.canShowUpgradeActs.add(UpgradeHolderActivity.class);
 
-
         /**
          *  设置自定义升级对话框UI布局
          *  注意：因为要保持接口统一，需要用户在指定控件按照以下方式设置tag，否则会影响您的正常使用：
@@ -82,7 +93,7 @@ public class BuglyUtil {
          *  确定按钮：beta_confirm_button 如：android:tag="beta_confirm_button"
          *  详见layout/upgrade_dialog.xml
          */
-//        Beta.upgradeDialogLayoutId = R.layout.upgrade_dialog;
+        // Beta.upgradeDialogLayoutId = R.layout.upgrade_dialog;
 
         /**
          * 设置自定义tip弹窗UI布局
@@ -93,7 +104,7 @@ public class BuglyUtil {
          *  确定按钮：beta_confirm_button 如：android:tag="beta_confirm_button"
          *  详见layout/tips_dialog.xml
          */
-//        Beta.tipsDialogLayoutId = R.layout.tips_dialog;
+        // Beta.tipsDialogLayoutId = R.layout.tips_dialog;
 
         /**
          *  如果想监听升级对话框的生命周期事件，可以通过设置OnUILifecycleListener接口
@@ -102,7 +113,7 @@ public class BuglyUtil {
          *  view - 升级对话框的根布局视图，可通过这个对象查找指定view控件
          *  upgradeInfo - 升级信息
          */
-     /*  Beta.upgradeDialogLifecycleListener = new UILifecycleListener<UpgradeInfo>() {
+        /* Beta.upgradeDialogLifecycleListener = new UILifecycleListener<UpgradeInfo>() {
             @Override
             public void onCreate(Context context, View view, UpgradeInfo upgradeInfo) {
                 Log.d(TAG, "onCreate");
@@ -156,7 +167,7 @@ public class BuglyUtil {
         /**
          * 自定义Activity参考，通过回调接口来跳转到你自定义的Actiivty中。
          */
-       /* Beta.upgradeListener = new UpgradeListener() {
+        /* Beta.upgradeListener = new UpgradeListener() {
 
             @Override
             public void onUpgrade(int ret, UpgradeInfo strategy, boolean isManual, boolean isSilence) {
@@ -171,7 +182,6 @@ public class BuglyUtil {
             }
         };*/
 
-
         /**
          * 已经接入Bugly用户改用上面的初始化方法,不影响原有的crash上报功能;
          * init方法会自动检测更新，不需要再手动调用Beta.checkUpdate(),如需增加自动检查时机可以使用Beta.checkUpdate(false,false);
@@ -184,15 +194,13 @@ public class BuglyUtil {
         /**
          * 如果想自定义策略，按照如下方式设置
          */
-
         /***** Bugly高级设置 *****/
-        //        BuglyStrategy strategy = new BuglyStrategy();
+        // BuglyStrategy strategy = new BuglyStrategy();
         /**
          * 设置app渠道号
          */
-        //        strategy.setAppChannel(APP_CHANNEL);
-
-        //        Bugly.init(getApplicationContext(), APP_ID, true, strategy);
+        // strategy.setAppChannel(APP_CHANNEL);
+        // Bugly.init(getApplicationContext(), APP_ID, true, strategy);
     }
 
 }

@@ -23,7 +23,6 @@
         tools:ignore="HardcodedDebugMode">
 
         <activity android:name=".ui.upgrade.UpgradeHolderActivity">
-
         </activity>
 
         <activity android:name=".ui.main.MainActivity">

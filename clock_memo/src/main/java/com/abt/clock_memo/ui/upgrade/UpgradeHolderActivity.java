@@ -47,7 +47,7 @@ public class UpgradeHolderActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        loadUpgradeInfo();
+        // loadUpgradeInfo();
     }
 
     private void loadUpgradeInfo() {

@@ -16,8 +16,9 @@ public class ClockMemoApp extends BasicApplication {
 
     @Override
     public void initComplete() {
-        BuglyUtil.init();
         LocationUtil.getInstance().init();
+        BuglyUtil.init();
+        BuglyUtil.checkUpgrade();
     }
 
     /**

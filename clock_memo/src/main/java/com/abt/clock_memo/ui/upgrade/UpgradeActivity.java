@@ -18,6 +18,7 @@ import com.tencent.bugly.beta.download.DownloadTask;
  * @创建时间： @20/05/2018
  */
 public class UpgradeActivity extends Activity {
+
     private TextView tv;
     private TextView title;
     private TextView version;
@@ -32,6 +33,7 @@ public class UpgradeActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_upgrade);
+
         tv = getView(R.id.tv);
         title = getView(R.id.title);
         version = getView(R.id.version);
@@ -47,6 +49,7 @@ public class UpgradeActivity extends Activity {
         size.setText(size.getText().toString() + Beta.getUpgradeInfo().fileSize + "");
         time.setText(time.getText().toString() + Beta.getUpgradeInfo().publishTime + "");
         content.setText(Beta.getUpgradeInfo().newFeature);
+
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +68,7 @@ public class UpgradeActivity extends Activity {
                 finish();
             }
         });
+
         Beta.registerDownloadListener(new DownloadListener() {
             @Override
             public void onReceive(DownloadTask task) {
@@ -102,7 +106,6 @@ public class UpgradeActivity extends Activity {
         super.onDestroy();
         Beta.unregisterDownloadListener();
     }
-
 
     public void updateBtn(DownloadTask task) {
         switch (task.getStatus()) {
