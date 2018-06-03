@@ -14,16 +14,14 @@ import android.widget.Toast;
 
 import com.j256.ormlite.support.ConnectionSource;
 import com.point.april.R;
-import com.point.april.common.log.LogManager;
 import com.point.april.data.db.mysql.MySQLHelper;
 import com.point.april.global.GlobalConstant;
 import com.point.april.ui.activity.coach.CoachActivity;
-import com.point.april.ui.activity.news.NewsActivity;
-import com.point.april.ui.activity.personal.NotificationActivity;
 import com.point.april.ui.activity.screensaver.DisplayInputActivity;
 import com.point.april.util.StatusBarCompat;
 
 import java.util.Date;
+import java.util.logging.LogManager;
 
 /**
  * @描述： @App首页
@@ -96,14 +94,12 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void onResume() {
-        LogManager.d(TAG, "onResume--->");
         //mCountingHandler.postAtTime(mCountingTimeTask, intervalKeypadeSaver);//activity显示的时候启动线程
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        LogManager.d(TAG, "onPause--->");
         super.onPause();
         //mCountingHandler.removeCallbacks(mCountingTimeTask);//activity不可见的时候取消线程
         //mDisplayHandler.removeCallbacks(mDiaplyTask);
@@ -138,27 +134,9 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
             case R.id.go_back:
                 this.finish();
                 break;
-            case R.id.sign_in:
-                Intent iSign = new Intent(this, com.point.april.ui.activity.SignInActivity.class);
-                iSign.putExtra(GlobalConstant.SIGN_IN_OR_NOT, "yes");
-                startActivity(iSign);
-                break;
-            case R.id.sign_record:
-                Intent signRecord = new Intent(this, com.point.april.ui.activity.SignInActivity.class);
-                signRecord.putExtra(GlobalConstant.SIGN_IN_OR_NOT, "no");
-                startActivity(signRecord);
-                break;
             case R.id.coach_review:
                 Intent iReview = new Intent(this, CoachActivity.class);
                 startActivity(iReview);
-                break;
-            case R.id.news_refined:
-                Intent news = new Intent(this, NewsActivity.class);
-                startActivity(news);
-                break;
-            case R.id.notification_center:
-                Intent notify = new Intent(this, NotificationActivity.class);
-                startActivity(notify);
                 break;
             case R.id.app_count:
                 Intent appCount = new Intent(this, AppCountActivity.class);
@@ -196,7 +174,6 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
     private Runnable mCountingTimeTask = new Runnable() {
         @Override
         public void run() {
-            LogManager.d(TAG, "mCountingTimeTask run()");
             Date timeNow = new Date(System.currentTimeMillis());
             // 计算User静止不动作的时间间距
             // 当前的系统时间 - 上次触摸屏幕的时间 = 静止不动的时间
@@ -207,14 +184,11 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
 
             if(timePeriodSecond > mHoldStillTime){
                 if(isRunScreenSaver == false){  //说明没有进入屏保
-                    LogManager.d(TAG, "启动线程去显示屏保");
                     mDisplayHandler.postAtTime(mDiaplyTask, intervalScreenSaver);
                     isRunScreenSaver = true;//显示屏保置为true
                 }else{
-                    LogManager.d(TAG, "屏保正在显示中");
                 }
             }else{
-                LogManager.d(TAG, "说明静止之间没有超过规定时长");
                 isRunScreenSaver = false;
             }
             // 反复调用自己进行检查
@@ -226,7 +200,6 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
     private Runnable mDiaplyTask = new Runnable() {
         @Override
         public void run() {
-            LogManager.d(TAG, "mDiaplyTask run----->");
             if (isRunScreenSaver == true && !isRunningSaver) {  //如果屏保正在显示，就计算不断持续显示
                 showScreenSaver();
                 mDisplayHandler.postDelayed(mDiaplyTask, intervalScreenSaver);
@@ -240,7 +213,6 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
     // 显示屏保
     private void showScreenSaver() {
         isRunningSaver = true;
-        LogManager.d(TAG, "showScreenSaver 显示屏保------>");
         Intent intent = new Intent(AprilActivity.this, DisplayInputActivity.class);
         startActivity(intent);
         this.finish();
@@ -248,14 +220,12 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        LogManager.d(TAG, "dispatchKeyEvent--->");
         //updateUserActionTime();
         return super.dispatchKeyEvent(event);
     }
 
     //用户有操作的时候不断重置静止时间和上次操作的时间
     public void updateUserActionTime() {
-        LogManager.d(TAG, "updateUserActionTime--->");
         Date timeNow = new Date(System.currentTimeMillis());
         timePeriod = timeNow.getTime() - lastUpdateTime.getTime();
         lastUpdateTime.setTime(timeNow.getTime());

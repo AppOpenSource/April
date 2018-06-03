@@ -6,9 +6,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.point.april.common.log.LogManager;
-import com.point.april.global.GlobalParams;
 import com.point.april.global.GlobalConstant;
+import com.point.april.global.GlobalParams;
 import com.point.april.network.VolleyErrorHelper;
 
 import org.json.JSONObject;
@@ -43,20 +42,16 @@ public class BaseModelImpl implements IBaseModel, IParseRespone {
 	}
 	
 	public JsonObjectRequest postRequest(final String url, JSONObject jsonParams, final IBaseRespone listener) {
-		LogManager.d(TAG, "postRequest jsonParams:\n"+jsonParams.toString());
-		LogManager.d(TAG, "postRequest url:\n"+url);
 
 		JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
 				url, jsonParams, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				LogManager.d(TAG, "onResponse ->\n " +response.toString());
 				dispatchRespones(url, response, listener);
 			}
 		}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				LogManager.d(TAG, "onErrorResponse ->\n " +error.toString());
 				String str = VolleyErrorHelper.getMessage(error);
 				dispatchError(url, str, listener);
 			}
@@ -81,12 +76,10 @@ public class BaseModelImpl implements IBaseModel, IParseRespone {
 
 	@Override
 	public void dispatchRespones(String url, JSONObject jsonObj, IBaseRespone respone) {
-		LogManager.d(TAG, "dispatchRespones");
 	}
 
 	@Override
 	public void dispatchError(String url, String error, IBaseRespone respone) {
-		LogManager.d(TAG, "dispatchError");
 	}
 
 }

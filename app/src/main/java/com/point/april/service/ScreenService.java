@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 
-import com.point.april.common.log.LogManager;
 import com.point.april.ui.activity.screensaver.DisplayInputActivity;
 
 /**
@@ -24,25 +23,21 @@ public class ScreenService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        LogManager.d(TAG, "onBind");
         return null;
     }
 
     @Override
     public void onCreate() {
-        LogManager.d(TAG, "onCreate");
         startScreenService();
         super.onCreate();
     }
 
     @Override
     public void onStart(Intent intent, int startId) {
-        LogManager.d(TAG, "onStart");
         startScreenService();
     }
 
     private void startScreenService(){
-        LogManager.d(TAG, "startScreenService");
         mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         mKeyguardLock = mKeyguardManager.newKeyguardLock("");
         mKeyguardLock.disableKeyguard();
@@ -56,7 +51,6 @@ public class ScreenService extends Service {
                     i.setClass(context, DisplayInputActivity.class);
                     context.startActivity(i);
                 } catch (Exception e) {
-                    LogManager.d("mMasterResetReciever:", e.toString());
                 }
             }
         };
@@ -66,7 +60,6 @@ public class ScreenService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogManager.d(TAG, "onDestroy");
         unregisterReceiver(mMasterResetReciever);
         ScreenService.this.stopSelf();
     }

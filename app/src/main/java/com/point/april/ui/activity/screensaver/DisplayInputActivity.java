@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.point.april.R;
-import com.point.april.common.log.LogManager;
 import com.point.april.ui.activity.AprilActivity;
 
 /**
@@ -173,7 +172,6 @@ public class DisplayInputActivity extends AppCompatActivity implements View.OnCl
                 mText4.setText("*");
                 break;
         }
-        LogManager.d(TAG, "mRes : "+mRes.toString());
         if (mRes != null && mRes.toString().equalsIgnoreCase("0721")) {
             Intent intent = new Intent(DisplayInputActivity.this, AprilActivity.class);
             startActivity(intent);

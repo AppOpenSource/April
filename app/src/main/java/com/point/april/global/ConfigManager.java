@@ -2,7 +2,6 @@ package com.point.april.global;
 
 import android.content.Context;
 
-import com.point.april.common.log.LogManager;
 import com.point.april.util.PreferencesUtil;
 
 public class ConfigManager {
@@ -50,16 +49,7 @@ public class ConfigManager {
 		GlobalParams.setRidgepole(GlobalConstant.DEFAULT_RIDGEPOLE);
 		GlobalParams.setRidgepole_id((GlobalConstant.DEFAULT_RIDGEPOLE_ID));
 		GlobalParams.setNotify_id(GlobalConstant.DEFAULT_NOTIFY_ID);
-		LogManager.d(TAG, "CommunityConfig init()");
-		LogManager.d(TAG, "CommunityConfig getDebug: "+GlobalParams.getDebug());
-		LogManager.d(TAG, "CommunityConfig getAuth: "+GlobalParams.getAuth());
-		LogManager.d(TAG, "CommunityConfig getToken: "+GlobalParams.getMieToken());
-		LogManager.d(TAG, "CommunityConfig getMieUserId: "+GlobalParams.getMieUserId());
-		LogManager.d(TAG, "CommunityConfig getDate: "+GlobalParams.getDate());
-		LogManager.d(TAG, "CommunityConfig getUserId: "+GlobalParams.getUserId());
-		LogManager.d(TAG, "CommunityConfig getCommunId: "+GlobalParams.getCommunId());
-		LogManager.d(TAG, "CommunityConfig getOriginal: "+GlobalParams.getOriginal());
-		LogManager.d(TAG, "CommunityConfig getUserName: "+GlobalParams.getUserName());
+
 	}
 	
 	private static void initLocalCahce(Context context) {

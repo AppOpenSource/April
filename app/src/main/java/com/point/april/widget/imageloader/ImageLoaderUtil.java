@@ -14,9 +14,10 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.point.april.common.log.LogManager;
-import com.point.april.util.ScreenUtils;
 import com.point.april.R;
+import com.point.april.util.ScreenUtils;
+
+import java.util.logging.LogManager;
 
 public class ImageLoaderUtil {
 
@@ -173,10 +174,8 @@ public class ImageLoaderUtil {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
 			int memClass = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
 			memoryCacheSize = (memClass / 8) * 1024 * 1024; // 1/8 of app memory
-			LogManager.v(LogManager.__FILE__(), "-memoryCacheSize--" + memoryCacheSize);
 		} else {
 			memoryCacheSize = MAX_IMAGE_MEMORY_CACHE_SIZE;
-			LogManager.v(LogManager.__FILE__(), "-memoryCacheSize--" + memoryCacheSize);
 		}
 		return memoryCacheSize;
 	}

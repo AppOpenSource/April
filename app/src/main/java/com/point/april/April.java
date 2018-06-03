@@ -4,33 +4,10 @@ import android.app.Application;
 import android.content.Context;
 
 import com.point.april.global.ConfigManager;
-import com.point.april.common.location.LocationUtil;
 import com.point.april.data.PreferencesUtil;
 import com.point.april.global.GlobalConstant;
 import com.point.april.network.NetworkManager;
 import com.point.april.widget.imageloader.ImageLoaderManager;
-
-/**
- * Created by weiqi.huang on 2016/9/13.
-    public class April extends BaseApp {
-
-    private static OldManApp mApp = new OldManApp();
-    private static Context mContext;
-    public static boolean mIsLogin = false;
-    public static String mUserId;
-    public static String mHeadImgUrl;
-    public static OldManApp getmInstance() { return mApp; }
-    public static Context getContext() { return  mContext; }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mApp = this;
-        mContext = getApplicationContext();
-        ToastMgr.builder.init(this);
-        ImageLoaderManager.getmInstance().init(getApplicationContext());
-    }
-}*/
 
 public class April extends Application {
 
@@ -45,10 +22,6 @@ public class April extends Application {
     }
 
     private void init() {
-        // 定位初始化
-        LocationUtil location = LocationUtil.getInstance();
-        location.init();
-
         // 记录APP打开次数
         int count = PreferencesUtil.getInt(this, GlobalConstant.SHARE_KEY_APP_OPEN_COUNT);
         PreferencesUtil.write(this, GlobalConstant.SHARE_KEY_APP_OPEN_COUNT, ++count);

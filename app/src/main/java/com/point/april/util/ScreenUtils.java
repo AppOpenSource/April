@@ -10,9 +10,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.point.april.common.log.LogManager;
-
 import java.lang.reflect.Field;
+import java.util.logging.LogManager;
 
 public class ScreenUtils {
 	
@@ -96,11 +95,7 @@ public class ScreenUtils {
 	}
 
 	public static void printSreenInfo(Context ctx) {
-		LogManager.w(TAG, "screenWidtdh:" + getScreenWidth(ctx) + ", screenHeight:"
-				+ getScreenHeight(ctx) + ", statusBarHeight:"
-				+ getStatusBarHeight(ctx) + ", densityDpi:"
-				+ getDensityDpi(ctx) + ", density:" + getDisplayDensity(ctx)
-				+ ", scaledDensity:" + getScaledDensity(ctx));
+
 	}
 
 	public static int getStatusBarHeight(Context context) {

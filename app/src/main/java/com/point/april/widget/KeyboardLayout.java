@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.point.april.common.log.LogManager;
+import java.util.logging.LogManager;
 
 public class KeyboardLayout extends RelativeLayout {
 	
@@ -53,14 +53,12 @@ public class KeyboardLayout extends RelativeLayout {
 			if (mListener != null) {
 				mListener.onKeyBoardStateChange(KEYBOARD_STATE_SHOW);
 			}
-			LogManager.w(TAG, "show keyboard.......");
 		}
 		if (mHasInit && mHasKeybord && mHeight == b) {
 			mHasKeybord = false;
 			if (mListener != null) {
 				mListener.onKeyBoardStateChange(KEYBOARD_STATE_HIDE);
 			}
-			LogManager.w(TAG, "hide keyboard.......");
 		}
 	}
 

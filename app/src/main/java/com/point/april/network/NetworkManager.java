@@ -8,7 +8,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.ext.tools.HttpTools;
 import com.android.volley.toolbox.Volley;
-import com.point.april.common.log.LogManager;
 import com.point.april.widget.imageloader.ImageLoaderManager;
 
 public class NetworkManager {
@@ -77,8 +76,6 @@ public class NetworkManager {
         // set the default tag if tag is empty
         req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
 
-        LogManager.d("Adding request to queue: %s", req.getUrl());
-
         getRequestQueue().add(req);
     }
 
@@ -119,7 +116,6 @@ public class NetworkManager {
 	}
 
 	public void cancelRequest(String tag) {
-		LogManager.d(TAG, "cancleReq: "+tag);
 		//VolleyOpt opt = VolleyOpt.getInstance();
 		//opt.cancelReq(tag);
 	}

@@ -18,7 +18,6 @@ import com.bugtags.library.Bugtags;
 import com.point.april.R;
 import com.point.april.common.SystemBarTintManager;
 import com.point.april.util.SharePreferenceUtil;
-import com.point.base.control.StatusBarUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -76,18 +75,6 @@ public class BaseActivity extends AppCompatActivity {
             floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(mutedColor));
         if (isChangeToolbar)
             toolbar.setBackgroundColor(vibrantColor);
-        if (isChangeStatusBar) {
-            if (SharePreferenceUtil.isImmersiveMode(this))
-                StatusBarUtil.setColorNoTranslucent(this, vibrantColor);
-            else
-                StatusBarUtil.setColor(this, vibrantColor);
-        }
-        if (drawerLayout != null) {
-            if (SharePreferenceUtil.isImmersiveMode(this))
-                StatusBarUtil.setColorNoTranslucentForDrawerLayout(this, drawerLayout, vibrantColor);
-            else
-                StatusBarUtil.setColorForDrawerLayout(this, drawerLayout, vibrantColor);
-        }
         return vibrantColor;
     }
 

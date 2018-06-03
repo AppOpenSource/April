@@ -18,10 +18,8 @@ import android.widget.TextView;
 
 import com.point.april.R;
 import com.point.april.bean.Inform;
-import com.point.april.common.log.LogManager;
 import com.point.april.data.StringFormatUtil;
 import com.point.april.network.NetworkManager;
-import com.point.april.ui.activity.news.PhotoActivity;
 import com.point.april.ui.view.CircleImageView;
 import com.point.april.ui.view.FeedGridView;
 import com.point.april.util.DateChangeUtil;
@@ -188,10 +186,7 @@ public class CommunityMsgAdapter extends BaseAdapter {
 				if(mList!=null){
 					mPicUrl.addAll(mList.get(position).getPics());
 				}
-				LogManager.d(TAG, "CommunityMsgAdapter--> to CummityPhotoActivity");
-				Intent intent = new Intent(mContext, PhotoActivity.class);
-				intent.putExtra("postion", arg2);
-				mContext.startActivity(intent);
+
 			}
 		});
 		return convertView;

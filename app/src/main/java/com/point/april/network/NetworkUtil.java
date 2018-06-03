@@ -7,7 +7,6 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 
 import com.point.april.April;
-import com.point.april.common.log.LogManager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,9 +54,7 @@ public class NetworkUtil {
 					.getSystemService(Context.CONNECTIVITY_SERVICE);  
 			NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();  
 			if (mNetworkInfo != null) {  
-				LogManager.d("Network", "network conn = "+mNetworkInfo.isConnected()+
-						"state = "+mNetworkInfo.getState().name());
-				return mNetworkInfo.isAvailable()&&mNetworkInfo.isConnected();  
+				return mNetworkInfo.isAvailable()&&mNetworkInfo.isConnected();
 			}
 		}
 		return false;  
@@ -144,7 +141,6 @@ public class NetworkUtil {
 			while ((content = in.readLine()) != null) {
 				stringBuffer.append(content);
 			}
-			LogManager.d(TAG,"result content : " + stringBuffer.toString());
 			// ping的状态
 			int status = p.waitFor();
 			if (status == 0) {
@@ -158,7 +154,6 @@ public class NetworkUtil {
 		} catch (InterruptedException e) {
 			result = "InterruptedException";
 		} finally {
-			LogManager.d("----result---", "result = " + result);
 		}
 		return false;
 	}

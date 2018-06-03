@@ -37,13 +37,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.SignInActivity" />
         <activity android:name=".ui.activity.coach.CoachActivity" />
         <activity android:name=".ui.activity.coach.CoachReviewActivity" />
         <activity android:name=".ui.activity.news.NewsActivity" />
         <activity android:name=".ui.activity.news.WeiXinActivity" />
         <activity android:name="com.abt.clock_memo.ui.AppCountActivity" />
-        <activity android:name=".ui.activity.personal.NotificationActivity" />
         <activity android:name=".ui.activity.news.PhotoActivity" />
         <activity android:name=".ui.activity.personal.LoginActivity" />
 

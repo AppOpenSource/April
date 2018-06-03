@@ -9,13 +9,13 @@ import android.provider.MediaStore.Images.Thumbnails;
 
 import com.point.april.bean.ImgBucket;
 import com.point.april.bean.ImgItem;
-import com.point.april.common.log.LogManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.LogManager;
 
 /**
  * 专辑帮助类
@@ -141,9 +141,6 @@ public class AlbumHelper {
 				numOfSongs = cur.getInt(numOfSongsColumn);
 
 				// Do something with the values.
-				LogManager.i(TAG, _id + " album:" + album + " albumArt:" + albumArt
-						+ "albumKey: " + albumKey + " artist: " + artist
-						+ " numOfSongs: " + numOfSongs + "---");
 				HashMap<String, String> hash = new HashMap<String, String>();
 				hash.put("_id", _id + "");
 				hash.put("album", album);
@@ -198,11 +195,6 @@ public class AlbumHelper {
 				String bucketId = cur.getString(bucketIdIndex);
 				String picasaId = cur.getString(picasaIdIndex);
 
-				LogManager.i(TAG, _id + ", bucketId: " + bucketId + ", picasaId: "
-						+ picasaId + " name:" + name + " path:" + path
-						+ " title: " + title + " size: " + size + " bucket: "
-						+ bucketName + "---");
-
 				ImgBucket bucket = mBucketList.get(bucketId);
 				if (bucket == null) {
 					bucket = new ImgBucket();
@@ -226,17 +218,12 @@ public class AlbumHelper {
 			Entry<String, ImgBucket> entry = (Entry<String, ImgBucket>) itr
 					.next();
 			ImgBucket bucket = entry.getValue();
-			LogManager.d(TAG, entry.getKey() + ", " + bucket.bucketName + ", "
-					+ bucket.count + " ---------- ");
 			for (int i = 0; i < bucket.imageList.size(); ++i) {
 				ImgItem image = bucket.imageList.get(i);
-				LogManager.d(TAG, "----- " + image.imageId + ", " + image.imagePath
-						+ ", " + image.thumbnailPath);
 			}
 		}
 		mHasBuildImagesBucketList = true;
 		long endTime = System.currentTimeMillis();
-		LogManager.d(TAG, "use time: " + (endTime - startTime) + " ms");
 	}
 
 	/**
@@ -262,7 +249,6 @@ public class AlbumHelper {
 	 */
 	public String getOriginalImagePath(String image_id) {
 		String path = null;
-		LogManager.i(TAG, "---(^o^)----" + image_id);
 		String[] projection = { Media._ID, Media.DATA };
 		Cursor cursor = mResolver.query(Media.EXTERNAL_CONTENT_URI, projection,
 				Media._ID + "=" + image_id, null, null);
