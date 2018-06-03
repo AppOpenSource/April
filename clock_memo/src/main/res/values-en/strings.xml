@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ClockMemo</string>
+    <string name="clock_record">Clock Record</string>
 </resources>

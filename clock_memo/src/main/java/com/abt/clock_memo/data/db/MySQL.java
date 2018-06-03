@@ -1,11 +1,12 @@
-package com.abt.clock_memo.data.db.mysql;
+package com.abt.clock_memo.data.db;
 
 import android.database.SQLException;
 import android.util.Log;
 
+import com.abt.clock_memo.global.DBConstant;
+import com.abt.clock_memo.global.GlobalConstant;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSetMetaData;
-import com.point.april.global.GlobalConstant;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,8 +39,8 @@ public class MySQL {
 
 		try {
 			String url = "jdbc:mysql://"+ GlobalConstant.SERVER_IP+":33306/"
-					+GlobalConstant.DB_NAME+"?user="+GlobalConstant.USER+"&password="
-					+GlobalConstant.PASSWD+"&useUnicode=true&characterEncoding=UTF-8";
+					+ DBConstant.DB_NAME+"?user="+DBConstant.USER+"&password="
+					+DBConstant.PASSWD+"&useUnicode=true&characterEncoding=UTF-8";
 			mConnection = (Connection) DriverManager.getConnection(url);
 			Log.d(TAG, "getConnection: "+mConnection);
 		} catch (Exception e) {

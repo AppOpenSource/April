@@ -1,34 +1,52 @@
 package com.abt.clock_memo.ui.sign;
 
+import android.content.res.Resources;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
+import com.abt.clock_memo.R;
 import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.bean.SignIn;
+import com.abt.clock_memo.global.MainConstant;
 import com.abt.clock_memo.global.PreferenceConstant;
+import com.abt.clock_memo.model.ISignInModel;
+import com.abt.clock_memo.model.SignInModelImpl;
+import com.abt.clock_memo.ui.adapter.SignInAdapter;
 import com.abt.clock_memo.util.LocationUtil;
 import com.abt.clock_memo.util.PreferencesUtil;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
- * @描述： @MainViewModel
+ * @描述： @SignInViewModel
  * @作者： @黄卫旗
  * @创建时间： @2018/5/28
  */
-public class SignInViewModel extends BaseObservable implements IViewModel<SignInNavigator> {
+public class SignInViewModel extends BaseObservable implements IViewModel<SignInNavigator>, BaseLoadListener<SignIn> {
 
     private static final String TAG = SignInViewModel.class.getSimpleName();
     public final ObservableField<String> text = new ObservableField<>();
     private WeakReference<SignInNavigator> mNavigator;
     private WeakReference<SignInContract.IView> mSignInView;
+    private ISignInModel mSignInModel;
+    private SignInAdapter mAdapter;
+    private int currPage = 1; //当前页数
+    private int loadType; //加载数据的类型
+
+    public SignInViewModel() {
+        mSignInModel = new SignInModelImpl();
+        getNewsData();
+    }
 
     @Override
     public void initialize() {
-        text.set("click me!!");
+        Resources resources = BaseApplication.getAppContext().getResources();
+        text.set(resources.getString(R.string.clock_record));
     }
 
     @Override
@@ -40,10 +58,9 @@ public class SignInViewModel extends BaseObservable implements IViewModel<SignIn
         mSignInView = new WeakReference<>(view);
     }
 
-    /*protected void onInitView() {
-        mTitle = (TextView) findViewById(R.id.title_content);
-        mTitle.setText("打卡记录");
-    }*/
+    public final void setAdapter(SignInAdapter adapter) {
+        mAdapter = adapter;
+    }
 
     public final void tryAgain() {
         mSignInView.get().showDeleteDialog();
@@ -80,4 +97,60 @@ public class SignInViewModel extends BaseObservable implements IViewModel<SignIn
         mSignInView.get().dismissDialog();
     }
 
+    /**
+     * 第一次获取新闻数据
+     */
+    private void getNewsData() {
+        loadType = MainConstant.LoadData.FIRST_LOAD;
+        mSignInModel.loadClockData(currPage, this);
+    }
+
+    /**
+     * 获取下拉刷新的数据
+     */
+    public void loadRefreshData() {
+        loadType = MainConstant.LoadData.REFRESH;
+        currPage = 1;
+        mSignInModel.loadClockData(currPage, this);
+    }
+
+    /**
+     * 获取上拉加载更多的数据
+     */
+    public void loadMoreData() {
+        loadType = MainConstant.LoadData.LOAD_MORE;
+        currPage++;
+        mSignInModel.loadClockData(currPage, this);
+    }
+
+    @Override
+    public void loadSuccess(List<SignIn> list) {
+        if (currPage > 1) {
+            //上拉加载的数据
+            mAdapter.loadMoreData(list);
+        } else {
+            //第一次加载或者下拉刷新的数据
+            mAdapter.refreshData(list);
+        }
+    }
+
+    @Override
+    public void loadFailure(String message) {
+        // 加载失败后的提示
+        if (currPage > 1) {
+            //加载失败需要回到加载之前的页数
+            currPage--;
+        }
+        mSignInView.get().loadFailure(message);
+    }
+
+    @Override
+    public void loadStart() {
+        mSignInView.get().loadStart(loadType);
+    }
+
+    @Override
+    public void loadComplete() {
+        mSignInView.get().loadComplete();
+    }
 }

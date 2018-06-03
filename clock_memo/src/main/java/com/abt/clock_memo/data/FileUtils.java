@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.util.Log;
 
-import com.point.april.global.GlobalConstant;
+import com.abt.clock_memo.global.GlobalConstant;
 
 import java.io.File;
 import java.io.FileNotFoundException;

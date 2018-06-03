@@ -27,7 +27,6 @@ public class FileHelper {
         ObjectOutputStream objectOutputStream = null;
         FileInputStream fileInputStream = null;
         try {
-            //File file = FileUtils.getFile(File.separator + FileHelper.projectPath + File.separator + fileName);
             File file = FileUtils.getFilePath(File.separator + FileHelper.projectPath + File.separator, fileName);
             Log.d(TAG, "saveStorage2SDCard file: "+file.getAbsolutePath().toString());
             fileOutputStream = new FileOutputStream(file.toString());  //新建一个内容为空的文件
@@ -62,7 +61,6 @@ public class FileHelper {
         FileInputStream fileInputStream = null;
         ArrayList<SignIn> savedArrayList = new ArrayList<>();
         try {
-//            File file = FileUtils.getFile(File.separator + FileHelper.projectPath + File.separator + fileName);
             File file = FileUtils.getFilePath(File.separator + FileHelper.projectPath + File.separator, fileName);
             Log.d(TAG, "getStorageEntities file: "+file.getAbsolutePath().toString());
             fileInputStream = new FileInputStream(file.toString());
@@ -71,7 +69,6 @@ public class FileHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return savedArrayList;
     }
 }

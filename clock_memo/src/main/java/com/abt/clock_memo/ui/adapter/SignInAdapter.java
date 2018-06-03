@@ -1,13 +1,17 @@
 package com.abt.clock_memo.ui.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.abt.basic.arch.mvvm.view.load.BaseAdapter;
+import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
+import com.abt.clock_memo.BR;
 import com.abt.clock_memo.R;
 import com.abt.clock_memo.bean.SignIn;
 import com.abt.clock_memo.util.DateChangeUtil;
@@ -15,53 +19,39 @@ import com.abt.clock_memo.util.DateChangeUtil;
 import java.util.List;
 
 /**
- * @描述： @SignInListAdapter
+ * @描述： @SignInAdapter
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class SignInListAdapter extends BaseAdapter {
+public class SignInAdapter extends BaseAdapter<SignIn, BaseViewHolder> {
 
-	private static final String TAG = SignInListAdapter.class.getSimpleName();
+	private static final String TAG = SignInAdapter.class.getSimpleName();
 	private LayoutInflater mInflater;
 	private Context mContext;
 	private List<SignIn> mList;
 
-	public SignInListAdapter(Context context, List<SignIn> list) {
+	public SignInAdapter(Context context) {
+		super(context);
 		this.mContext = context;
-		//this.mList = decommitment(list);
-		this.mList = list;
-		this.mInflater = (LayoutInflater) mContext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	public List<SignIn> decommitment(List<SignIn> list) {
-		SignIn tmp;
-		for (int i=0; i<list.size()/2; i++) {
-			int index = list.size()-1-i;
-			tmp = list.get(index);
-			list.set(index, list.get(i));
-			list.set(i, tmp);
-		}
-		return list;
+	public void setListData(List<SignIn> list) {
+		mList = list;
 	}
 
 	@Override
-	public int getCount() {
-		int count = 0;
-		if (mList != null) {
-			count = mList.size();
-		}
-		return count;
+	public BaseViewHolder onCreateVH(ViewGroup parent, int viewType) {
+		ViewDataBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.list_item_signin, parent, false);
+		return new BaseViewHolder(dataBinding);
 	}
 
 	@Override
-	public Object getItem(int position) {
-		return mList.get(position);
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
+	public void onBindVH(BaseViewHolder baseViewHolder, int position) {
+		ViewDataBinding binding = baseViewHolder.getBinding();
+		binding.setVariable(BR.signIn, mList.get(position));
+		binding.setVariable(BR.position,position);
+		binding.setVariable(BR.adapter,this);
+		binding.executePendingBindings(); //防止闪烁
 	}
 
 	class Holder {
@@ -70,7 +60,6 @@ public class SignInListAdapter extends BaseAdapter {
 		private TextView status;
 	}
 
-	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final Holder holder;
 		if (convertView == null) {
@@ -103,4 +92,19 @@ public class SignInListAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+
+	/**
+	 * 点赞
+	 * @param simpleNewsBean
+	 * @param position
+	 */
+	/*public void clickDianZan(SimpleNewsBean simpleNewsBean, int position) {
+		if (simpleNewsBean.isGood.get()) {
+			simpleNewsBean.isGood.set(false);
+			ToastUtils.show(mContext, "取消点赞 position=" + position);
+		} else {
+			simpleNewsBean.isGood.set(true);
+			ToastUtils.show(mContext, "点赞成功 position=" + position);
+		}
+	}*/
 }

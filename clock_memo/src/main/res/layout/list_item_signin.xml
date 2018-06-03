@@ -1,51 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:orientation="vertical" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <data>
+        <import type="com.abt.clock_memo.R" />
+
+        <variable
+            name="signIn"
+            type="com.abt.clock_memo.bean.SignIn" />
+
+        <variable
+            name="adapter"
+            type="com.abt.clock_memo.ui.adapter.SignInAdapter" />
+
+        <variable
+            name="position"
+            type="int" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="50dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffba13"
-            android:textSize="42px"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="45px"
-            android:text="刷卡成功"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/name"
-            android:textSize="42px"
-            android:textColor="#323231"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45px"
-            android:text="XXX" />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="45px"
+                android:text="@{ signIn.status }"
+                android:textColor="#ffba13"
+                android:textSize="42px" />
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45px"
-            android:text="2016-10-21 12:30"
-            android:textSize="42px"
-            android:textColor="#323231"
-            android:layout_toRightOf="@+id/name" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45px"
+                android:text="@{ signIn.name }"
+                android:textColor="#323231"
+                android:textSize="42px" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#E5E5E5"
-        />
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45px"
+                android:layout_toRightOf="@+id/name"
+                android:text="@{ signIn.time }"
+                android:textColor="#323231"
+                android:textSize="42px" />
+        </RelativeLayout>
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#E5E5E5" />
+    </LinearLayout>
+</layout>

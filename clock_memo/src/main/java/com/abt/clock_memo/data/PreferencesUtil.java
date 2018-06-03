@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.point.april.global.GlobalConstant;
+import com.abt.clock_memo.global.GlobalConstant;
 
 public class PreferencesUtil {
 

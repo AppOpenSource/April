@@ -51,7 +51,7 @@ android {
             minifyEnabled false
             zipAlignEnabled true
             shrinkResources false
-            debuggable false
+            debuggable true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //自定义输出apk文件名
@@ -88,5 +88,4 @@ dependencies {
     implementation files('libs/ormlite-android-4.48.jar')
     implementation files('libs/ormlite-core-4.48.jar')
     implementation files('libs/ormlite-jdbc-4.48.jar')
-    compile project(path: ':app')
 }

@@ -3,6 +3,7 @@ package com.abt.clock_memo.ui.sign;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,16 @@ import android.view.ViewGroup;
 
 import com.abt.basic.arch.mvvm.view.BaseFragment;
 import com.abt.basic.arch.mvvm.viewmodel.ToolbarViewModel;
+import com.abt.clock_memo.R;
 import com.abt.clock_memo.databinding.FragmentSigninBinding;
+import com.abt.clock_memo.helper.DialogHelper;
+import com.abt.clock_memo.test.MockData;
+import com.abt.clock_memo.ui.adapter.SignInAdapter;
+import com.abt.clock_memo.util.ToastUtils;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import static com.abt.clock_memo.global.MainConstant.LoadData.FIRST_LOAD;
 
 /**
  * @描述： @SignInFragment
@@ -18,10 +28,11 @@ import com.abt.clock_memo.databinding.FragmentSigninBinding;
  * @创建时间： @2018/5/28
  */
 public class SignInFragment extends BaseFragment<SignInViewModel,
-        ToolbarViewModel> implements SignInContract.IView {
+        ToolbarViewModel> implements SignInContract.IView, XRecyclerView.LoadingListener {
 
     private static final String TAG = SignInFragment.class.getSimpleName();
     private FragmentSigninBinding mFragmentSigninBinding;
+    private SignInAdapter mSignInAdapter;
     private ProgressDialog mDialog;
 
     /**
@@ -46,7 +57,25 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
         mFragmentSigninBinding.setSignInVM(mViewModel);
         mFragmentSigninBinding.setToolbarVM(mToolbarModel);
         mViewModel.setSignInView(this);
+        initRecyclerView();
+        mViewModel.setAdapter(mSignInAdapter);
         return mFragmentSigninBinding.getRoot();
+    }
+
+    /**
+     * 初始化RecyclerView
+     */
+    private void initRecyclerView() {
+        mFragmentSigninBinding.newsRv.setRefreshProgressStyle(ProgressStyle.BallClipRotate); //设置下拉刷新的样式
+        mFragmentSigninBinding.newsRv.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate); //设置上拉加载更多的样式
+        mFragmentSigninBinding.newsRv.setArrowImageView(R.mipmap.pull_down_arrow);
+        mFragmentSigninBinding.newsRv.setLoadingListener(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
+        mFragmentSigninBinding.newsRv.setLayoutManager(layoutManager);
+        mSignInAdapter = new SignInAdapter(this.getActivity());
+        mSignInAdapter.setListData(MockData.getRecordList());
+        mFragmentSigninBinding.newsRv.setAdapter(mSignInAdapter);
     }
 
     @Override
@@ -76,4 +105,39 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
     public void showMoreDialog() {
 
     }
+
+    @Override
+    public void onRefresh() {
+        //下拉刷新
+        mViewModel.loadRefreshData();
+    }
+
+    @Override
+    public void onLoadMore() {
+        //上拉加载更多
+        mViewModel.loadMoreData();
+    }
+
+    @Override
+    public void loadStart(int loadType) {
+        if (loadType == FIRST_LOAD) {
+            DialogHelper.getInstance().show(this.getActivity(), "加载中...");
+        }
+    }
+
+    @Override
+    public void loadComplete() {
+        DialogHelper.getInstance().close();
+        mFragmentSigninBinding.newsRv.loadMoreComplete(); //结束加载
+        mFragmentSigninBinding.newsRv.refreshComplete(); //结束刷新
+    }
+
+    @Override
+    public void loadFailure(String message) {
+        DialogHelper.getInstance().close();
+        mFragmentSigninBinding.newsRv.loadMoreComplete(); //结束加载
+        mFragmentSigninBinding.newsRv.refreshComplete(); //结束刷新
+        ToastUtils.show(this.getActivity(), message);
+    }
+
 }

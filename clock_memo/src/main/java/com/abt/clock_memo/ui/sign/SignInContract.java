@@ -10,7 +10,13 @@ public interface SignInContract {
     /**
      * 视图接口
      */
-    public interface IView {
+    interface IView {
+
+        void loadStart(int var1);
+
+        void loadComplete();
+
+        void loadFailure(String var1);
 
         /**
          * 显示删除对话框
