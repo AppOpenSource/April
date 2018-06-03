@@ -27,6 +27,9 @@ allprojects {
         maven {
             url 'http://localhost:8081/nexus/content/repositories/basic/'
         }
+        maven {
+            url 'http://localhost:8081/nexus/content/repositories/common/'
+        }
     }
 }
 

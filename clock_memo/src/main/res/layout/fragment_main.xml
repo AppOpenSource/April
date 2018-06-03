@@ -19,8 +19,8 @@
         <Button
             android:id="@+id/clock"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_20"
             android:background="#FFFFFF"
             android:text="打卡"
             android:onClick="@{ () -> mainVM.clock()}"

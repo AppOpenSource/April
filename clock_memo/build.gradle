@@ -90,7 +90,8 @@ dependencies {
     implementation files('libs/ormlite-jdbc-4.48.jar')
 
     // app basic frame 中的 basic 模块
-    implementation 'com.android.library:lib:+'
+    implementation 'com.abt.basic:lib:+'
+    implementation 'com.abt.common:common:+'
     androidTestCompile 'com.android.support:support-annotations:27.1.0'
 
 }
