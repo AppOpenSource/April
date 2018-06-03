@@ -31,24 +31,28 @@ public class SignInModelImpl implements ISignInModel {
     @Override
     public void loadClockData(final int page, final BaseLoadListener<SignIn> loadListener) {
         loadListener.loadStart();
-        //mSignInList = getRecordList();
-        mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
-        mSignInList = FileManager.read(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
-        if (mSignInList != null) {
-            Log.d(TAG, "mSignInList: " + mSignInList.size());
-            for (int i = 0; i < mSignInList.size(); i++) {
-                Log.d(TAG, "mSignInList(" + i + ")-->time: "
-                        + mSignInList.get(i).getTime());
-            }
+        /**上拉加载的数据*/
+        if (page>1) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    loadListener.loadSuccess(new ArrayList<SignIn>());
+                    loadListener.loadComplete();
+                }
+            }, 1*1000);
+            return;
         }
 
+        /**下拉或者第一次加载数据*/
+        mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
+        mSignInList = FileManager.read(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 loadListener.loadSuccess(mSignInList);
                 loadListener.loadComplete();
             }
-        }, 1*1000);
+        }, 300);
     }
 
     /**
