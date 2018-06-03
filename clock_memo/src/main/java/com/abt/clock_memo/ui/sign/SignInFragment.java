@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import com.abt.basic.arch.mvvm.viewmodel.ToolbarViewModel;
 import com.abt.clock_memo.R;
 import com.abt.clock_memo.databinding.FragmentSigninBinding;
 import com.abt.clock_memo.helper.DialogHelper;
-import com.abt.clock_memo.test.MockData;
 import com.abt.clock_memo.ui.adapter.SignInAdapter;
 import com.abt.clock_memo.util.ToastUtils;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -31,7 +29,7 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
         ToolbarViewModel> implements SignInContract.IView, XRecyclerView.LoadingListener {
 
     private static final String TAG = SignInFragment.class.getSimpleName();
-    private FragmentSigninBinding mFragmentSigninBinding;
+    private FragmentSigninBinding mBinding;
     private SignInAdapter mSignInAdapter;
     private ProgressDialog mDialog;
 
@@ -51,42 +49,39 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        mFragmentSigninBinding = FragmentSigninBinding.inflate(inflater, container, false);
-        mFragmentSigninBinding.setSignInVM(mViewModel);
-        mFragmentSigninBinding.setToolbarVM(mToolbarModel);
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = FragmentSigninBinding.inflate(inflater, container, false);
+        mBinding.setSignInVM(mViewModel);
+        mBinding.setToolbarVM(mToolbarModel);
         mViewModel.setSignInView(this);
+        mViewModel.getClockMemoData();
         initRecyclerView();
         mViewModel.setAdapter(mSignInAdapter);
-        return mFragmentSigninBinding.getRoot();
+        return mBinding.getRoot();
     }
 
     /**
      * 初始化RecyclerView
      */
     private void initRecyclerView() {
-        mFragmentSigninBinding.newsRv.setRefreshProgressStyle(ProgressStyle.BallClipRotate); //设置下拉刷新的样式
-        mFragmentSigninBinding.newsRv.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate); //设置上拉加载更多的样式
-        mFragmentSigninBinding.newsRv.setArrowImageView(R.mipmap.pull_down_arrow);
-        mFragmentSigninBinding.newsRv.setLoadingListener(this);
+        mBinding.newsRv.setRefreshProgressStyle(ProgressStyle.BallClipRotate); //设置下拉刷新的样式
+        mBinding.newsRv.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate); //设置上拉加载更多的样式
+        mBinding.newsRv.setArrowImageView(R.mipmap.pull_down_arrow);
+        mBinding.newsRv.setLoadingListener(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
-        mFragmentSigninBinding.newsRv.setLayoutManager(layoutManager);
+        mBinding.newsRv.setLayoutManager(layoutManager);
         mSignInAdapter = new SignInAdapter(this.getActivity());
-        mSignInAdapter.setListData(MockData.getRecordList());
-        mFragmentSigninBinding.newsRv.setAdapter(mSignInAdapter);
+        mBinding.newsRv.setAdapter(mSignInAdapter);
     }
 
     @Override
-    public void showDeleteDialog() {
-        Log.d(TAG, "handleSignIn()");
+    public void showLoadingDialog() {
         // 处理前 Loading
         mDialog = new ProgressDialog(this.getActivity());
         mDialog.setTitle("正在打卡，请稍候...");
         mDialog.setCancelable(true);
         mDialog.show();
-        Log.d(TAG, "Dialog showing...");
     }
 
     @Override
@@ -128,15 +123,15 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
     @Override
     public void loadComplete() {
         DialogHelper.getInstance().close();
-        mFragmentSigninBinding.newsRv.loadMoreComplete(); //结束加载
-        mFragmentSigninBinding.newsRv.refreshComplete(); //结束刷新
+        mBinding.newsRv.loadMoreComplete(); //结束加载
+        mBinding.newsRv.refreshComplete(); //结束刷新
     }
 
     @Override
     public void loadFailure(String message) {
         DialogHelper.getInstance().close();
-        mFragmentSigninBinding.newsRv.loadMoreComplete(); //结束加载
-        mFragmentSigninBinding.newsRv.refreshComplete(); //结束刷新
+        mBinding.newsRv.loadMoreComplete(); //结束加载
+        mBinding.newsRv.refreshComplete(); //结束刷新
         ToastUtils.show(this.getActivity(), message);
     }
 

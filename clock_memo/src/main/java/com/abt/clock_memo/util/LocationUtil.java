@@ -125,6 +125,7 @@ public class LocationUtil {
             // 2、跳转到设置界面；
             Toast.makeText(mContext, "无法定位，请打开定位服务", Toast.LENGTH_LONG).show();
             Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             mContext.startActivity(intent);
         }

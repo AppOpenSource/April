@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <data>
         <import type="com.abt.clock_memo.R" />
+        <import type="com.abt.clock_memo.util.DateChangeUtil" />
 
         <variable
             name="signIn"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="45px"
                 android:layout_toRightOf="@+id/name"
-                android:text="@{ signIn.time }"
+                android:text="@{ DateChangeUtil.toStringHourMinute(signIn.time) }"
                 android:textColor="#323231"
                 android:textSize="42px" />
         </RelativeLayout>

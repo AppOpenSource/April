@@ -1,6 +1,7 @@
 package com.abt.clock_memo;
 
 import com.abt.clock_memo.base.BaseApplication;
+import com.abt.clock_memo.util.LocationUtil;
 import com.tencent.bugly.Bugly;
 
 /**
@@ -15,6 +16,7 @@ public class ClockMemoApp extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        LocationUtil.getInstance().init();
     }
 
     /**

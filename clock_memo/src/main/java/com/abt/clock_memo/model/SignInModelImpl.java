@@ -1,15 +1,22 @@
 package com.abt.clock_memo.model;
 
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
+import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.bean.SignIn;
+import com.abt.clock_memo.data.file.FileHelper;
+import com.abt.clock_memo.data.file.FileManager;
+import com.abt.clock_memo.global.PreferenceConstant;
+import com.abt.clock_memo.global.SignInConstant;
+import com.abt.clock_memo.ui.listener.SignInListener;
+import com.abt.clock_memo.util.LocationUtil;
+import com.abt.clock_memo.util.PreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.abt.clock_memo.test.MockData.getRecordList;
 
 /**
  * @描述： @SignInModelImpl
@@ -19,17 +26,19 @@ import static com.abt.clock_memo.test.MockData.getRecordList;
 public class SignInModelImpl implements ISignInModel {
 
     private static final String TAG = "SignInModelImpl";
-    List<SignIn> mSignInList = new ArrayList<SignIn>();
+    private static List<SignIn> mSignInList = new ArrayList<>();
 
     @Override
     public void loadClockData(final int page, final BaseLoadListener<SignIn> loadListener) {
-        mSignInList = getRecordList();
-        //mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
-        //mSignInList = FileManager.read(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
+        loadListener.loadStart();
+        //mSignInList = getRecordList();
+        mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
+        mSignInList = FileManager.read(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
         if (mSignInList != null) {
             Log.d(TAG, "mSignInList: " + mSignInList.size());
             for (int i = 0; i < mSignInList.size(); i++) {
-                Log.d(TAG, "mSignInList(" + i + ")-->time: " + mSignInList.get(i).getTime());
+                Log.d(TAG, "mSignInList(" + i + ")-->time: "
+                        + mSignInList.get(i).getTime());
             }
         }
 
@@ -39,66 +48,112 @@ public class SignInModelImpl implements ISignInModel {
                 loadListener.loadSuccess(mSignInList);
                 loadListener.loadComplete();
             }
-        }, 1000);
-        //mAdapter = new SignInAdapter(this, mSignInList);
+        }, 1*1000);
+    }
 
-        /*HttpUtils.getNewsData()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableObserver<NewsBean>() {
-                    @Override
-                    public void onNext(@NonNull NewsBean newsBean) {
-                        Log.i(TAG, "onNext: ");
-                        List<NewsBean.OthersBean> othersBeanList = newsBean.getOthers();
-                        signInList.clear();
-                        if (othersBeanList != null && othersBeanList.size() > 0) {
-                            for (NewsBean.OthersBean othersBean : othersBeanList) {
-                                String thumbnail = othersBean.getThumbnail();
-                                String name = othersBean.getName();
-                                String description = othersBean.getDescription();
-                                Log.i(TAG, "thumbnail:---->" + thumbnail);
-                                Log.i(TAG, "name:---->" + name);
-                                Log.i(TAG, "description:---->" + description);
+    /**
+     * 打卡
+     * @param type "yes" 打卡，"no"什么都不用做
+     */
+    @Override
+    public void sign(String type, final SignInListener<SignIn> signInListener) {
+        if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase(SignInConstant.NO)) {
+            // 记录浏览打卡记录次数
+            int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT);
+            PreferencesUtil.write(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT, ++count);
+            return;
+        }
 
-                                //构造Adapter所需的数据源
-                                SimpleNewsBean simpleNewsBean = new SimpleNewsBean();
-                                simpleNewsBean.thumbnail.set(thumbnail);
-                                simpleNewsBean.name.set(name);
-                                simpleNewsBean.description.set(description);
-                                signInList.add(simpleNewsBean);
+        signInListener.signInStart();
 
-                                if (page > 1) {
-                                    //这个接口暂时没有分页的数据，这里为了模拟分页，通过取第1条数据作为分页的数据
-                                    break;
-                                }
-                            }
-                        }
-                    }
+        // 处理中 Signing
+        LocationUtil util = LocationUtil.getInstance();
+        boolean res = util.signIn(BaseApplication.getAppContext());
+        Log.d(TAG, "signIn res: " + res);
 
-                    @Override
-                    protected void onStart() {
-                        super.onStart();
-                        Log.i(TAG, "onStart: ");
-                        loadListener.loadStart();
-                    }
+        // 处理后
+        SignIn in = new SignIn();
+        long time = System.currentTimeMillis();
+        String nickName = PreferencesUtil.getString(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
+        int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
+        if (TextUtils.isEmpty(nickName)) {
+            nickName = "第" + count + "条记录";
+        }
+        // 记录打卡次数
+        PreferencesUtil.write(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT, count);
+        in.setName(nickName);
+        in.setTime(time + "");
+        if (res) { // 打卡成功
+            in.setStatus("刷卡成功");
+        } else {
+            in.setStatus("刷卡失败");
+        }
+        if (mSignInList != null) {
+            mSignInList.add(0, in);
+            FileManager.write(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
+            FileHelper.saveStorage2SDCard(mSignInList, PreferenceConstant.FILE_NAME_SIGN_IN);
+            Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
 
-                    @Override
-                    public void onError(@NonNull Throwable throwable) {
-                        Log.i(TAG, "onError: " + throwable.getMessage());
-                        loadListener.loadFailure(throwable.getMessage());
-                    }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    signInListener.signInSuccess(mSignInList);
+                    signInListener.signInComplete();
+                }
+            }, 1*1000);
+        }
+    }
 
-                    @Override
-                    public void onComplete() {
-                        Log.i(TAG, "onComplete: ");
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                loadListener.loadSuccess(signInList);
-                                loadListener.loadComplete();
-                            }
-                        }, 2000);
-                    }
-                });*/
+    public static void signIn() {
+        Log.d(TAG, "signIn()");
+        //mSignInList = MockData.getRecordList();
+        mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
+        mSignInList = FileManager.read(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
+
+        // 处理前 Loading
+        /*mDialog = new ProgressDialog(SignInActivity.this);
+        mDialog.setTitle("正在打卡，请稍候...");
+        mDialog.setCancelable(true);
+        mDialog.show();*/
+        Log.d(TAG, "Dialog showing...");
+
+        // 处理中 Signing
+        LocationUtil util = LocationUtil.getInstance();
+        boolean res = util.signIn(BaseApplication.getAppContext());
+        Log.d(TAG, "signIn res: " + res);
+
+        // 处理后
+        SignIn in = new SignIn();
+        long time = System.currentTimeMillis();
+        String nickName = PreferencesUtil.getString(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
+        int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
+        if (TextUtils.isEmpty(nickName)) {
+            nickName = "第" + count + "条记录";
+        }
+        in.setName(nickName);
+        in.setTime(time + "");
+        if (res) { // 打卡成功
+            // TODO 更新打卡记录
+            in.setStatus("刷卡成功");
+        } else {
+            in.setStatus("刷卡失败");
+            //mSignInBtn.setVisibility(View.VISIBLE);
+        }
+        if (mSignInList != null) {
+            mSignInList.add(0, in);
+            //mAdapter.notifyDataSetChanged();
+            FileManager.write(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
+            FileHelper.saveStorage2SDCard(mSignInList, PreferenceConstant.FILE_NAME_SIGN_IN);
+            Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
+        }
+        /*if (mDialog != null) {
+            mSignInBtn.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mDialog.dismiss();
+                }
+            }, 1 * 1000);
+        }*/
+
     }
 }

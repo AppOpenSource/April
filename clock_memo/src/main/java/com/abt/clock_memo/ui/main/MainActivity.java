@@ -38,7 +38,8 @@ public class MainActivity extends BaseActivity<MainFragment, MainViewModel,
             if (mCount == 1) {
                 this.finish();
             } else if (mCount == 0) {
-                Toast.makeText(this, "再按一次退出" + getResources().getText(R.string.app_name), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "再按一次退出" + getResources().getText(R.string.app_name),
+                        Toast.LENGTH_SHORT).show();
                 mCount++;
             }
             return true;

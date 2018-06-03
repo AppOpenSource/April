@@ -1,10 +1,10 @@
 package com.abt.clock_memo.ui.sign;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
@@ -13,11 +13,11 @@ import com.abt.clock_memo.base.BaseApplication;
 import com.abt.clock_memo.bean.SignIn;
 import com.abt.clock_memo.global.MainConstant;
 import com.abt.clock_memo.global.PreferenceConstant;
+import com.abt.clock_memo.global.SignInConstant;
 import com.abt.clock_memo.model.ISignInModel;
 import com.abt.clock_memo.model.SignInModelImpl;
 import com.abt.clock_memo.ui.adapter.SignInAdapter;
-import com.abt.clock_memo.util.LocationUtil;
-import com.abt.clock_memo.util.PreferencesUtil;
+import com.abt.clock_memo.ui.listener.SignInListener;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -27,7 +27,9 @@ import java.util.List;
  * @作者： @黄卫旗
  * @创建时间： @2018/5/28
  */
-public class SignInViewModel extends BaseObservable implements IViewModel<SignInNavigator>, BaseLoadListener<SignIn> {
+public class SignInViewModel extends BaseObservable implements
+        IViewModel<SignInNavigator>, BaseLoadListener<SignIn>,
+        SignInListener<SignIn> {
 
     private static final String TAG = SignInViewModel.class.getSimpleName();
     public final ObservableField<String> text = new ObservableField<>();
@@ -37,10 +39,16 @@ public class SignInViewModel extends BaseObservable implements IViewModel<SignIn
     private SignInAdapter mAdapter;
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
+    private boolean mInit = false;
+    private String mSignIn;
 
-    public SignInViewModel() {
+    public SignInViewModel(Intent intent) {
+        mSignIn = intent.getExtras().getString(PreferenceConstant.SIGN_IN_OR_NOT);
+        if (TextUtils.isEmpty(mSignIn)) {
+            mSignIn = SignInConstant.NO;
+        }
         mSignInModel = new SignInModelImpl();
-        getNewsData();
+        // getClockMemoData();
     }
 
     @Override
@@ -62,45 +70,10 @@ public class SignInViewModel extends BaseObservable implements IViewModel<SignIn
         mAdapter = adapter;
     }
 
-    public final void tryAgain() {
-        mSignInView.get().showDeleteDialog();
-        // 处理中 Signing
-        LocationUtil util = LocationUtil.getInstance();
-        boolean res = util.signIn(BaseApplication.getAppContext());
-        Log.d(TAG, "signIn res: " + res);
-
-        // 处理后
-        SignIn in = new SignIn();
-        long time = System.currentTimeMillis();
-        String nickName = PreferencesUtil.getString(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
-        int count = PreferencesUtil.getInt(BaseApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
-        if (TextUtils.isEmpty(nickName)) {
-            nickName = "第" + count + "条记录";
-        }
-        in.setName(nickName);
-        in.setTime(time + "");
-        if (res) { // 打卡成功
-            // TODO 更新打卡记录
-            in.setStatus("刷卡成功");
-        } else {
-            in.setStatus("刷卡失败");
-            //mSignInBtn.setVisibility(View.VISIBLE);
-        }
-        /*if (mSignInList != null) {
-            mSignInList.add(0, in);
-            mAdapter.notifyDataSetChanged();
-            FileManager.write(BaseApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
-            //FileHelper.saveStorage2SDCard(mSignInList, GlobalConstant.FILE_NAME_SIGN_IN);
-            Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
-        }*/
-
-        mSignInView.get().dismissDialog();
-    }
-
     /**
-     * 第一次获取新闻数据
+     * 第一次获取打卡数据
      */
-    private void getNewsData() {
+    public void getClockMemoData() {
         loadType = MainConstant.LoadData.FIRST_LOAD;
         mSignInModel.loadClockData(currPage, this);
     }
@@ -132,6 +105,13 @@ public class SignInViewModel extends BaseObservable implements IViewModel<SignIn
             //第一次加载或者下拉刷新的数据
             mAdapter.refreshData(list);
         }
+
+        if (!mInit) {
+            mInit = true; // 第一次进入，有可能是打卡，也有是浏览记录
+            mSignInModel.sign(mSignIn,this);
+        } else { // 重新加载，不算打卡
+            mSignInModel.sign(SignInConstant.NO,this);
+        }
     }
 
     @Override
@@ -146,11 +126,45 @@ public class SignInViewModel extends BaseObservable implements IViewModel<SignIn
 
     @Override
     public void loadStart() {
+        if (!TextUtils.isEmpty(mSignIn) && mSignIn.equalsIgnoreCase(SignInConstant.YES)) {
+            mSignInView.get().showLoadingDialog();
+            return; // 打卡有自己的Dialog，不用显示加载数据的Dialog
+        }
         mSignInView.get().loadStart(loadType);
     }
 
     @Override
     public void loadComplete() {
         mSignInView.get().loadComplete();
+    }
+
+    @Override
+    public void signInSuccess(List<SignIn> list) {
+        if (currPage > 1) {
+            //上拉加载的数据
+            mAdapter.loadMoreData(list);
+        } else {
+            //第一次加载或者下拉刷新的数据
+            mAdapter.refreshData(list);
+        }
+        mSignInView.get().dismissDialog();
+    }
+
+    @Override
+    public void signInFailure(String var1) {
+
+    }
+
+    @Override
+    public void signInStart() {
+        if (!TextUtils.isEmpty(mSignIn) && mSignIn.equalsIgnoreCase(SignInConstant.YES)) {
+            return; // 已经在loadStart中show了，这里可以直接返回
+        }
+        mSignInView.get().showLoadingDialog();
+    }
+
+    @Override
+    public void signInComplete() {
+        mSignIn = SignInConstant.NO; // 重置状态，避免下拉加载更多时进入loadStart中的showLoadingDialog
     }
 }

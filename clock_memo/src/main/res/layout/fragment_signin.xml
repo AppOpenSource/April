@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
     <!--绑定数据-->
     <data>
         <variable
@@ -17,15 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:clickable="true"
-            android:text="打开失败，再试一次"
-            android:onClick="@{ () -> signInVM.tryAgain() }"
-            android:textSize="16sp"
-            android:visibility="gone" />
 
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/news_rv"

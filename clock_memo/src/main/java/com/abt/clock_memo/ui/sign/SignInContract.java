@@ -18,14 +18,8 @@ public interface SignInContract {
 
         void loadFailure(String var1);
 
-        /**
-         * 显示删除对话框
-         */
-        void showDeleteDialog();
+        void showLoadingDialog();
 
-        /**
-         * 显示更多对话框
-         */
         void showMoreDialog();
 
         void dismissDialog();
