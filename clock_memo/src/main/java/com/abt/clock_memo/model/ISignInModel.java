@@ -2,7 +2,7 @@ package com.abt.clock_memo.model;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.clock_memo.bean.SignIn;
-import com.abt.clock_memo.ui.listener.SignInListener;
+import com.abt.clock_memo.ui.sign.listener.SignInListener;
 
 /**
  * @描述： @ISignInModel

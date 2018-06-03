@@ -7,8 +7,8 @@ import android.widget.Toast;
 import com.abt.basic.arch.mvvm.view.BaseActivity;
 import com.abt.basic.arch.mvvm.viewmodel.ToolbarViewModel;
 import com.abt.clock_memo.R;
-import com.abt.clock_memo.ui.sign.SignInActivity;
 import com.abt.clock_memo.global.SignInConstant;
+import com.abt.clock_memo.ui.sign.SignInActivity;
 
 /**
  * @描述： @ClockMemo首页
@@ -17,8 +17,6 @@ import com.abt.clock_memo.global.SignInConstant;
  */
 public class MainActivity extends BaseActivity<MainFragment, MainViewModel,
         ToolbarViewModel> implements MainNavigator {
-
-    private int mCount = 0; //返回键计数器
 
     @NonNull
     @Override
@@ -31,6 +29,8 @@ public class MainActivity extends BaseActivity<MainFragment, MainViewModel,
     protected MainViewModel createViewModel() {
         return new MainViewModel();
     }
+
+    private int mCount = 0; //返回键计数器
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -12,14 +12,15 @@
             type="com.abt.clock_memo.ui.main.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="match_parent" >
+
         <Button
+            android:id="@+id/clock"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:background="#FFFFFF"
             android:text="打卡"
             android:onClick="@{ () -> mainVM.clock()}"
@@ -27,14 +28,24 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/clock_memo"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_below="@+id/clock"
+            android:layout_marginTop="20dp"
             android:background="#FFFFFF"
-            android:text="打卡记录"
             android:onClick="@{ () -> mainVM.clockMemo() }"
+            android:text="打卡记录"
             android:textSize="16sp"
             android:textStyle="bold" />
-    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{ mainVM.txt }"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp" />
+    </RelativeLayout>
 
 </layout>

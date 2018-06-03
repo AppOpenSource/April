@@ -16,8 +16,8 @@ import com.abt.clock_memo.global.PreferenceConstant;
 import com.abt.clock_memo.global.SignInConstant;
 import com.abt.clock_memo.model.ISignInModel;
 import com.abt.clock_memo.model.SignInModelImpl;
-import com.abt.clock_memo.ui.adapter.SignInAdapter;
-import com.abt.clock_memo.ui.listener.SignInListener;
+import com.abt.clock_memo.ui.sign.adapter.SignInAdapter;
+import com.abt.clock_memo.ui.sign.listener.SignInListener;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

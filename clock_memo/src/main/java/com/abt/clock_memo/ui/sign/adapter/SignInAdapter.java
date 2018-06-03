@@ -1,4 +1,4 @@
-package com.abt.clock_memo.ui.adapter;
+package com.abt.clock_memo.ui.sign.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

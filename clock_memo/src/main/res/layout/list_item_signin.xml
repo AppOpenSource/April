@@ -11,7 +11,7 @@
 
         <variable
             name="adapter"
-            type="com.abt.clock_memo.ui.adapter.SignInAdapter" />
+            type="com.abt.clock_memo.ui.sign.adapter.SignInAdapter" />
 
         <variable
             name="position"

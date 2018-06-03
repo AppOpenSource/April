@@ -4,6 +4,8 @@ import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
+import com.abt.clock_memo.base.BaseApplication;
+import com.abt.clock_memo.util.VersionUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -14,12 +16,14 @@ import java.lang.ref.WeakReference;
  */
 public class MainViewModel extends BaseObservable implements IViewModel<MainNavigator> {
 
-    public final ObservableField<String> text = new ObservableField<>();
+    public final ObservableField<String> txt = new ObservableField<>();
     private WeakReference<MainNavigator> mNavigator;
 
     @Override
     public void initialize() {
-        text.set("click me!!");
+        String code = VersionUtils.getVersionCode(BaseApplication.getAppContext());
+        String name = VersionUtils.getVersionName(BaseApplication.getAppContext());
+        txt.set("version_"+name+"_versionCode_"+code);
     }
 
     @Override
