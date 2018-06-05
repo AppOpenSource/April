@@ -55,6 +55,12 @@
         <activity android:name=".ui.upgrade.OtherActivity"/>
         <activity android:name=".ui.upgrade.UpgradeActivity"/>
 
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.abt.clock_memo;
 
 import com.abt.clock_memo.util.BuglyUtil;
+import com.abt.clock_memo.util.WeChatUtil;
 import com.abt.common.app.BasicApplication;
 import com.abt.common.util.LocationUtil;
 import com.tencent.bugly.Bugly;
@@ -19,6 +20,7 @@ public class ClockMemoApp extends BasicApplication {
         LocationUtil.getInstance().init();
         BuglyUtil.init();
         BuglyUtil.checkUpgrade();
+        WeChatUtil.reqToWx();
     }
 
     /**
