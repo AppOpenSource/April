@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
+import com.abt.clock_memo.R;
 import com.abt.clock_memo.bean.SignIn;
 import com.abt.clock_memo.data.file.FileHelper;
 import com.abt.clock_memo.data.file.FileManager;
@@ -67,9 +68,7 @@ public class SignInModelImpl implements ISignInModel {
             PreferencesUtil.write(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_RECORD_COUNT, ++count);
             return;
         }
-
         signInListener.signInStart();
-
         // 处理中 Signing
         LocationUtil util = LocationUtil.getInstance();
         boolean res = util.signIn(BasicApplication.getAppContext());
@@ -81,16 +80,18 @@ public class SignInModelImpl implements ISignInModel {
         String nickName = PreferencesUtil.getString(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
         int count = PreferencesUtil.getInt(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
         if (TextUtils.isEmpty(nickName)) {
-            nickName = "第" + count + "条记录";
+            //nickName = "第" + count + "条记录";
+            nickName = String.format(BasicApplication.getAppContext().getResources().getString(R.string.the_record), count+"");
         }
+
         // 记录打卡次数
         PreferencesUtil.write(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT, count);
         in.setName(nickName);
         in.setTime(time + "");
         if (res) { // 打卡成功
-            in.setStatus("刷卡成功");
+            in.setStatus(BasicApplication.getAppContext().getResources().getString(R.string.clock_success));
         } else {
-            in.setStatus("刷卡失败");
+            in.setStatus(BasicApplication.getAppContext().getResources().getString(R.string.clock_failed));
         }
         if (mSignInList != null) {
             mSignInList.add(0, in);
@@ -106,58 +107,5 @@ public class SignInModelImpl implements ISignInModel {
                 }
             }, 1*1000);
         }
-    }
-
-    public static void signIn() {
-        Log.d(TAG, "signIn()");
-        //mSignInList = MockData.getRecordList();
-        mSignInList = FileHelper.getStorageEntities(PreferenceConstant.FILE_NAME_SIGN_IN);
-        mSignInList = FileManager.read(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN);
-
-        // 处理前 Loading
-        /*mDialog = new ProgressDialog(SignInActivity.this);
-        mDialog.setTitle("正在打卡，请稍候...");
-        mDialog.setCancelable(true);
-        mDialog.show();*/
-        Log.d(TAG, "Dialog showing...");
-
-        // 处理中 Signing
-        LocationUtil util = LocationUtil.getInstance();
-        boolean res = util.signIn(BasicApplication.getAppContext());
-        Log.d(TAG, "signIn res: " + res);
-
-        // 处理后
-        SignIn in = new SignIn();
-        long time = System.currentTimeMillis();
-        String nickName = PreferencesUtil.getString(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_NICK_NAME);
-        int count = PreferencesUtil.getInt(BasicApplication.getAppContext(), PreferenceConstant.SHARE_KEY_SIGN_IN_COUNT) + 1;
-        if (TextUtils.isEmpty(nickName)) {
-            nickName = "第" + count + "条记录";
-        }
-        in.setName(nickName);
-        in.setTime(time + "");
-        if (res) { // 打卡成功
-            // TODO 更新打卡记录
-            in.setStatus("刷卡成功");
-        } else {
-            in.setStatus("刷卡失败");
-            //mSignInBtn.setVisibility(View.VISIBLE);
-        }
-        if (mSignInList != null) {
-            mSignInList.add(0, in);
-            //mAdapter.notifyDataSetChanged();
-            FileManager.write(BasicApplication.getAppContext(), PreferenceConstant.FILE_NAME_SIGN_IN, mSignInList);
-            FileHelper.saveStorage2SDCard(mSignInList, PreferenceConstant.FILE_NAME_SIGN_IN);
-            Log.d(TAG, "mAdapter.notifyDataSetChanged(): " + mSignInList.size());
-        }
-        /*if (mDialog != null) {
-            mSignInBtn.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mDialog.dismiss();
-                }
-            }, 1 * 1000);
-        }*/
-
     }
 }

@@ -31,7 +31,6 @@ public class SignInViewModel extends BaseObservable implements
         IViewModel<SignInNavigator>, BaseLoadListener<SignIn>,
         SignInListener<SignIn> {
 
-    private static final String TAG = SignInViewModel.class.getSimpleName();
     public final ObservableField<String> text = new ObservableField<>();
     private WeakReference<SignInNavigator> mNavigator;
     private WeakReference<SignInContract.IView> mSignInView;

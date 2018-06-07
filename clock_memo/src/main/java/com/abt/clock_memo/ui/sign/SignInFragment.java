@@ -28,7 +28,6 @@ import static com.abt.clock_memo.global.MainConstant.LoadData.FIRST_LOAD;
 public class SignInFragment extends BaseFragment<SignInViewModel,
         ToolbarViewModel> implements SignInContract.IView, XRecyclerView.LoadingListener {
 
-    private static final String TAG = SignInFragment.class.getSimpleName();
     private FragmentSigninBinding mBinding;
     private SignInAdapter mSignInAdapter;
     private ProgressDialog mDialog;
@@ -43,7 +42,7 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel.initialize();
+        if (null != mViewModel) mViewModel.initialize();
     }
 
     @Nullable
@@ -79,7 +78,7 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
     public void showLoadingDialog() {
         // 处理前 Loading
         mDialog = new ProgressDialog(this.getActivity());
-        mDialog.setTitle("正在打卡，请稍候...");
+        mDialog.setTitle(R.string.clock_recording_plz_wait);
         mDialog.setCancelable(true);
         mDialog.show();
     }
@@ -116,7 +115,7 @@ public class SignInFragment extends BaseFragment<SignInViewModel,
     @Override
     public void loadStart(int loadType) {
         if (loadType == FIRST_LOAD) {
-            DialogHelper.getInstance().show(this.getActivity(), "加载中...");
+            DialogHelper.getInstance().show(this.getActivity(), String.valueOf(R.string.loading));
         }
     }
 

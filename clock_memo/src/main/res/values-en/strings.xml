@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">ClockMemo</string>
+    <string name="clock">Clock</string>
     <string name="clock_record">Clock Record</string>
+    <string name="loading">Loading...</string>
+    <string name="clock_success">Clock Success</string>
+    <string name="clock_failed">Clock Failed</string>
+    <string name="the_record">The %s record</string>
+    <string name="clock_recording_plz_wait">Clock Recording Please Wait</string>
 </resources>

@@ -29,7 +29,7 @@ public class MainFragment extends BaseFragment<MainViewModel, ToolbarViewModel> 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel.initialize();
+        if (null != mViewModel) mViewModel.initialize();
     }
 
     @Nullable

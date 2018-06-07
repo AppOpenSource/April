@@ -22,7 +22,7 @@
             android:layout_height="@dimen/dp_48"
             android:layout_marginTop="@dimen/dp_20"
             android:background="#FFFFFF"
-            android:text="打卡"
+            android:text="@string/clock"
             android:onClick="@{ () -> mainVM.clock()}"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
             android:layout_marginTop="20dp"
             android:background="#FFFFFF"
             android:onClick="@{ () -> mainVM.clockMemo() }"
-            android:text="打卡记录"
+            android:text="@string/clock_record"
             android:textSize="16sp"
             android:textStyle="bold" />
 
