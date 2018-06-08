@@ -23,6 +23,10 @@ def xmpcoreVersion      = "5.1.2"
 def pluginVersion       = "1.0.0"
 def converterGsonVersion= "2.0.2"
 
+// app-basic
+def basicVersion        = "1.0.1"
+def commonVersion       = "1.0.1"
+
 //test模块
 def testRunnerVersion   = "1.0.2"
 def testEspressoVersion = "3.0.2"
@@ -52,14 +56,9 @@ project.ext {
             versionName      : "2.0.2"
     ]
 
-    //basic模块
-    basic = [
-            versionCode      : 1,
-            versionName      : "1.0.0"
-    ]
-
-    //common模块
-    common = [
+    //price
+    price = [
+            applicationId    : "com.abt.price",
             versionCode      : 1,
             versionName      : "1.0.0"
     ]
@@ -91,6 +90,8 @@ project.ext {
 
     //----------------------------------------------------------------------- 依赖配置------------------------------------------------------------------------------------
     dependencies = [
+            "app-basic"                : "com.abt.basic:basic:${basicVersion}",
+            "app-common"                : "com.abt.common:common:${commonVersion}",
             "build-gradle"                : "com.android.tools.build:gradle:${gradleToolVersion}",
 
             //android-support
