@@ -71,24 +71,23 @@ android {
 
 }
 
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies["appcompat-v7"]
     implementation rootProject.ext.dependencies["constraint-layout"]
     implementation rootProject.ext.dependencies["support-v4"]
     testImplementation rootProject.ext.test["junit"]
-    //androidTestImplementation rootProject.ext.test["testRunnerVersion"]
-    //androidTestImplementation rootProject.ext.test["testEspressoVersion"]
     implementation rootProject.ext.dependencies["crashreport_upgrade"]
     implementation rootProject.ext.dependencies["nativecrashreport"]
     implementation files('libs/mysql-connector-java-5.1.30-bin.jar')
     implementation files('libs/ormlite-android-4.48.jar')
     implementation files('libs/ormlite-core-4.48.jar')
     implementation files('libs/ormlite-jdbc-4.48.jar')
-    // app basic frame 中的 basic 模块
-    implementation 'com.abt.basic:lib:1.0.0'
-    implementation 'com.abt.common:common:1.0.1'
-    androidTestCompile 'com.android.support:support-annotations:27.1.0'
+    androidTestImplementation 'com.android.support:support-annotations:27.1.0'
     implementation files('libs/libammsdk.jar')
+
+    // app basic frame 中的 basic 模块
+    implementation rootProject.ext.dependencies["app-basic"]
+    implementation rootProject.ext.dependencies["app-common"]
+
 }

@@ -25,7 +25,7 @@ def converterGsonVersion= "2.0.2"
 
 // app-basic
 def basicVersion        = "1.0.1"
-def commonVersion       = "1.0.1"
+def commonVersion       = "1.0.2"
 
 //test模块
 def testRunnerVersion   = "1.0.2"
@@ -49,6 +49,13 @@ def nativeCrashVersion     = "latest.release"
 project.ext {
 
     //----------------------------------------------------------------------- App配置------------------------------------------------------------------------------------
+    //april
+    april = [
+            applicationId    : "com.abt.april",
+            versionCode      : 1,
+            versionName      : "1.0.0"
+    ]
+
     //clock_memo
     clock_memo = [
             applicationId    : "com.abt.clock_memo",
