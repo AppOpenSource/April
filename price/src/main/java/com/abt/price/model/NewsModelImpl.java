@@ -3,7 +3,7 @@ package com.abt.price.model;
 import android.os.Handler;
 import android.util.Log;
 
-import com.abt.price.base.BaseLoadListener;
+import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.bean.NewsBean;
 import com.abt.price.bean.SimpleNewsBean;
 import com.abt.price.http.HttpUtils;

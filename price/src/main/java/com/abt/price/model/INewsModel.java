@@ -1,6 +1,6 @@
 package com.abt.price.model;
 
-import com.abt.price.base.BaseLoadListener;
+import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.bean.SimpleNewsBean;
 
 /**

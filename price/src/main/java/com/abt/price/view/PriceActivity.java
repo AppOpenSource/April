@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
+import com.abt.common.helper.DialogHelper;
+import com.abt.common.util.ToastUtils;
 import com.abt.price.R;
 import com.abt.price.adapter.PriceAdapter;
 import com.abt.price.databinding.ActivityMainBinding;
-import com.abt.price.helper.DialogHelper;
-import com.abt.price.utils.ToastUtils;
 import com.abt.price.viewmodel.PriceVM;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -86,5 +87,15 @@ public class PriceActivity extends AppCompatActivity implements IPriceView,
         binding.newsRv.loadMoreComplete(); //结束加载
         binding.newsRv.refreshComplete(); //结束刷新
         ToastUtils.show(mContext, message);
+    }
+
+    @Override
+    public void setViewModel(IViewModel iViewModel) {
+
+    }
+
+    @Override
+    public void setToolbarViewModel(Object o) {
+
     }
 }

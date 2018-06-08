@@ -1,6 +1,6 @@
 package com.abt.price.view;
 
-import com.abt.price.base.IBaseView;
+import com.abt.basic.arch.mvvm.view.load.IBaseView;
 
 /**
  * @描述： @IPriceView

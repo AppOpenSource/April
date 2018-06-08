@@ -1,7 +1,7 @@
 package com.abt.price.viewmodel;
 
+import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.adapter.NewsAdapter;
-import com.abt.price.base.BaseLoadListener;
 import com.abt.price.bean.SimpleNewsBean;
 import com.abt.price.constant.MainConstant;
 import com.abt.price.model.INewsModel;
