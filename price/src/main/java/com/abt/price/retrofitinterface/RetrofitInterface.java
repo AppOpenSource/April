@@ -2,6 +2,7 @@ package com.abt.price.retrofitinterface;
 
 
 import com.abt.price.bean.NewsBean;
+import com.abt.price.bean.PriceBean;
 import com.abt.price.constant.URLConstant;
 
 import io.reactivex.Observable;
@@ -17,4 +18,7 @@ public interface RetrofitInterface {
     //获取“分类中搜索商品”的数据
     @GET(URLConstant.URL_PATH)
     Observable<NewsBean> getNewsData();
+
+    @GET(URLConstant.PRICE_PATH)
+    Observable<PriceBean> getPriceData();
 }

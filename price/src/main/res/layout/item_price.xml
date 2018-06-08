@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.abt.price.R" />
+
+        <variable
+            name="simplePriceBean"
+            type="com.abt.price.bean.SimplePriceBean" />
+
+        <variable
+            name="adapter"
+            type="com.abt.price.adapter.PriceAdapter" />
+
+        <variable
+            name="position"
+            type="int" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#878711"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/header_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#878787"
+            app:imageUrl="@{ simplePriceBean.thumbnail }" />
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="#878671"
+            android:layout_toEndOf="@id/header_iv"
+            android:text="{ simplePriceBean.title }"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <!--描述-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/title_tv"
+            android:layout_below="@id/title_tv"
+            android:layout_marginTop="8dp"
+            android:background="#878671"
+            android:text="{ simplePriceBean.description }"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <!--点赞或者取消点赞,onClick()用的lambda表达式-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/header_iv"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            android:onClick="@{()->adapter.clickDianZan(simplePriceBean, position)}"
+            app:resId="@{ simplePriceBean.done ? R.mipmap.dianzan_press : R.mipmap.dianzan_normal }" />
+
+    </RelativeLayout>
+</layout>

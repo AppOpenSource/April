@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.abt.price.base.BaseLoadListener;
-import com.abt.price.bean.NewsBean;
-import com.abt.price.bean.SimpleNewsBean;
+import com.abt.price.bean.PriceBean;
+import com.abt.price.bean.SimplePriceBean;
 import com.abt.price.http.HttpUtils;
 
 import java.util.ArrayList;
@@ -17,41 +17,42 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @描述： @NewsModelImpl
+ * @描述： @PriceModelImpl
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsModelImpl implements INewsModel {
+public class PriceModelImpl implements IPriceModel {
 
-    private static final String TAG = "NewsModelImpl";
-    List<SimpleNewsBean> simpleNewsBeanList = new ArrayList<>();
+    private static final String TAG = "PriceModelImpl";
+    List<SimplePriceBean> simplePriceBeanList = new ArrayList<>();
 
     @Override
-    public void loadNewsData(final int page, final BaseLoadListener<SimpleNewsBean> loadListener) {
-        HttpUtils.getNewsData()
+    public void loadPriceData(final int page, final BaseLoadListener<SimplePriceBean> loadListener) {
+        HttpUtils.getPriceData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableObserver<NewsBean>() {
+                .subscribe(new DisposableObserver<PriceBean>() {
                     @Override
-                    public void onNext(@NonNull NewsBean newsBean) {
-                        Log.i(TAG, "onNext: ");
-                        List<NewsBean.OthersBean> othersBeanList = newsBean.getOthers();
-                        simpleNewsBeanList.clear();
+                    public void onNext(@NonNull PriceBean priceBean) {
+                        Log.i(TAG, "onNext: priceBean"+priceBean);
+                        List<PriceBean.OthersBean> othersBeanList = priceBean.getOthers();
+                        simplePriceBeanList.clear();
                         if (othersBeanList != null && othersBeanList.size() > 0) {
-                            for (NewsBean.OthersBean othersBean : othersBeanList) {
-                                String thumbnail = othersBean.getThumbnail();
-                                String name = othersBean.getName();
+                            for (PriceBean.OthersBean othersBean : othersBeanList) {
+                                String title = othersBean.getTitle();
                                 String description = othersBean.getDescription();
-                                Log.i(TAG, "thumbnail:---->" + thumbnail);
-                                Log.i(TAG, "name:---->" + name);
+                                String thumbnail = othersBean.getThumbnail();
+                                Boolean done = othersBean.getDone();
+                                Log.i(TAG, "title:---->" + title);
                                 Log.i(TAG, "description:---->" + description);
 
                                 //构造Adapter所需的数据源
-                                SimpleNewsBean simpleNewsBean = new SimpleNewsBean();
-                                simpleNewsBean.thumbnail.set(thumbnail);
-                                simpleNewsBean.name.set(name);
-                                simpleNewsBean.description.set(description);
-                                simpleNewsBeanList.add(simpleNewsBean);
+                                SimplePriceBean simplePriceBean = new SimplePriceBean();
+                                simplePriceBean.done.set(done);
+                                simplePriceBean.title.set(title);
+                                simplePriceBean.thumbnail.set(thumbnail);
+                                simplePriceBean.description.set(description);
+                                simplePriceBeanList.add(simplePriceBean);
 
                                 if (page > 1) {
                                     //这个接口暂时没有分页的数据，这里为了模拟分页，通过取第1条数据作为分页的数据
@@ -80,7 +81,7 @@ public class NewsModelImpl implements INewsModel {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                loadListener.loadSuccess(simpleNewsBeanList);
+                                loadListener.loadSuccess(simplePriceBeanList);
                                 loadListener.loadComplete();
                             }
                         }, 2000);

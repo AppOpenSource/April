@@ -7,28 +7,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.abt.price.R;
-import com.abt.price.adapter.NewsAdapter;
+import com.abt.price.adapter.PriceAdapter;
 import com.abt.price.databinding.ActivityMainBinding;
 import com.abt.price.helper.DialogHelper;
 import com.abt.price.utils.ToastUtils;
-import com.abt.price.viewmodel.NewsVM;
+import com.abt.price.viewmodel.PriceVM;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import static com.abt.price.constant.MainConstant.LoadData.FIRST_LOAD;
 
 /**
- * @描述： @MainActivity
+ * @描述： @PriceActivity
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class MainActivity extends AppCompatActivity implements INewsView,
+public class PriceActivity extends AppCompatActivity implements IPriceView,
         XRecyclerView.LoadingListener {
 
     private Context mContext;
     private ActivityMainBinding binding;
-    private NewsAdapter newsAdapter; //新闻列表的适配器
-    private NewsVM newsVM;
+    private PriceAdapter priceAdapter; //新闻列表的适配器
+    private PriceVM priceVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements INewsView,
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mContext = this;
         initRecyclerView();
-        newsVM = new NewsVM(this, newsAdapter);
+        priceVM = new PriceVM(this, priceAdapter);
     }
 
     /**
@@ -50,20 +50,20 @@ public class MainActivity extends AppCompatActivity implements INewsView,
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.newsRv.setLayoutManager(layoutManager);
-        newsAdapter = new NewsAdapter(this);
-        binding.newsRv.setAdapter(newsAdapter);
+        priceAdapter = new PriceAdapter(this);
+        binding.newsRv.setAdapter(priceAdapter);
     }
 
     @Override
     public void onRefresh() {
         //下拉刷新
-        newsVM.loadRefreshData();
+        priceVM.loadRefreshData();
     }
 
     @Override
     public void onLoadMore() {
         //上拉加载更多
-        newsVM.loadMoreData();
+        priceVM.loadMoreData();
     }
 
     @Override

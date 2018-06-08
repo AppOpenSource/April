@@ -1,6 +1,7 @@
 package com.abt.price.http;
 
 import com.abt.price.bean.NewsBean;
+import com.abt.price.bean.PriceBean;
 import com.abt.price.constant.URLConstant;
 import com.abt.price.retrofitinterface.RetrofitInterface;
 
@@ -19,7 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpUtils {
 
     private static final int DEFAULT_TIMEOUT = 8; //连接 超时的时间，单位：秒
-    private static HttpUtils httpUtils;
     private static Retrofit retrofit;
     private static RetrofitInterface retrofitInterface;
     private static final OkHttpClient client = new OkHttpClient.Builder().
@@ -44,5 +44,9 @@ public class HttpUtils {
     //获取新闻数据
     public static io.reactivex.Observable<NewsBean> getNewsData() {
         return getRetrofit().getNewsData();
+    }
+
+    public static io.reactivex.Observable<PriceBean> getPriceData() {
+        return getRetrofit().getPriceData();
     }
 }
