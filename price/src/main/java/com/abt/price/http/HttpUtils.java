@@ -4,6 +4,8 @@ import com.abt.price.bean.NewsBean;
 import com.abt.price.bean.PriceBean;
 import com.abt.price.constant.URLConstant;
 import com.abt.price.retrofitinterface.RetrofitInterface;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,11 +31,14 @@ public class HttpUtils {
 
     private synchronized static RetrofitInterface getRetrofit() {
         //初始化retrofit的配置
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(URLConstant.URL_BASE)
                     .client(client)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
             retrofitInterface = retrofit.create(RetrofitInterface.class);
