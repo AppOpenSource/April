@@ -19,7 +19,8 @@ public interface RetrofitInterface {
     @GET(URLConstant.URL_PATH)
     Observable<NewsBean> getNewsData();
 
-    @GET(URLConstant.PRICE_ADD)
+    //@GET(URLConstant.PRICE_ADD)
+    @GET(URLConstant.LOAD_MORE_PRICE)
     Observable<PriceBean> getPriceData();
 
     @GET(URLConstant.LOAD_MORE_PRICE)
