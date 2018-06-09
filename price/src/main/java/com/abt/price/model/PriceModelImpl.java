@@ -36,7 +36,7 @@ public class PriceModelImpl implements IPriceModel {
                     public void onNext(@NonNull PriceBean priceBean) {
                         Log.i(TAG, "onNext: priceBean"+priceBean);
                         List<PriceBean.OthersBean> othersBeanList = priceBean.getOthers();
-                        simplePriceBeanList.clear();
+                        //simplePriceBeanList.clear();
                         if (othersBeanList != null && othersBeanList.size() > 0) {
                             for (PriceBean.OthersBean othersBean : othersBeanList) {
                                 String title = othersBean.getTitle();
