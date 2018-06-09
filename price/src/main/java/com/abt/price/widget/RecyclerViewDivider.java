@@ -70,6 +70,9 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
         mPaint.setStyle(Paint.Style.FILL);
     }
 
+    public void setDrawable(Drawable drawable) {
+        mDivider = drawable;
+    }
 
     //获取分割线尺寸
     @Override
@@ -83,13 +86,13 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDraw(c, parent, state);
         if (mOrientation == LinearLayoutManager.VERTICAL) {
-            drawVertical(c, parent);
+            drawHorizontal(c, parent); // 垂直列表绘制横向的分割线
         } else {
-            drawHorizontal(c, parent);
+            drawVertical(c, parent);   // 横向列表绘制纵向的分割线
         }
     }
 
-    //绘制横向 item 分割线
+    // 绘制横向的分割线
     private void drawHorizontal(Canvas canvas, RecyclerView parent) {
         final int left = parent.getPaddingLeft();
         final int right = parent.getMeasuredWidth() - parent.getPaddingRight();
@@ -109,7 +112,7 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
         }
     }
 
-    //绘制纵向 item 分割线
+    // 绘制纵向的分割线
     private void drawVertical(Canvas canvas, RecyclerView parent) {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getMeasuredHeight() - parent.getPaddingBottom();

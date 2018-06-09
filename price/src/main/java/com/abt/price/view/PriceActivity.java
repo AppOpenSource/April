@@ -3,6 +3,7 @@ package com.abt.price.view;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,8 +54,14 @@ public class PriceActivity extends AppCompatActivity implements IPriceView,
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.newsRv.setLayoutManager(layoutManager);
+
+        //添加自定义的分割线
+        RecyclerViewDivider divider = new RecyclerViewDivider(this, DividerItemDecoration.VERTICAL);
+        divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.custom_divider));
+        binding.newsRv.addItemDecoration(divider);
         //添加Android自带的分割线
-        binding.newsRv.addItemDecoration(new RecyclerViewDivider(this, DividerItemDecoration.VERTICAL));
+        //binding.newsRv.addItemDecoration(new RecyclerViewDivider(this,DividerItemDecoration.VERTICAL));
+
         priceAdapter = new PriceAdapter(this);
         binding.newsRv.setAdapter(priceAdapter);
     }
