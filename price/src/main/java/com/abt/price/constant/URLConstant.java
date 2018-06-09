@@ -13,6 +13,6 @@ public class URLConstant {
 
     public static final String URL_BASE = "http://192.168.0.101:8080/";
     public static final String PRICE_ADD = "/api/v1.0/price/add";
-    public static final String LOAD_MORE_PRICE = "/api/v1.0/<string:type>/loadmore/<string:page>";
+    public static final String LOAD_MORE_PRICE = "/api/v1.0/price/loadmore/1";
 
 }
