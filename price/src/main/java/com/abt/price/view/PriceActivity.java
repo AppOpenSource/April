@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
@@ -13,6 +14,7 @@ import com.abt.price.R;
 import com.abt.price.adapter.PriceAdapter;
 import com.abt.price.databinding.ActivityMainBinding;
 import com.abt.price.viewmodel.PriceVM;
+import com.abt.price.widget.RecyclerViewDivider;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -51,6 +53,8 @@ public class PriceActivity extends AppCompatActivity implements IPriceView,
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.newsRv.setLayoutManager(layoutManager);
+        //添加Android自带的分割线
+        binding.newsRv.addItemDecoration(new RecyclerViewDivider(this, DividerItemDecoration.VERTICAL));
         priceAdapter = new PriceAdapter(this);
         binding.newsRv.setAdapter(priceAdapter);
     }
