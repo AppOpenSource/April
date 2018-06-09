@@ -12,6 +12,6 @@ public class URLConstant {
     public static final String URL_PATH = "api/4/themes";
 
     public static final String URL_BASE = "http://192.168.0.101:8080/";
-    public static final String PRICE_PATH = "todo/api/v1.0/tasks";
+    public static final String PRICE_PATH = "/api/v1.0/price/add";
 
 }
