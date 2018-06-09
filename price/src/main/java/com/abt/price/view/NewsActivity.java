@@ -19,11 +19,11 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import static com.abt.price.constant.MainConstant.LoadData.FIRST_LOAD;
 
 /**
- * @描述： @MainActivity
+ * @描述： @NewsActivity
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class MainActivity extends AppCompatActivity implements INewsView,
+public class NewsActivity extends AppCompatActivity implements INewsView,
         XRecyclerView.LoadingListener {
 
     private Context mContext;
