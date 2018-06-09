@@ -54,4 +54,8 @@ public class HttpUtils {
     public static io.reactivex.Observable<PriceBean> getPriceData() {
         return getRetrofit().getPriceData();
     }
+
+    public static io.reactivex.Observable<PriceBean> loadMorePrice() {
+        return getRetrofit().loadMorePrice();
+    }
 }
