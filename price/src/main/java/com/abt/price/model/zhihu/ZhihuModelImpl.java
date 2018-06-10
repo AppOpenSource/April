@@ -1,18 +1,19 @@
 package com.abt.price.model.zhihu;
 
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.zhihu.SimpleZhihuBean;
-import com.abt.price.bean.zhihu.ZhihuBean;
-import com.abt.price.api.retrofitHelper;
+import com.abt.price.api.ApiFactory;
+import com.abt.price.api.ZhihuApi;
+import com.abt.price.bean.zhihu.NewsTimeLine;
+import com.abt.price.bean.zhihu.Stories;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -24,40 +25,21 @@ import io.reactivex.schedulers.Schedulers;
 public class ZhihuModelImpl implements IZhihuModel {
 
     private static final String TAG = "ZhihuModelImpl";
-    List<SimpleZhihuBean> simpleZhihuBeanList = new ArrayList<>();
+    private List<Stories> timeLineList = new ArrayList<>();
+    public static final ZhihuApi zhihuApi = ApiFactory.getZhihuApiSingleton();
 
     @Override
-    public void loadZhihuData(final int page, final BaseLoadListener<SimpleZhihuBean> loadListener) {
-        retrofitHelper.getZhihuData()
+    public void loadZhihuData(final int page, final BaseLoadListener<Stories> loadListener) {
+        zhihuApi.getLatestNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableObserver<ZhihuBean>() {
+                .subscribe(new DisposableObserver<NewsTimeLine>() {
+
                     @Override
-                    public void onNext(@NonNull ZhihuBean bean) {
+                    public void onNext(@NonNull NewsTimeLine bean) {
                         Log.i(TAG, "onNext: ");
-                        List<ZhihuBean.OthersBean> othersBeanList = bean.getOthers();
-                        simpleZhihuBeanList.clear();
-                        if (othersBeanList != null && othersBeanList.size() > 0) {
-                            for (ZhihuBean.OthersBean othersBean : othersBeanList) {
-                                String thumbnail = othersBean.getThumbnail();
-                                String name = othersBean.getName();
-                                String description = othersBean.getDescription();
-                                Log.i(TAG, "thumbnail:---->" + thumbnail);
-                                Log.i(TAG, "name:---->" + name);
-                                Log.i(TAG, "description:---->" + description);
-
-                                //构造Adapter所需的数据源
-                                SimpleZhihuBean simpleNewsBean = new SimpleZhihuBean();
-                                simpleNewsBean.thumbnail.set(thumbnail);
-                                simpleNewsBean.description.set(description);
-                                simpleZhihuBeanList.add(simpleNewsBean);
-
-                                if (page > 1) {
-                                    //这个接口暂时没有分页的数据，这里为了模拟分页，通过取第1条数据作为分页的数据
-                                    break;
-                                }
-                            }
-                        }
+                        timeLineList.clear();
+                        timeLineList = bean.getStories();
                     }
 
                     @Override
@@ -79,11 +61,13 @@ public class ZhihuModelImpl implements IZhihuModel {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                loadListener.loadSuccess(simpleZhihuBeanList);
+                                loadListener.loadSuccess(timeLineList);
                                 loadListener.loadComplete();
                             }
                         }, 2000);
                     }
                 });
     }
+
+
 }

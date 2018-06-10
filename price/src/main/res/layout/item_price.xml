@@ -11,7 +11,7 @@
 
         <variable
             name="adapter"
-            type="com.abt.price.adapter.PriceAdapter" />
+            type="com.abt.price.ui.adapter.PriceAdapter" />
 
         <variable
             name="position"

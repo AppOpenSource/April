@@ -4,9 +4,9 @@ import com.abt.price.bean.gank.GankData;
 import com.abt.price.bean.gank.Meizhi;
 import com.abt.price.bean.gank.Video;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * @描述： @get Gank with retrofit

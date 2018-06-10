@@ -1,7 +1,7 @@
 package com.abt.price.model.zhihu;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.zhihu.SimpleZhihuBean;
+import com.abt.price.bean.zhihu.Stories;
 
 /**
  * @描述： @IZhihuModel
@@ -14,5 +14,5 @@ public interface IZhihuModel {
      * @param page 页数
      * @param loadListener
      */
-    void loadZhihuData(int page, BaseLoadListener<SimpleZhihuBean> loadListener);
+    void loadZhihuData(int page, BaseLoadListener<Stories> loadListener);
 }

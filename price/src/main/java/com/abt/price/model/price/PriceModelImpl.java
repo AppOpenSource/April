@@ -1,20 +1,10 @@
 package com.abt.price.model.price;
 
-import android.os.Handler;
-import android.util.Log;
-
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.price.PriceBean;
 import com.abt.price.bean.price.SimplePriceBean;
-import com.abt.price.api.retrofitHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @描述： @PriceModelImpl
@@ -28,7 +18,7 @@ public class PriceModelImpl implements IPriceModel {
 
     @Override
     public void loadPriceData(final int page, final BaseLoadListener<SimplePriceBean> loadListener) {
-        retrofitHelper.getPriceData()
+        /*retrofitHelper.getPriceData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<PriceBean>() {
@@ -86,6 +76,6 @@ public class PriceModelImpl implements IPriceModel {
                             }
                         }, 2000);
                     }
-                });
+                });*/
     }
 }

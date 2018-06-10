@@ -1,20 +1,10 @@
 package com.abt.price.model.news;
 
-import android.os.Handler;
-import android.util.Log;
-
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.news.NewsBean;
 import com.abt.price.bean.news.SimpleNewsBean;
-import com.abt.price.api.retrofitHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @描述： @NewsModelImpl
@@ -28,7 +18,7 @@ public class NewsModelImpl implements INewsModel {
 
     @Override
     public void loadNewsData(final int page, final BaseLoadListener<SimpleNewsBean> loadListener) {
-        retrofitHelper.getNewsData()
+        /*retrofitHelper.getNewsData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<NewsBean>() {
@@ -85,6 +75,6 @@ public class NewsModelImpl implements INewsModel {
                             }
                         }, 2000);
                     }
-                });
+                });*/
     }
 }

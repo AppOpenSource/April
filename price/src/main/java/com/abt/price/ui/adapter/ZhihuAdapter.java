@@ -9,14 +9,14 @@ import com.abt.basic.arch.mvvm.view.load.BaseAdapter;
 import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.zhihu.SimpleZhihuBean;
+import com.abt.price.bean.zhihu.Stories;
 
 /**
  * @描述： @ZhihuAdapter
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class ZhihuAdapter extends BaseAdapter<SimpleZhihuBean, BaseViewHolder> {
+public class ZhihuAdapter extends BaseAdapter<Stories, BaseViewHolder> {
 
     public ZhihuAdapter(Context context) {
         super(context);

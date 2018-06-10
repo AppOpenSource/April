@@ -1,12 +1,13 @@
 package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.ui.adapter.ZhihuAdapter;
-import com.abt.price.bean.zhihu.SimpleZhihuBean;
-import com.abt.price.ui.constant.PageConstant;
+import com.abt.price.bean.zhihu.NewsTimeLine;
+import com.abt.price.bean.zhihu.Stories;
 import com.abt.price.model.zhihu.IZhihuModel;
 import com.abt.price.model.zhihu.ZhihuModelImpl;
 import com.abt.price.ui.IZhihuView;
+import com.abt.price.ui.adapter.ZhihuAdapter;
+import com.abt.price.ui.constant.PageConstant;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
+public class ZhihuVM implements BaseLoadListener<Stories> {
     private static final String TAG = "ZhihuVM";
     private IZhihuModel mZhihuModel;
     private IZhihuView mZhihuView;
@@ -57,7 +58,7 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
     }
 
     @Override
-    public void loadSuccess(List<SimpleZhihuBean> list) {
+    public void loadSuccess(List<Stories> list) {
         if (currPage > 1) {
             //上拉加载的数据
             mAdapter.loadMoreData(list);

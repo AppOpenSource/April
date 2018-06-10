@@ -4,9 +4,9 @@ import com.abt.price.bean.zhihu.News;
 import com.abt.price.bean.zhihu.NewsTimeLine;
 import com.abt.price.bean.zhihu.SplashImage;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * @描述： @get Zhihu with retrofit
