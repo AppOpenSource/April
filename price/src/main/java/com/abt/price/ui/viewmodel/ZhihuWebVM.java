@@ -1,36 +1,29 @@
 package com.abt.price.ui.viewmodel;
 
-import android.content.Intent;
-
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.PriceApp;
 import com.abt.price.bean.zhihu.Stories;
 import com.abt.price.model.zhihu.IZhihuModel;
 import com.abt.price.model.zhihu.ZhihuModelImpl;
-import com.abt.price.ui.IZhihuView;
-import com.abt.price.ui.activity.ZhihuWebActivity;
-import com.abt.price.ui.adapter.ZhihuAdapter;
+import com.abt.price.ui.IZhihuWebView;
 import com.abt.price.ui.constant.PageConstant;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
- * @描述： @ZhihuVM
+ * @描述： @ZhihuWebVM
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class ZhihuVM implements BaseLoadListener<Stories> {
-    private static final String TAG = "ZhihuVM";
+public class ZhihuWebVM implements BaseLoadListener<Stories> {
+    private static final String TAG = "ZhihuWebVM";
     private IZhihuModel mZhihuModel;
-    private WeakReference<IZhihuView> mZhihuView;
-    private ZhihuAdapter mAdapter;
+    private WeakReference<IZhihuWebView> mZhihuView;
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
 
-    public ZhihuVM(IZhihuView zhihuView, ZhihuAdapter mAdapter) {
-        this.mZhihuView = new WeakReference<>(zhihuView);
-        this.mAdapter = mAdapter;
+    public ZhihuWebVM(IZhihuWebView zhihuWebView) {
+        this.mZhihuView = new WeakReference<>(zhihuWebView);
         mZhihuModel = new ZhihuModelImpl();
         getZhihuData();
     }
@@ -65,10 +58,10 @@ public class ZhihuVM implements BaseLoadListener<Stories> {
     public void loadSuccess(List<Stories> list) {
         if (currPage > 1) {
             //上拉加载的数据
-            mAdapter.loadMoreData(list);
+            //mAdapter.loadMoreData(list);
         } else {
             //第一次加载或者下拉刷新的数据
-            mAdapter.refreshData(list);
+            //mAdapter.refreshData(list);
         }
     }
 
@@ -96,12 +89,6 @@ public class ZhihuVM implements BaseLoadListener<Stories> {
         if (null != mZhihuView) {
             mZhihuView.get().loadComplete();
         }
-    }
-
-    public void onItemClick(String id) {
-        Intent intent = ZhihuWebActivity.newIntent(PriceApp.getAppContext(),id);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PriceApp.getAppContext().startActivity(intent);
     }
 }
 

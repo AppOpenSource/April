@@ -10,6 +10,7 @@ import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.price.BR;
 import com.abt.price.R;
 import com.abt.price.bean.zhihu.Stories;
+import com.abt.price.ui.viewmodel.ZhihuVM;
 
 /**
  * @描述： @ZhihuAdapter
@@ -18,8 +19,14 @@ import com.abt.price.bean.zhihu.Stories;
  */
 public class ZhihuAdapter extends BaseAdapter<Stories, BaseViewHolder> {
 
+    private ZhihuVM zhihuVM;
+
     public ZhihuAdapter(Context context) {
         super(context);
+    }
+
+    public void setZhihuVM(ZhihuVM vm) {
+        zhihuVM = vm;
     }
 
     @Override
@@ -31,6 +38,7 @@ public class ZhihuAdapter extends BaseAdapter<Stories, BaseViewHolder> {
     @Override
     public void onBindVH(BaseViewHolder baseViewHolder, int position) {
         ViewDataBinding binding = baseViewHolder.getBinding();
+        binding.setVariable(BR.zhihuVM, zhihuVM);
         binding.setVariable(BR.simpleZhihuBean, mList.get(position));
         binding.setVariable(BR.position,position);
         binding.setVariable(BR.adapter,this);

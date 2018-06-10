@@ -39,6 +39,7 @@ public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
         mContext = this;
         initRecyclerView();
         zhihuVM = new ZhihuVM(this, zhihuAdapter);
+        zhihuAdapter.setZhihuVM(zhihuVM);
     }
 
     /**

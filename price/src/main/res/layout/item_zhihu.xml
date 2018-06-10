@@ -6,6 +6,10 @@
         <import type="com.abt.price.R" />
 
         <variable
+            name="zhihuVM"
+            type="com.abt.price.ui.viewmodel.ZhihuVM" />
+
+        <variable
             name="simpleZhihuBean"
             type="com.abt.price.bean.zhihu.Stories" />
 
@@ -24,7 +28,8 @@
         android:paddingLeft="@dimen/dp_15"
         android:paddingRight="@dimen/dp_15"
         android:paddingTop="@dimen/dp_8"
-        android:paddingBottom="@dimen/dp_8" >
+        android:paddingBottom="@dimen/dp_8"
+        android:onClick="@{ ()->zhihuVM.onItemClick(simpleZhihuBean.getId()) }">
 
         <ImageView
             android:id="@+id/header_iv"
