@@ -1,4 +1,4 @@
-package com.abt.price.bean;
+package com.abt.price.bean.zhihu;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
