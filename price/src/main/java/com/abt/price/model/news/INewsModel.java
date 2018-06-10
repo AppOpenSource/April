@@ -1,7 +1,7 @@
-package com.abt.price.model;
+package com.abt.price.model.news;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.SimpleNewsBean;
+import com.abt.price.bean.news.SimpleNewsBean;
 
 /**
  * @描述： @INewsModel

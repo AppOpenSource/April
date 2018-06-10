@@ -1,7 +1,7 @@
-package com.abt.price.model;
+package com.abt.price.model.zhihu;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.SimpleZhihuBean;
+import com.abt.price.bean.zhihu.SimpleZhihuBean;
 
 /**
  * @描述： @IZhihuModel

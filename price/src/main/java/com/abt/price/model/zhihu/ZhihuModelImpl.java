@@ -1,12 +1,12 @@
-package com.abt.price.model;
+package com.abt.price.model.zhihu;
 
 import android.os.Handler;
 import android.util.Log;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.NewsBean;
-import com.abt.price.bean.SimpleNewsBean;
-import com.abt.price.http.HttpUtils;
+import com.abt.price.bean.zhihu.SimpleZhihuBean;
+import com.abt.price.bean.zhihu.ZhihuBean;
+import com.abt.price.api.retrofitHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,28 +17,28 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @描述： @NewsModelImpl
+ * @描述： @ZhihuModelImpl
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsModelImpl implements INewsModel {
+public class ZhihuModelImpl implements IZhihuModel {
 
-    private static final String TAG = "NewsModelImpl";
-    List<SimpleNewsBean> simpleNewsBeanList = new ArrayList<>();
+    private static final String TAG = "ZhihuModelImpl";
+    List<SimpleZhihuBean> simpleZhihuBeanList = new ArrayList<>();
 
     @Override
-    public void loadNewsData(final int page, final BaseLoadListener<SimpleNewsBean> loadListener) {
-        HttpUtils.getNewsData()
+    public void loadZhihuData(final int page, final BaseLoadListener<SimpleZhihuBean> loadListener) {
+        retrofitHelper.getZhihuData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableObserver<NewsBean>() {
+                .subscribe(new DisposableObserver<ZhihuBean>() {
                     @Override
-                    public void onNext(@NonNull NewsBean newsBean) {
+                    public void onNext(@NonNull ZhihuBean bean) {
                         Log.i(TAG, "onNext: ");
-                        List<NewsBean.OthersBean> othersBeanList = newsBean.getOthers();
-                        simpleNewsBeanList.clear();
+                        List<ZhihuBean.OthersBean> othersBeanList = bean.getOthers();
+                        simpleZhihuBeanList.clear();
                         if (othersBeanList != null && othersBeanList.size() > 0) {
-                            for (NewsBean.OthersBean othersBean : othersBeanList) {
+                            for (ZhihuBean.OthersBean othersBean : othersBeanList) {
                                 String thumbnail = othersBean.getThumbnail();
                                 String name = othersBean.getName();
                                 String description = othersBean.getDescription();
@@ -47,11 +47,10 @@ public class NewsModelImpl implements INewsModel {
                                 Log.i(TAG, "description:---->" + description);
 
                                 //构造Adapter所需的数据源
-                                SimpleNewsBean simpleNewsBean = new SimpleNewsBean();
+                                SimpleZhihuBean simpleNewsBean = new SimpleZhihuBean();
                                 simpleNewsBean.thumbnail.set(thumbnail);
-                                simpleNewsBean.name.set(name);
                                 simpleNewsBean.description.set(description);
-                                simpleNewsBeanList.add(simpleNewsBean);
+                                simpleZhihuBeanList.add(simpleNewsBean);
 
                                 if (page > 1) {
                                     //这个接口暂时没有分页的数据，这里为了模拟分页，通过取第1条数据作为分页的数据
@@ -80,7 +79,7 @@ public class NewsModelImpl implements INewsModel {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                loadListener.loadSuccess(simpleNewsBeanList);
+                                loadListener.loadSuccess(simpleZhihuBeanList);
                                 loadListener.loadComplete();
                             }
                         }, 2000);

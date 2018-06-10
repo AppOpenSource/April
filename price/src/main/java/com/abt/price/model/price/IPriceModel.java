@@ -1,7 +1,7 @@
-package com.abt.price.model;
+package com.abt.price.model.price;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.SimplePriceBean;
+import com.abt.price.bean.price.SimplePriceBean;
 
 /**
  * @描述： @IPriceModel

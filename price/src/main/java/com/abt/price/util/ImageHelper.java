@@ -1,4 +1,4 @@
-package com.abt.price.helper;
+package com.abt.price.util;
 
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;

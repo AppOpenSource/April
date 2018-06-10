@@ -1,4 +1,4 @@
-package com.abt.price.bean;
+package com.abt.price.bean.news;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;

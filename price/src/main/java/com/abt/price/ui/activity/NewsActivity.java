@@ -1,4 +1,4 @@
-package com.abt.price.view.activity;
+package com.abt.price.ui.activity;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -10,35 +10,35 @@ import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.R;
-import com.abt.price.view.adapter.ZhihuAdapter;
-import com.abt.price.databinding.ActivityZhihuBinding;
-import com.abt.price.view.IZhihuView;
-import com.abt.price.view.viewmodel.ZhihuVM;
+import com.abt.price.ui.adapter.NewsAdapter;
+import com.abt.price.databinding.ActivityNewsBinding;
+import com.abt.price.ui.INewsView;
+import com.abt.price.ui.viewmodel.NewsVM;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import static com.abt.price.constant.MainConstant.LoadData.FIRST_LOAD;
 
 /**
- * @描述： @ZhihuActivity
+ * @描述： @NewsActivity
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
+public class NewsActivity extends AppCompatActivity implements INewsView,
         XRecyclerView.LoadingListener {
 
     private Context mContext;
-    private ActivityZhihuBinding binding;
-    private ZhihuAdapter zhihuAdapter;
-    private ZhihuVM zhihuVM;
+    private ActivityNewsBinding binding;
+    private NewsAdapter newsAdapter; //新闻列表的适配器
+    private NewsVM newsVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_zhihu);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_news);
         mContext = this;
         initRecyclerView();
-        zhihuVM = new ZhihuVM(this, zhihuAdapter);
+        newsVM = new NewsVM(this, newsAdapter);
     }
 
     /**
@@ -52,20 +52,20 @@ public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.newsRv.setLayoutManager(layoutManager);
-        zhihuAdapter = new ZhihuAdapter(this);
-        binding.newsRv.setAdapter(zhihuAdapter);
+        newsAdapter = new NewsAdapter(this);
+        binding.newsRv.setAdapter(newsAdapter);
     }
 
     @Override
     public void onRefresh() {
         //下拉刷新
-        zhihuVM.loadRefreshData();
+        newsVM.loadRefreshData();
     }
 
     @Override
     public void onLoadMore() {
         //上拉加载更多
-        zhihuVM.loadMoreData();
+        newsVM.loadMoreData();
     }
 
     @Override

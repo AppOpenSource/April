@@ -1,47 +1,44 @@
-package com.abt.price.view.activity;
+package com.abt.price.ui.activity;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.R;
-import com.abt.price.view.adapter.PriceAdapter;
-import com.abt.price.databinding.ActivityPriceBinding;
-import com.abt.price.view.IPriceView;
-import com.abt.price.view.viewmodel.PriceVM;
-import com.abt.price.widget.RecyclerViewDivider;
+import com.abt.price.ui.adapter.ZhihuAdapter;
+import com.abt.price.databinding.ActivityZhihuBinding;
+import com.abt.price.ui.IZhihuView;
+import com.abt.price.ui.viewmodel.ZhihuVM;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import static com.abt.price.constant.MainConstant.LoadData.FIRST_LOAD;
 
 /**
- * @描述： @PriceActivity
+ * @描述： @ZhihuActivity
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class PriceActivity extends AppCompatActivity implements IPriceView,
+public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
         XRecyclerView.LoadingListener {
 
     private Context mContext;
-    private ActivityPriceBinding binding;
-    private PriceAdapter priceAdapter; //新闻列表的适配器
-    private PriceVM priceVM;
+    private ActivityZhihuBinding binding;
+    private ZhihuAdapter zhihuAdapter;
+    private ZhihuVM zhihuVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_price);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_zhihu);
         mContext = this;
         initRecyclerView();
-        priceVM = new PriceVM(this, priceAdapter);
+        zhihuVM = new ZhihuVM(this, zhihuAdapter);
     }
 
     /**
@@ -55,28 +52,20 @@ public class PriceActivity extends AppCompatActivity implements IPriceView,
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.newsRv.setLayoutManager(layoutManager);
-
-        //添加自定义的分割线
-        RecyclerViewDivider divider = new RecyclerViewDivider(this, DividerItemDecoration.VERTICAL);
-        divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.custom_divider));
-        binding.newsRv.addItemDecoration(divider);
-        //添加Android自带的分割线
-        //binding.newsRv.addItemDecoration(new RecyclerViewDivider(this,DividerItemDecoration.VERTICAL));
-
-        priceAdapter = new PriceAdapter(this);
-        binding.newsRv.setAdapter(priceAdapter);
+        zhihuAdapter = new ZhihuAdapter(this);
+        binding.newsRv.setAdapter(zhihuAdapter);
     }
 
     @Override
     public void onRefresh() {
         //下拉刷新
-        priceVM.loadRefreshData();
+        zhihuVM.loadRefreshData();
     }
 
     @Override
     public void onLoadMore() {
         //上拉加载更多
-        priceVM.loadMoreData();
+        zhihuVM.loadMoreData();
     }
 
     @Override

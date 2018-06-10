@@ -1,41 +1,41 @@
-package com.abt.price.view.viewmodel;
+package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.view.adapter.ZhihuAdapter;
-import com.abt.price.bean.SimpleZhihuBean;
+import com.abt.price.ui.adapter.PriceAdapter;
+import com.abt.price.bean.price.SimplePriceBean;
 import com.abt.price.constant.MainConstant;
-import com.abt.price.model.IZhihuModel;
-import com.abt.price.model.ZhihuModelImpl;
-import com.abt.price.view.IZhihuView;
+import com.abt.price.model.price.IPriceModel;
+import com.abt.price.model.price.PriceModelImpl;
+import com.abt.price.ui.IPriceView;
 
 import java.util.List;
 
 /**
- * @描述： @ZhihuVM
+ * @描述： @PriceVM
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
-    private static final String TAG = "ZhihuVM";
-    private IZhihuModel mZhihuModel;
-    private IZhihuView mZhihuView;
-    private ZhihuAdapter mAdapter;
+public class PriceVM implements BaseLoadListener<SimplePriceBean> {
+    private static final String TAG = "PriceVM";
+    private IPriceModel mPriceModel;
+    private IPriceView mPriceView;
+    private PriceAdapter mAdapter;
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
 
-    public ZhihuVM(IZhihuView zhihuView, ZhihuAdapter mAdapter) {
-        this.mZhihuView = zhihuView;
-        this.mAdapter = mAdapter;
-        mZhihuModel = new ZhihuModelImpl();
-        getZhihuData();
+    public PriceVM(IPriceView priceView, PriceAdapter adapter) {
+        this.mPriceView = priceView;
+        this.mAdapter = adapter;
+        mPriceModel = new PriceModelImpl();
+        getNewsData();
     }
 
     /**
-     * 第一次获取知乎数据
+     * 第一次获取新闻数据
      */
-    private void getZhihuData() {
+    private void getNewsData() {
         loadType = MainConstant.LoadData.FIRST_LOAD;
-        mZhihuModel.loadZhihuData(currPage, this);
+        mPriceModel.loadPriceData(currPage, this);
     }
 
     /**
@@ -44,7 +44,7 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
     public void loadRefreshData() {
         loadType = MainConstant.LoadData.REFRESH;
         currPage = 1;
-        mZhihuModel.loadZhihuData(currPage, this);
+        mPriceModel.loadPriceData(currPage, this);
     }
 
     /**
@@ -53,11 +53,11 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
     public void loadMoreData() {
         loadType = MainConstant.LoadData.LOAD_MORE;
         currPage++;
-        mZhihuModel.loadZhihuData(currPage, this);
+        mPriceModel.loadPriceData(currPage, this);
     }
 
     @Override
-    public void loadSuccess(List<SimpleZhihuBean> list) {
+    public void loadSuccess(List<SimplePriceBean> list) {
         if (currPage > 1) {
             //上拉加载的数据
             mAdapter.loadMoreData(list);
@@ -74,17 +74,17 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
             //加载失败需要回到加载之前的页数
             currPage--;
         }
-        mZhihuView.loadFailure(message);
+        mPriceView.loadFailure(message);
     }
 
     @Override
     public void loadStart() {
-        mZhihuView.loadStart(loadType);
+        mPriceView.loadStart(loadType);
     }
 
     @Override
     public void loadComplete() {
-        mZhihuView.loadComplete();
+        mPriceView.loadComplete();
     }
 }
 

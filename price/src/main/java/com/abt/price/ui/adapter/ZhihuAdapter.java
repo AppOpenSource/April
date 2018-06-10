@@ -1,4 +1,4 @@
-package com.abt.price.view.adapter;
+package com.abt.price.ui.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -9,7 +9,7 @@ import com.abt.basic.arch.mvvm.view.load.BaseAdapter;
 import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.SimpleZhihuBean;
+import com.abt.price.bean.zhihu.SimpleZhihuBean;
 
 /**
  * @描述： @ZhihuAdapter

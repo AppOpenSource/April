@@ -1,4 +1,4 @@
-package com.abt.price.view.adapter;
+package com.abt.price.ui.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -10,29 +10,29 @@ import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.SimpleNewsBean;
+import com.abt.price.bean.price.SimplePriceBean;
 
 /**
  * @描述： @NewsAdapter
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsAdapter extends BaseAdapter<SimpleNewsBean, BaseViewHolder> {
+public class PriceAdapter extends BaseAdapter<SimplePriceBean, BaseViewHolder> {
 
-    public NewsAdapter(Context context) {
+    public PriceAdapter(Context context) {
         super(context);
     }
 
     @Override
     public BaseViewHolder onCreateVH(ViewGroup parent, int viewType) {
-        ViewDataBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.item_news, parent, false);
+        ViewDataBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.item_price, parent, false);
         return new BaseViewHolder(dataBinding);
     }
 
     @Override
     public void onBindVH(BaseViewHolder baseViewHolder, int position) {
         ViewDataBinding binding = baseViewHolder.getBinding();
-        binding.setVariable(BR.simpleNewsBean, mList.get(position));
+        binding.setVariable(BR.simplePriceBean, mList.get(position));
         binding.setVariable(BR.position,position);
         binding.setVariable(BR.adapter,this);
         binding.executePendingBindings(); //防止闪烁
@@ -40,15 +40,15 @@ public class NewsAdapter extends BaseAdapter<SimpleNewsBean, BaseViewHolder> {
 
     /**
      * 点赞
-     * @param simpleNewsBean
+     * @param simplePriceBean
      * @param position
      */
-    public void clickDianZan(SimpleNewsBean simpleNewsBean, int position) {
-        if (simpleNewsBean.isGood.get()) {
-            simpleNewsBean.isGood.set(false);
+    public void clickDianZan(SimplePriceBean simplePriceBean, int position) {
+        if (simplePriceBean.done.get()) {
+            simplePriceBean.done.set(false);
             ToastUtils.show(mContext, "取消点赞 position=" + position);
         } else {
-            simpleNewsBean.isGood.set(true);
+            simplePriceBean.done.set(true);
             ToastUtils.show(mContext, "点赞成功 position=" + position);
         }
     }

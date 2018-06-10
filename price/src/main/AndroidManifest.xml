@@ -13,15 +13,15 @@
         android:name=".PriceApp"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".view.activity.NewsActivity">
+        <activity android:name=".ui.activity.NewsActivity">
 
         </activity>
 
-        <activity android:name=".view.activity.PriceActivity">
+        <activity android:name=".ui.activity.PriceActivity">
 
         </activity>
 
-        <activity android:name=".view.activity.ZhihuActivity">
+        <activity android:name=".ui.activity.ZhihuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

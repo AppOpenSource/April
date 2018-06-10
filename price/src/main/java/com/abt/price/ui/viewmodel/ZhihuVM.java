@@ -1,41 +1,41 @@
-package com.abt.price.view.viewmodel;
+package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.view.adapter.NewsAdapter;
-import com.abt.price.bean.SimpleNewsBean;
+import com.abt.price.ui.adapter.ZhihuAdapter;
+import com.abt.price.bean.zhihu.SimpleZhihuBean;
 import com.abt.price.constant.MainConstant;
-import com.abt.price.model.INewsModel;
-import com.abt.price.model.NewsModelImpl;
-import com.abt.price.view.INewsView;
+import com.abt.price.model.zhihu.IZhihuModel;
+import com.abt.price.model.zhihu.ZhihuModelImpl;
+import com.abt.price.ui.IZhihuView;
 
 import java.util.List;
 
 /**
- * @描述： @NewsVM
+ * @描述： @ZhihuVM
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
-    private static final String TAG = "NewsVM";
-    private INewsModel mNewsModel;
-    private INewsView mNewsView;
-    private NewsAdapter mAdapter;
+public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
+    private static final String TAG = "ZhihuVM";
+    private IZhihuModel mZhihuModel;
+    private IZhihuView mZhihuView;
+    private ZhihuAdapter mAdapter;
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
 
-    public NewsVM(INewsView mNewsView, NewsAdapter mAdapter) {
-        this.mNewsView = mNewsView;
+    public ZhihuVM(IZhihuView zhihuView, ZhihuAdapter mAdapter) {
+        this.mZhihuView = zhihuView;
         this.mAdapter = mAdapter;
-        mNewsModel = new NewsModelImpl();
-        getNewsData();
+        mZhihuModel = new ZhihuModelImpl();
+        getZhihuData();
     }
 
     /**
-     * 第一次获取新闻数据
+     * 第一次获取知乎数据
      */
-    private void getNewsData() {
+    private void getZhihuData() {
         loadType = MainConstant.LoadData.FIRST_LOAD;
-        mNewsModel.loadNewsData(currPage, this);
+        mZhihuModel.loadZhihuData(currPage, this);
     }
 
     /**
@@ -44,7 +44,7 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
     public void loadRefreshData() {
         loadType = MainConstant.LoadData.REFRESH;
         currPage = 1;
-        mNewsModel.loadNewsData(currPage, this);
+        mZhihuModel.loadZhihuData(currPage, this);
     }
 
     /**
@@ -53,11 +53,11 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
     public void loadMoreData() {
         loadType = MainConstant.LoadData.LOAD_MORE;
         currPage++;
-        mNewsModel.loadNewsData(currPage, this);
+        mZhihuModel.loadZhihuData(currPage, this);
     }
 
     @Override
-    public void loadSuccess(List<SimpleNewsBean> list) {
+    public void loadSuccess(List<SimpleZhihuBean> list) {
         if (currPage > 1) {
             //上拉加载的数据
             mAdapter.loadMoreData(list);
@@ -74,17 +74,17 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
             //加载失败需要回到加载之前的页数
             currPage--;
         }
-        mNewsView.loadFailure(message);
+        mZhihuView.loadFailure(message);
     }
 
     @Override
     public void loadStart() {
-        mNewsView.loadStart(loadType);
+        mZhihuView.loadStart(loadType);
     }
 
     @Override
     public void loadComplete() {
-        mNewsView.loadComplete();
+        mZhihuView.loadComplete();
     }
 }
 
