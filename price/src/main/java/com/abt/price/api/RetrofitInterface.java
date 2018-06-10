@@ -1,8 +1,8 @@
-package com.abt.price.retrofitinterface;
+package com.abt.price.api;
 
-import com.abt.price.bean.NewsBean;
-import com.abt.price.bean.PriceBean;
-import com.abt.price.bean.ZhihuBean;
+import com.abt.price.bean.news.NewsBean;
+import com.abt.price.bean.price.PriceBean;
+import com.abt.price.bean.zhihu.ZhihuBean;
 import com.abt.price.constant.URLConstant;
 
 import io.reactivex.Observable;
@@ -16,7 +16,7 @@ import retrofit2.http.GET;
 public interface RetrofitInterface {
 
     //获取“分类中搜索商品”的数据
-    @GET(URLConstant.URL_PATH)
+    @GET(URLConstant.ZHIHU_THEMES)
     Observable<NewsBean> getNewsData();
 
     @GET(URLConstant.PRICE_ADD_ITEM)

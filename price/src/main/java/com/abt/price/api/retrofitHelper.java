@@ -1,10 +1,9 @@
-package com.abt.price.http;
+package com.abt.price.api;
 
-import com.abt.price.bean.NewsBean;
-import com.abt.price.bean.PriceBean;
-import com.abt.price.bean.ZhihuBean;
+import com.abt.price.bean.news.NewsBean;
+import com.abt.price.bean.price.PriceBean;
+import com.abt.price.bean.zhihu.ZhihuBean;
 import com.abt.price.constant.URLConstant;
-import com.abt.price.retrofitinterface.RetrofitInterface;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -16,11 +15,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * @描述： @HttpUtils
+ * @描述： @retrofitHelper
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class HttpUtils {
+public class retrofitHelper {
 
     private static final int DEFAULT_TIMEOUT = 8; //连接 超时的时间，单位：秒
     private static Retrofit retrofit;
