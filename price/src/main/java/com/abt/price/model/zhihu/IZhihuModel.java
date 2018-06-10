@@ -1,6 +1,7 @@
 package com.abt.price.model.zhihu;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
+import com.abt.price.bean.zhihu.News;
 import com.abt.price.bean.zhihu.Stories;
 
 /**
@@ -10,11 +11,21 @@ import com.abt.price.bean.zhihu.Stories;
  */
 public interface IZhihuModel {
     /**
-     * 获取知乎数据
+     * 获取最新的知乎数据
      * @param page 页数
      * @param loadListener
      */
     void getLatestNews(int page, BaseLoadListener<Stories> loadListener);
-
+    /**
+     * 获取更多的知乎数据
+     * @param page 页数
+     * @param loadListener
+     */
     void getBeforeNews(int page, BaseLoadListener<Stories> loadListener);
+    /**
+     * 获取最新的知乎数据
+     * @param id newsId
+     * @param loadListener
+     */
+    void getDetailNews(String id, BaseLoadListener<News> loadListener);
 }

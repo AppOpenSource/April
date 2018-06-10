@@ -7,6 +7,7 @@ import android.util.Log;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.api.ApiFactory;
 import com.abt.price.api.ZhihuApi;
+import com.abt.price.bean.zhihu.News;
 import com.abt.price.bean.zhihu.NewsTimeLine;
 import com.abt.price.bean.zhihu.Stories;
 
@@ -60,13 +61,13 @@ public class ZhihuModelImpl implements IZhihuModel {
                     @Override
                     public void onComplete() {
                         Log.i(TAG, "onComplete: ");
-                        new Handler().postDelayed(new Runnable() {
+                        new Handler().post(new Runnable() {
                             @Override
                             public void run() {
                                 loadListener.loadSuccess(timeLineList);
                                 loadListener.loadComplete();
                             }
-                        }, 2000);
+                        });
                     }
                 });
     }
@@ -102,16 +103,56 @@ public class ZhihuModelImpl implements IZhihuModel {
                     @Override
                     public void onComplete() {
                         Log.i(TAG, "onComplete: ");
-                        new Handler().postDelayed(new Runnable() {
+                        new Handler().post(new Runnable() {
                             @Override
                             public void run() {
                                 loadListener.loadSuccess(timeLineList);
                                 loadListener.loadComplete();
                             }
-                        }, 2000);
+                        });
                     }
                 });
     }
 
+    @Override
+    public void getDetailNews(String id, BaseLoadListener<News> loadListener) {
+        List<News> newsList = new ArrayList<>();
+        zhihuApi.getDetailNews(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableObserver<News>() {
+
+                    @Override
+                    public void onNext(@NonNull News bean) {
+                        Log.i(TAG, "onNext: ");
+                        newsList.add(bean);
+                    }
+
+                    @Override
+                    protected void onStart() {
+                        super.onStart();
+                        Log.i(TAG, "onStart: ");
+                        loadListener.loadStart();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable throwable) {
+                        Log.i(TAG, "onError: " + throwable.getMessage());
+                        loadListener.loadFailure(throwable.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.i(TAG, "onComplete: ");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadListener.loadSuccess(newsList);
+                                loadListener.loadComplete();
+                            }
+                        }, 0);
+                    }
+                });
+    }
 
 }
