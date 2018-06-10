@@ -25,11 +25,12 @@ import io.reactivex.schedulers.Schedulers;
 public class ZhihuModelImpl implements IZhihuModel {
 
     private static final String TAG = "ZhihuModelImpl";
+    private String time = null;
     private List<Stories> timeLineList = new ArrayList<>();
     public static final ZhihuApi zhihuApi = ApiFactory.getZhihuApiSingleton();
 
     @Override
-    public void loadZhihuData(final int page, final BaseLoadListener<Stories> loadListener) {
+    public void getLatestNews(final int page, final BaseLoadListener<Stories> loadListener) {
         zhihuApi.getLatestNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -38,6 +39,49 @@ public class ZhihuModelImpl implements IZhihuModel {
                     @Override
                     public void onNext(@NonNull NewsTimeLine bean) {
                         Log.i(TAG, "onNext: ");
+                        time = bean.getDate();
+                        timeLineList.clear();
+                        timeLineList = bean.getStories();
+                    }
+
+                    @Override
+                    protected void onStart() {
+                        super.onStart();
+                        Log.i(TAG, "onStart: ");
+                        loadListener.loadStart();
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable throwable) {
+                        Log.i(TAG, "onError: " + throwable.getMessage());
+                        loadListener.loadFailure(throwable.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.i(TAG, "onComplete: ");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadListener.loadSuccess(timeLineList);
+                                loadListener.loadComplete();
+                            }
+                        }, 2000);
+                    }
+                });
+    }
+
+    @Override
+    public void getBeforeNews(int page, BaseLoadListener<Stories> loadListener) {
+        zhihuApi.getBeforetNews(time)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableObserver<NewsTimeLine>() {
+
+                    @Override
+                    public void onNext(@NonNull NewsTimeLine bean) {
+                        Log.i(TAG, "onNext: ");
+                        time = bean.getDate();
                         timeLineList.clear();
                         timeLineList = bean.getStories();
                     }

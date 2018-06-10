@@ -14,5 +14,7 @@ public interface IZhihuModel {
      * @param page 页数
      * @param loadListener
      */
-    void loadZhihuData(int page, BaseLoadListener<Stories> loadListener);
+    void getLatestNews(int page, BaseLoadListener<Stories> loadListener);
+
+    void getBeforeNews(int page, BaseLoadListener<Stories> loadListener);
 }

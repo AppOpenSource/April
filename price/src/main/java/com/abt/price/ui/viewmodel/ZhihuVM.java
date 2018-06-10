@@ -1,7 +1,6 @@
 package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.zhihu.NewsTimeLine;
 import com.abt.price.bean.zhihu.Stories;
 import com.abt.price.model.zhihu.IZhihuModel;
 import com.abt.price.model.zhihu.ZhihuModelImpl;
@@ -36,7 +35,7 @@ public class ZhihuVM implements BaseLoadListener<Stories> {
      */
     private void getZhihuData() {
         loadType = PageConstant.LoadData.FIRST_LOAD;
-        mZhihuModel.loadZhihuData(currPage, this);
+        mZhihuModel.getLatestNews(currPage, this);
     }
 
     /**
@@ -45,7 +44,7 @@ public class ZhihuVM implements BaseLoadListener<Stories> {
     public void loadRefreshData() {
         loadType = PageConstant.LoadData.REFRESH;
         currPage = 1;
-        mZhihuModel.loadZhihuData(currPage, this);
+        mZhihuModel.getLatestNews(currPage, this);
     }
 
     /**
@@ -54,7 +53,7 @@ public class ZhihuVM implements BaseLoadListener<Stories> {
     public void loadMoreData() {
         loadType = PageConstant.LoadData.LOAD_MORE;
         currPage++;
-        mZhihuModel.loadZhihuData(currPage, this);
+        mZhihuModel.getBeforeNews(currPage, this);
     }
 
     @Override
