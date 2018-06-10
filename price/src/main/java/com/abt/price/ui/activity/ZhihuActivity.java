@@ -17,7 +17,7 @@ import com.abt.price.ui.viewmodel.ZhihuVM;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
-import static com.abt.price.constant.MainConstant.LoadData.FIRST_LOAD;
+import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
 
 /**
  * @描述： @ZhihuActivity

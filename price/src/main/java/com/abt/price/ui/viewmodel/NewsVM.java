@@ -3,7 +3,7 @@ package com.abt.price.ui.viewmodel;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.ui.adapter.NewsAdapter;
 import com.abt.price.bean.news.SimpleNewsBean;
-import com.abt.price.constant.MainConstant;
+import com.abt.price.ui.constant.PageConstant;
 import com.abt.price.model.news.INewsModel;
 import com.abt.price.model.news.NewsModelImpl;
 import com.abt.price.ui.INewsView;
@@ -34,7 +34,7 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
      * 第一次获取新闻数据
      */
     private void getNewsData() {
-        loadType = MainConstant.LoadData.FIRST_LOAD;
+        loadType = PageConstant.LoadData.FIRST_LOAD;
         mNewsModel.loadNewsData(currPage, this);
     }
 
@@ -42,7 +42,7 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
      * 获取下拉刷新的数据
      */
     public void loadRefreshData() {
-        loadType = MainConstant.LoadData.REFRESH;
+        loadType = PageConstant.LoadData.REFRESH;
         currPage = 1;
         mNewsModel.loadNewsData(currPage, this);
     }
@@ -51,7 +51,7 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
      * 获取上拉加载更多的数据
      */
     public void loadMoreData() {
-        loadType = MainConstant.LoadData.LOAD_MORE;
+        loadType = PageConstant.LoadData.LOAD_MORE;
         currPage++;
         mNewsModel.loadNewsData(currPage, this);
     }

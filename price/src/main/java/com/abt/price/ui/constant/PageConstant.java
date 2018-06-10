@@ -1,11 +1,11 @@
-package com.abt.price.constant;
+package com.abt.price.ui.constant;
 
 /**
- * @描述： @MainConstant
+ * @描述： @PageConstant
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class MainConstant {
+public class PageConstant {
 
     public class LoadData {
         public static final int FIRST_LOAD = 0; //首次加载

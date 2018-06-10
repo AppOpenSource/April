@@ -3,7 +3,7 @@ package com.abt.price.ui.viewmodel;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.ui.adapter.ZhihuAdapter;
 import com.abt.price.bean.zhihu.SimpleZhihuBean;
-import com.abt.price.constant.MainConstant;
+import com.abt.price.ui.constant.PageConstant;
 import com.abt.price.model.zhihu.IZhihuModel;
 import com.abt.price.model.zhihu.ZhihuModelImpl;
 import com.abt.price.ui.IZhihuView;
@@ -34,7 +34,7 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
      * 第一次获取知乎数据
      */
     private void getZhihuData() {
-        loadType = MainConstant.LoadData.FIRST_LOAD;
+        loadType = PageConstant.LoadData.FIRST_LOAD;
         mZhihuModel.loadZhihuData(currPage, this);
     }
 
@@ -42,7 +42,7 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
      * 获取下拉刷新的数据
      */
     public void loadRefreshData() {
-        loadType = MainConstant.LoadData.REFRESH;
+        loadType = PageConstant.LoadData.REFRESH;
         currPage = 1;
         mZhihuModel.loadZhihuData(currPage, this);
     }
@@ -51,7 +51,7 @@ public class ZhihuVM implements BaseLoadListener<SimpleZhihuBean> {
      * 获取上拉加载更多的数据
      */
     public void loadMoreData() {
-        loadType = MainConstant.LoadData.LOAD_MORE;
+        loadType = PageConstant.LoadData.LOAD_MORE;
         currPage++;
         mZhihuModel.loadZhihuData(currPage, this);
     }
