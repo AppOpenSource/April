@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
+import com.abt.common.helper.DialogHelper;
 import com.abt.price.R;
 import com.abt.price.databinding.ActivityWebViewBinding;
 import com.abt.price.ui.IZhihuWebView;
 import com.abt.price.ui.viewmodel.ZhihuWebVM;
+
+import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
 
 /**
  * @描述： @show html with code
@@ -32,7 +35,7 @@ public class ZhihuWebActivity extends AppCompatActivity implements IZhihuWebView
         parseIntent();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_web_view);
         mContext = this;
-        zhihuWebVM = new ZhihuWebVM(this);
+        zhihuWebVM = new ZhihuWebVM(binding,this, id);
     }
 
     private void parseIntent(){
@@ -46,18 +49,20 @@ public class ZhihuWebActivity extends AppCompatActivity implements IZhihuWebView
     }
 
     @Override
-    public void loadStart(int i) {
-
+    public void loadStart(int loadType) {
+        if (loadType == FIRST_LOAD) {
+            DialogHelper.getInstance().show(mContext, "加载中...");
+        }
     }
 
     @Override
     public void loadComplete() {
-
+        DialogHelper.getInstance().close();
     }
 
     @Override
     public void loadFailure(String s) {
-
+        DialogHelper.getInstance().close();
     }
 
     @Override
