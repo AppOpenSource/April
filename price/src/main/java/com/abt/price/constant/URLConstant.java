@@ -7,12 +7,14 @@ package com.abt.price.constant;
  */
 public class URLConstant {
 
-    //public static final String URL_NEWS = "https://news-at.zhihu.com/api/4/themes";
-    //public static final String URL_BASE = "https://news-at.zhihu.com/";
-    public static final String URL_PATH = "api/4/themes";
+    // zhihu rul
+    public static final String ZHIHU_BASE_URL = "http://news-at.zhihu.com/";
+    public static final String ZHIHU_THEMES = "api/4/themes";
+    public static final String ZHIHU_LATEST_NEWS = "api/4/news/latest";
 
-    public static final String URL_BASE = "http://192.168.0.101:8080/";
-    public static final String PRICE_ADD = "/api/v1.0/price/add";
-    public static final String LOAD_MORE_PRICE = "/api/v1.0/price/loadmore/1";
+    // price url
+    public static final String PRICE_BASE_URL = "http://192.168.0.101:8080/";
+    public static final String PRICE_ADD_ITEM = "/api/v1.0/price/add";
+    public static final String PRICE_LOAD_MORE = "/api/v1.0/price/loadmore/1";
 
 }

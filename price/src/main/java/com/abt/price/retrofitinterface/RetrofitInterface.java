@@ -1,8 +1,8 @@
 package com.abt.price.retrofitinterface;
 
-
 import com.abt.price.bean.NewsBean;
 import com.abt.price.bean.PriceBean;
+import com.abt.price.bean.ZhihuBean;
 import com.abt.price.constant.URLConstant;
 
 import io.reactivex.Observable;
@@ -19,10 +19,12 @@ public interface RetrofitInterface {
     @GET(URLConstant.URL_PATH)
     Observable<NewsBean> getNewsData();
 
-    //@GET(URLConstant.PRICE_ADD)
-    @GET(URLConstant.LOAD_MORE_PRICE)
+    @GET(URLConstant.PRICE_ADD_ITEM)
     Observable<PriceBean> getPriceData();
 
-    @GET(URLConstant.LOAD_MORE_PRICE)
+    @GET(URLConstant.PRICE_LOAD_MORE)
     Observable<PriceBean> loadMorePrice();
+
+    @GET(URLConstant.ZHIHU_LATEST_NEWS)
+    Observable<ZhihuBean> loadZhihuData();
 }

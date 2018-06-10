@@ -1,32 +1,32 @@
-package com.abt.price.viewmodel;
+package com.abt.price.view.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.adapter.NewsAdapter;
-import com.abt.price.bean.SimpleNewsBean;
+import com.abt.price.view.adapter.PriceAdapter;
+import com.abt.price.bean.SimplePriceBean;
 import com.abt.price.constant.MainConstant;
-import com.abt.price.model.INewsModel;
-import com.abt.price.model.NewsModelImpl;
-import com.abt.price.view.INewsView;
+import com.abt.price.model.IPriceModel;
+import com.abt.price.model.PriceModelImpl;
+import com.abt.price.view.IPriceView;
 
 import java.util.List;
 
 /**
- * @描述： @NewsVM
+ * @描述： @PriceVM
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
-    private static final String TAG = "NewsVM";
-    private INewsModel mNewsModel;
-    private INewsView mNewsView;
-    private NewsAdapter mAdapter;
+public class PriceVM implements BaseLoadListener<SimplePriceBean> {
+    private static final String TAG = "PriceVM";
+    private IPriceModel mPriceModel;
+    private IPriceView mPriceView;
+    private PriceAdapter mAdapter;
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
 
-    public NewsVM(INewsView mNewsView, NewsAdapter mAdapter) {
-        this.mNewsView = mNewsView;
-        this.mAdapter = mAdapter;
-        mNewsModel = new NewsModelImpl();
+    public PriceVM(IPriceView priceView, PriceAdapter adapter) {
+        this.mPriceView = priceView;
+        this.mAdapter = adapter;
+        mPriceModel = new PriceModelImpl();
         getNewsData();
     }
 
@@ -35,7 +35,7 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
      */
     private void getNewsData() {
         loadType = MainConstant.LoadData.FIRST_LOAD;
-        mNewsModel.loadNewsData(currPage, this);
+        mPriceModel.loadPriceData(currPage, this);
     }
 
     /**
@@ -44,7 +44,7 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
     public void loadRefreshData() {
         loadType = MainConstant.LoadData.REFRESH;
         currPage = 1;
-        mNewsModel.loadNewsData(currPage, this);
+        mPriceModel.loadPriceData(currPage, this);
     }
 
     /**
@@ -53,11 +53,11 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
     public void loadMoreData() {
         loadType = MainConstant.LoadData.LOAD_MORE;
         currPage++;
-        mNewsModel.loadNewsData(currPage, this);
+        mPriceModel.loadPriceData(currPage, this);
     }
 
     @Override
-    public void loadSuccess(List<SimpleNewsBean> list) {
+    public void loadSuccess(List<SimplePriceBean> list) {
         if (currPage > 1) {
             //上拉加载的数据
             mAdapter.loadMoreData(list);
@@ -74,17 +74,17 @@ public class NewsVM implements BaseLoadListener<SimpleNewsBean> {
             //加载失败需要回到加载之前的页数
             currPage--;
         }
-        mNewsView.loadFailure(message);
+        mPriceView.loadFailure(message);
     }
 
     @Override
     public void loadStart() {
-        mNewsView.loadStart(loadType);
+        mPriceView.loadStart(loadType);
     }
 
     @Override
     public void loadComplete() {
-        mNewsView.loadComplete();
+        mPriceView.loadComplete();
     }
 }
 

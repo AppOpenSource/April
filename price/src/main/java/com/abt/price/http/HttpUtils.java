@@ -2,6 +2,7 @@ package com.abt.price.http;
 
 import com.abt.price.bean.NewsBean;
 import com.abt.price.bean.PriceBean;
+import com.abt.price.bean.ZhihuBean;
 import com.abt.price.constant.URLConstant;
 import com.abt.price.retrofitinterface.RetrofitInterface;
 import com.google.gson.Gson;
@@ -36,7 +37,7 @@ public class HttpUtils {
                 .create();
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(URLConstant.URL_BASE)
+                    .baseUrl(URLConstant.PRICE_BASE_URL)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -51,11 +52,17 @@ public class HttpUtils {
         return getRetrofit().getNewsData();
     }
 
+    //获取Price数据
     public static io.reactivex.Observable<PriceBean> getPriceData() {
         return getRetrofit().getPriceData();
     }
 
     public static io.reactivex.Observable<PriceBean> loadMorePrice() {
         return getRetrofit().loadMorePrice();
+    }
+
+    //获取知乎数据
+    public static io.reactivex.Observable<ZhihuBean> getZhihuData() {
+        return getRetrofit().loadZhihuData();
     }
 }
