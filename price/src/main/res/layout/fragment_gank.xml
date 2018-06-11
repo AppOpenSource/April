@@ -4,14 +4,12 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/C_00_00_00">
+        android:layout_height="match_parent" >
 
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/contentRv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#129090" />
+            android:layout_height="match_parent" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
