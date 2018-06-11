@@ -27,13 +27,13 @@ public class PriceVM implements BaseLoadListener<SimplePriceBean> {
         this.mPriceView = priceView;
         this.mAdapter = adapter;
         mPriceModel = new PriceModelImpl();
-        getNewsData();
+        getPriceData();
     }
 
     /**
      * 第一次获取新闻数据
      */
-    private void getNewsData() {
+    private void getPriceData() {
         loadType = PageConstant.LoadData.FIRST_LOAD;
         mPriceModel.loadPriceData(currPage, this);
     }

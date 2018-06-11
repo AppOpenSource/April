@@ -40,9 +40,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
         if (tag.equals("main_view_pager")) {
             switch (position) {
                 case 0:
-                    return "Gank";
-                case 1:
                     return "Price";
+                case 1:
+                    return "Gank";
             }
         }
         return null;

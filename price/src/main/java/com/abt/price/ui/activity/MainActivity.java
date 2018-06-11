@@ -3,7 +3,6 @@ package com.abt.price.ui.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +23,6 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
     private List<Fragment> fragmentList;
     private ActivityMainBinding binding;
 
@@ -39,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
     public void initTabView() {
         fragmentList = new ArrayList<>();
         //fragmentList.add(new ZhihuFragment());
-        fragmentList.add(new GankFragment());
         fragmentList.add(new PriceFragment());
-        viewPager = binding.content.findViewById(R.id.viewPager);
-        viewPager.setOffscreenPageLimit(2); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
-        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragmentList, "main_view_pager"));//给ViewPager设置适配器
-        binding.tabLayout.setupWithViewPager(viewPager);//将TabLayout和ViewPager关联起来
+        fragmentList.add(new GankFragment());
+        binding.viewPager.setOffscreenPageLimit(2); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
+        binding.viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragmentList, "main_view_pager"));//给ViewPager设置适配器
+        binding.tabLayout.setupWithViewPager(binding.viewPager);//将TabLayout和ViewPager关联起来
     }
 
     @Override

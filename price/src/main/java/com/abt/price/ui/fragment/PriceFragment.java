@@ -1,14 +1,15 @@
 package com.abt.price.ui.fragment;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
@@ -37,13 +38,24 @@ public class PriceFragment extends Fragment implements IPriceView,
     private PriceAdapter priceAdapter; //新闻列表的适配器
     private PriceVM priceVM;
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    // 在onCreate中初始化失败，无法加载layout，原因不详
+/*    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this.getActivity(), R.layout.activity_price);
         mContext = this.getContext();
         initRecyclerView();
         priceVM = new PriceVM(this, priceAdapter);
+    }*/
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = ActivityPriceBinding.inflate(inflater, container, false);
+        mContext = this.getContext();
+        initRecyclerView();
+        priceVM = new PriceVM(this, priceAdapter);
+        return binding.getRoot();
     }
 
     /**
