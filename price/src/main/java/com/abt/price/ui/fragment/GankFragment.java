@@ -1,16 +1,16 @@
 package com.abt.price.ui.fragment;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
 import com.abt.common.util.ToastUtils;
-import com.abt.price.R;
 import com.abt.price.databinding.FragmentGankBinding;
 import com.abt.price.ui.IGankView;
 import com.abt.price.ui.adapter.GankAdapter;
@@ -32,10 +32,10 @@ public class GankFragment extends Fragment implements IGankView,
     private GankAdapter gankAdapter;
     private GankVM gankVM;
 
+    @Nullable
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        binding = DataBindingUtil.setContentView(this.getActivity(), R.layout.fragment_gank);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentGankBinding.inflate(inflater, container, false);
         gridLayoutManager = new GridLayoutManager(this.getActivity(),2);
         binding.contentRv.setLayoutManager(gridLayoutManager);
         binding.contentRv.setLoadingListener(this);
@@ -45,7 +45,7 @@ public class GankFragment extends Fragment implements IGankView,
 
         gankVM = new GankVM(this, gankAdapter);
         gankAdapter.setGankVM(gankVM);
-
+        return binding.getRoot();
     }
 
     @Override
