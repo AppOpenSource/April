@@ -1,10 +1,21 @@
 package com.abt.price.model.price;
 
+import android.os.Handler;
+import android.util.Log;
+
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
+import com.abt.price.api.ApiFactory;
+import com.abt.price.api.PriceApi;
+import com.abt.price.bean.price.PriceBean;
 import com.abt.price.bean.price.SimplePriceBean;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @描述： @PriceModelImpl
@@ -14,11 +25,12 @@ import java.util.List;
 public class PriceModelImpl implements IPriceModel {
 
     private static final String TAG = "PriceModelImpl";
-    List<SimplePriceBean> simplePriceBeanList = new ArrayList<>();
+    private List<SimplePriceBean> simplePriceBeanList = new ArrayList<>();
+    public static final PriceApi priceApi = ApiFactory.getPriceSingleton();
 
     @Override
     public void loadPriceData(final int page, final BaseLoadListener<SimplePriceBean> loadListener) {
-        /*retrofitHelper.getPriceData()
+        priceApi.getPriceData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<PriceBean>() {
@@ -76,6 +88,6 @@ public class PriceModelImpl implements IPriceModel {
                             }
                         }, 2000);
                     }
-                });*/
+                });
     }
 }

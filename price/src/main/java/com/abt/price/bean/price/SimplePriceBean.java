@@ -5,7 +5,7 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 /**
- * @描述： @
+ * @描述： @SimplePriceBean
  * @作者： @黄卫旗
  * @创建时间： @08/06/2018
  */

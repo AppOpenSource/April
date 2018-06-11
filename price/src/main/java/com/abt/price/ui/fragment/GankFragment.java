@@ -36,7 +36,7 @@ public class GankFragment extends Fragment implements IGankView,
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = DataBindingUtil.setContentView(this.getActivity(), R.layout.fragment_gank);
-        gridLayoutManager = new GridLayoutManager(getContext(),2);
+        gridLayoutManager = new GridLayoutManager(this.getActivity(),2);
         binding.contentRv.setLayoutManager(gridLayoutManager);
         binding.contentRv.setLoadingListener(this);
 

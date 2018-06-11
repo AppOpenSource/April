@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -33,7 +32,6 @@ import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
 public class PriceFragment extends Fragment implements IPriceView,
         XRecyclerView.LoadingListener {
 
-    private GridLayoutManager gridLayoutManager;
     private Context mContext;
     private ActivityPriceBinding binding;
     private PriceAdapter priceAdapter; //新闻列表的适配器

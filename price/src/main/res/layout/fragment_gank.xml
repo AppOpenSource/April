@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/C_00_00_00">
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh"
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/contentRv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#129090" />
 
-            <com.jcodecraeer.xrecyclerview.XRecyclerView
-                android:id="@+id/contentRv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/gery" />
-
-        </android.support.v4.widget.SwipeRefreshLayout>
-
-    </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </layout>

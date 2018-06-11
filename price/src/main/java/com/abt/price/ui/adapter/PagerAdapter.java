@@ -3,7 +3,6 @@ package com.abt.price.ui.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -34,11 +33,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
             return fragmentList.size();
         }
         return 0;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        //super.destroyItem(container, position, object);
     }
 
     @Override
