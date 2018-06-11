@@ -38,7 +38,7 @@ public class PriceFragment extends Fragment implements IPriceView,
     private PriceAdapter priceAdapter; //新闻列表的适配器
     private PriceVM priceVM;
 
-    // 在onCreate中初始化失败，无法加载layout，原因不详
+    // 在onCreate/onViewCreate中初始化失败，无法加载layout，原因不详
 /*    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
