@@ -3,4 +3,5 @@
     <string name="load_error">网络不见了~</string>
     <string name="github">GitHub今日热门</string>
     <string name="about_me">关于我</string>
+    <string name="save_success">保存成功</string>
 </resources>

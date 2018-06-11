@@ -1,14 +1,10 @@
 package com.abt.price.ui.viewmodel;
 
-import android.content.Intent;
-
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.PriceApp;
 import com.abt.price.bean.gank.Gank;
 import com.abt.price.model.gank.GankModelImpl;
 import com.abt.price.model.gank.IGankModel;
 import com.abt.price.ui.IGankView;
-import com.abt.price.ui.activity.ZhihuWebActivity;
 import com.abt.price.ui.adapter.GankAdapter;
 import com.abt.price.ui.constant.PageConstant;
 
@@ -98,10 +94,5 @@ public class GankVM implements BaseLoadListener<Gank> {
         }
     }
 
-    public void onItemClick(String id) {
-        Intent intent = ZhihuWebActivity.newIntent(PriceApp.getAppContext(),id);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PriceApp.getAppContext().startActivity(intent);
-    }
 }
 
