@@ -13,6 +13,13 @@
         android:name=".PriceApp"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".ui.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".ui.activity.NewsActivity">
 
         </activity>
@@ -22,10 +29,7 @@
         </activity>
 
         <activity android:name=".ui.activity.ZhihuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".ui.activity.ZhihuWebActivity">
