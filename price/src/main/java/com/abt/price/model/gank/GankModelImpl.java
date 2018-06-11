@@ -73,10 +73,8 @@ public class GankModelImpl implements IGankModel {
 
     /**
      * MeiZhi = list , gankmeizhi = 福利
-     *
      * @param meizhi list
      * @param video  list
-     * @return
      */
     private Meizhi creatDesc(Meizhi meizhi, Video video) {
         for (Gank gankmeizhi : meizhi.getResults()) {
