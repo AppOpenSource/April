@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -59,7 +57,12 @@ public class GankAdapter extends BaseAdapter<Gank, BaseViewHolder> {
 
     public void imageClick(Gank gank) {
         Intent intent = PictureActivity.newIntent(gankActivity.get(),gank.getUrl(),gank.getDesc());
-        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+        gankActivity.get().startActivity(intent);
+
+        /**
+         * 图片逐渐变大打开activiy，图片逐渐变小关闭activity
+         */
+        /*ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 gankActivity.get(), imageView, PictureActivity.TRANSIT_PIC);
         // Android 5.0+
         try {
@@ -67,7 +70,7 @@ public class GankAdapter extends BaseAdapter<Gank, BaseViewHolder> {
         } catch (Exception e) {
             e.printStackTrace();
             gankActivity.get().startActivity(intent);
-        }
+        }*/
     }
 
 }
