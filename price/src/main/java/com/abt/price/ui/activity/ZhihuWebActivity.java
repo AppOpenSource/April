@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
 import com.abt.price.R;
+import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityWebViewBinding;
 import com.abt.price.ui.IZhihuWebView;
 import com.abt.price.ui.viewmodel.ZhihuWebVM;
@@ -20,7 +20,7 @@ import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
  * @作者： @黄卫旗
  * @创建时间： @10/06/2018
  */
-public class ZhihuWebActivity extends AppCompatActivity implements IZhihuWebView {
+public class ZhihuWebActivity extends BaseActivity implements IZhihuWebView {
 
     private static final String ID = "id";
     private String id;

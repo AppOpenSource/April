@@ -4,7 +4,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 
@@ -12,9 +11,10 @@ import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.R;
-import com.abt.price.ui.adapter.PriceAdapter;
+import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityPriceBinding;
 import com.abt.price.ui.IPriceView;
+import com.abt.price.ui.adapter.PriceAdapter;
 import com.abt.price.ui.viewmodel.PriceVM;
 import com.abt.price.widget.RecyclerViewDivider;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -27,7 +27,7 @@ import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class PriceActivity extends AppCompatActivity implements IPriceView,
+public class PriceActivity extends BaseActivity implements IPriceView,
         XRecyclerView.LoadingListener {
 
     private Context mContext;

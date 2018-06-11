@@ -3,16 +3,16 @@ package com.abt.price.ui.activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.R;
-import com.abt.price.ui.adapter.NewsAdapter;
+import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityNewsBinding;
 import com.abt.price.ui.INewsView;
+import com.abt.price.ui.adapter.NewsAdapter;
 import com.abt.price.ui.viewmodel.NewsVM;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -24,7 +24,7 @@ import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsActivity extends AppCompatActivity implements INewsView,
+public class NewsActivity extends BaseActivity implements INewsView,
         XRecyclerView.LoadingListener {
 
     private Context mContext;

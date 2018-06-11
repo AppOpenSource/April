@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.abt.common.util.ToastUtils;
 import com.abt.price.R;
+import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityPicBinding;
 import com.bumptech.glide.Glide;
 
@@ -27,7 +27,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * @作者： @黄卫旗
  * @创建时间： @11/06/2018
  */
-public class PictureActivity extends AppCompatActivity {
+public class PictureActivity extends BaseActivity {
 
     public static final String IMG_URL = "img_url";
     public static final String IMG_DESC = "img_desc";

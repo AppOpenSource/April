@@ -3,11 +3,11 @@ package com.abt.price.ui.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.abt.price.R;
+import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityMainBinding;
 import com.abt.price.ui.adapter.PagerAdapter;
 import com.abt.price.ui.fragment.GankFragment;
@@ -22,7 +22,7 @@ import java.util.List;
  * @作者： @黄卫旗
  * @创建时间： @11/06/2018
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private List<Fragment> fragmentList;
     private ActivityMainBinding binding;
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.today_github) {
-            String github_trending = "https://github.com/trending";
-            //startActivity(GankWebActivity.newIntent(this, github_trending));
+            String githubTrending = "https://github.com/trending";
+            startActivity(GankWebActivity.newIntent(this, githubTrending));
             return true;
         } else if (item.getItemId() == R.id.about_me) {
             //startActivity(new Intent(this, AboutMeActivity.class));
