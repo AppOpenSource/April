@@ -33,7 +33,7 @@
 
     <!--TabLayout-->
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <!-- expandedTitleTextAppearance Title -->
