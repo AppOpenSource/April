@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.PriceApp;
-import com.abt.price.bean.gank.Meizhi;
+import com.abt.price.bean.gank.Gank;
 import com.abt.price.model.gank.GankModelImpl;
 import com.abt.price.model.gank.IGankModel;
 import com.abt.price.ui.IGankView;
@@ -20,7 +20,7 @@ import java.util.List;
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class GankVM implements BaseLoadListener<Meizhi> {
+public class GankVM implements BaseLoadListener<Gank> {
     private static final String TAG = "GankVM";
     private IGankModel mGankModel;
     private WeakReference<IGankView> mGankView;
@@ -28,9 +28,9 @@ public class GankVM implements BaseLoadListener<Meizhi> {
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
 
-    public GankVM(IGankView gankView, GankAdapter mAdapter) {
+    public GankVM(IGankView gankView, GankAdapter adapter) {
         this.mGankView = new WeakReference<>(gankView);
-        this.mAdapter = mAdapter;
+        this.mAdapter = adapter;
         mGankModel = new GankModelImpl();
         getMeizhiData();
     }
@@ -62,7 +62,7 @@ public class GankVM implements BaseLoadListener<Meizhi> {
     }
 
     @Override
-    public void loadSuccess(List<Meizhi> list) {
+    public void loadSuccess(List<Gank> list) {
         if (currPage > 1) {
             //上拉加载的数据
             mAdapter.loadMoreData(list);

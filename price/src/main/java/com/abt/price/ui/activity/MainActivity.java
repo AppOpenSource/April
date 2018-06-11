@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(new GankFragment());
         fragmentList.add(new PriceFragment());
         viewPager = binding.content.findViewById(R.id.viewPager);
-        viewPager.setOffscreenPageLimit(3); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
+        viewPager.setOffscreenPageLimit(2); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragmentList, "main_view_pager"));//给ViewPager设置适配器
         binding.tabLayout.setupWithViewPager(viewPager);//将TabLayout和ViewPager关联起来
     }

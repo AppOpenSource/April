@@ -1,7 +1,7 @@
 package com.abt.price.model.gank;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.gank.Meizhi;
+import com.abt.price.bean.gank.Gank;
 
 /**
  * @描述： @IGankModel
@@ -15,5 +15,5 @@ public interface IGankModel {
      * @param page 页数
      * @param loadListener
      */
-    void loadMeizhiData(int page, BaseLoadListener<Meizhi> loadListener);
+    void loadMeizhiData(int page, BaseLoadListener<Gank> loadListener);
 }

@@ -9,7 +9,7 @@ import com.abt.basic.arch.mvvm.view.load.BaseAdapter;
 import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.gank.Meizhi;
+import com.abt.price.bean.gank.Gank;
 import com.abt.price.ui.viewmodel.GankVM;
 
 /**
@@ -17,7 +17,7 @@ import com.abt.price.ui.viewmodel.GankVM;
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class GankAdapter extends BaseAdapter<Meizhi, BaseViewHolder> {
+public class GankAdapter extends BaseAdapter<Gank, BaseViewHolder> {
 
     private GankVM gankVM;
 
@@ -39,7 +39,7 @@ public class GankAdapter extends BaseAdapter<Meizhi, BaseViewHolder> {
     public void onBindVH(BaseViewHolder baseViewHolder, int position) {
         ViewDataBinding binding = baseViewHolder.getBinding();
         binding.setVariable(BR.gankVM, gankVM);
-        binding.setVariable(BR.meizhi, mList.get(position));
+        binding.setVariable(BR.gank, mList.get(position));
         binding.setVariable(BR.position,position);
         binding.setVariable(BR.adapter,this);
         binding.executePendingBindings(); //防止闪烁
