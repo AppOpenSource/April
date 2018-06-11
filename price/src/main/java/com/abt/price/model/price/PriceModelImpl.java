@@ -80,13 +80,13 @@ public class PriceModelImpl implements IPriceModel {
                     @Override
                     public void onComplete() {
                         Log.i(TAG, "onComplete: ");
-                        new Handler().postDelayed(new Runnable() {
+                        new Handler().post(new Runnable() {
                             @Override
                             public void run() {
                                 loadListener.loadSuccess(simplePriceBeanList);
                                 loadListener.loadComplete();
                             }
-                        }, 2000);
+                        });
                     }
                 });
     }

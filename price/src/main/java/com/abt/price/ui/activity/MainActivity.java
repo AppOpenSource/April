@@ -12,6 +12,7 @@ import com.abt.price.databinding.ActivityMainBinding;
 import com.abt.price.ui.adapter.PagerAdapter;
 import com.abt.price.ui.fragment.GankFragment;
 import com.abt.price.ui.fragment.PriceFragment;
+import com.abt.price.ui.fragment.ZhihuFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
     //初始化Tab滑动
     public void initTabView() {
         fragmentList = new ArrayList<>();
-        //fragmentList.add(new ZhihuFragment());
         fragmentList.add(new PriceFragment());
         fragmentList.add(new GankFragment());
-        binding.viewPager.setOffscreenPageLimit(2); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
+        fragmentList.add(new ZhihuFragment());
+        binding.viewPager.setOffscreenPageLimit(3); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
         binding.viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragmentList, "main_view_pager"));//给ViewPager设置适配器
         binding.tabLayout.setupWithViewPager(binding.viewPager);//将TabLayout和ViewPager关联起来
     }

@@ -43,6 +43,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
                     return "Price";
                 case 1:
                     return "Gank";
+                case 2:
+                    return "ZhiHu";
             }
         }
         return null;

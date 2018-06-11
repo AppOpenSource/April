@@ -20,25 +20,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.NewsActivity">
-
-        </activity>
-
-        <activity android:name=".ui.activity.PriceActivity">
-
-        </activity>
-
-        <activity android:name=".ui.activity.ZhihuActivity">
-
-        </activity>
-
-        <activity android:name=".ui.activity.ZhihuWebActivity">
-
-        </activity>
-
-        <activity android:name=".ui.activity.PictureActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.NewsActivity"/>
+        <activity android:name=".ui.activity.PriceActivity"/>
+        <activity android:name=".ui.activity.ZhihuWebActivity"/>
+        <activity android:name=".ui.activity.PictureActivity"/>
 
     </application>
 

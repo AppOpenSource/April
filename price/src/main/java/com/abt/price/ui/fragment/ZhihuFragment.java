@@ -1,10 +1,12 @@
-package com.abt.price.ui.activity;
+package com.abt.price.ui.fragment;
 
-import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.abt.basic.arch.mvvm.viewmodel.IViewModel;
 import com.abt.common.helper.DialogHelper;
@@ -20,26 +22,25 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import static com.abt.price.ui.constant.PageConstant.LoadData.FIRST_LOAD;
 
 /**
- * @描述： @ZhihuActivity
+ * @描述： @ZhihuFragment
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
+public class ZhihuFragment extends Fragment implements IZhihuView,
         XRecyclerView.LoadingListener {
 
-    private Context mContext;
     private ActivityZhihuBinding binding;
     private ZhihuAdapter zhihuAdapter;
     private ZhihuVM zhihuVM;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_zhihu);
-        mContext = this;
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        binding = ActivityZhihuBinding.inflate(inflater, container, false);
         initRecyclerView();
         zhihuVM = new ZhihuVM(this, zhihuAdapter);
         zhihuAdapter.setZhihuVM(zhihuVM);
+        return binding.getRoot();
     }
 
     /**
@@ -51,9 +52,9 @@ public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
         binding.newsRv.setArrowImageView(R.mipmap.pull_down_arrow);
         binding.newsRv.setLoadingListener(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         binding.newsRv.setLayoutManager(layoutManager);
-        zhihuAdapter = new ZhihuAdapter(this);
+        zhihuAdapter = new ZhihuAdapter(this.getActivity());
         binding.newsRv.setAdapter(zhihuAdapter);
     }
 
@@ -72,7 +73,7 @@ public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
     @Override
     public void loadStart(int loadType) {
         if (loadType == FIRST_LOAD) {
-            DialogHelper.getInstance().show(mContext, "加载中...");
+            DialogHelper.getInstance().show(this.getActivity(), "加载中...");
         }
     }
 
@@ -88,7 +89,7 @@ public class ZhihuActivity extends AppCompatActivity implements IZhihuView,
         DialogHelper.getInstance().close();
         binding.newsRv.loadMoreComplete(); //结束加载
         binding.newsRv.refreshComplete(); //结束刷新
-        ToastUtils.show(mContext, message);
+        ToastUtils.show(this.getActivity(), message);
     }
 
     @Override
