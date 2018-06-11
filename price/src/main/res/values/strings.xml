@@ -4,4 +4,22 @@
     <string name="github">GitHub今日热门</string>
     <string name="about_me">关于我</string>
     <string name="save_success">保存成功</string>
+    <string name="one_word">Never never never give up!!!</string>
+    <string name="app_info">Price</string>
+    <string name="desc"> * Price，知乎，干货集中营</string>
+    <string name="desc_api_zhihu"> * 知乎日报 Api 取自 ZhihuDailyPurify</string>
+    <string name="desc_api_gank"> * 干货日报 Api 取自 Gank.io</string>
+    <string name="desc_api_daily"> * Price Api 是爬取出来的</string>
+    <string name="desc_dev"> * 整体开发基于 MVVM+RxJava+Retrofit</string>
+    <string name="app_dev">开发</string>
+    <string name="desc_dev_1"> * 通过 Retrofit 实现了无网缓存</string>
+    <string name="desc_dev_2"> * 基于 MVVM 模式对 Activity 和 Fragment 封装了两个基类</string>
+    <string name="desc_dev_3"> * 运用RecyclerView加载了多种复杂布局</string>
+    <string name="app_me">关于我</string>
+    <string name="me_1"> * 深圳的同学们可以来找我玩</string>
+    <string name="me_2"> * 喜欢的事 : 篮球，画画，写作，撸代码</string>
+    <string name="me_3"> * 喜欢的游戏：围棋 </string>
+    <string name="app_content">联系我</string>
+    <string name="splash_info">In fact you really amazing</string>
+    <string name="api_info">Price，是基于《枝干》App做的二次开发，只做学习用途，如有冒犯清联系我。</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.abt.price.ui.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -58,7 +59,7 @@ public class MainActivity extends BaseActivity {
             startActivity(GankWebActivity.newIntent(this, githubTrending));
             return true;
         } else if (item.getItemId() == R.id.about_me) {
-            //startActivity(new Intent(this, AboutMeActivity.class));
+            startActivity(new Intent(this, AboutMeActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);

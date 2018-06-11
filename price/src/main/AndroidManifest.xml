@@ -24,6 +24,7 @@
         <activity android:name=".ui.activity.PriceActivity"/>
         <activity android:name=".ui.activity.ZhihuWebActivity"/>
         <activity android:name=".ui.activity.GankWebActivity"/>
+        <activity android:name=".ui.activity.AboutMeActivity"/>
         <activity android:name=".ui.activity.PictureActivity"/>
 
     </application>
