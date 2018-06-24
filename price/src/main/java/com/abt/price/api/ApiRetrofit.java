@@ -1,5 +1,8 @@
 package com.abt.price.api;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 import com.abt.price.PriceApp;
 import com.abt.price.util.StateUtils;
 import com.google.gson.Gson;
@@ -47,6 +50,7 @@ public class ApiRetrofit {
         return PriceApi;
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     ApiRetrofit() {
         //cache url
         File httpCacheDirectory = new File(PriceApp.getAppContext().getCacheDir(), "responses");

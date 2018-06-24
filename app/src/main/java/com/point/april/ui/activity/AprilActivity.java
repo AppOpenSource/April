@@ -2,8 +2,10 @@ package com.point.april.ui.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,13 +17,11 @@ import android.widget.Toast;
 import com.j256.ormlite.support.ConnectionSource;
 import com.point.april.R;
 import com.point.april.data.db.mysql.MySQLHelper;
-import com.point.april.global.GlobalConstant;
 import com.point.april.ui.activity.coach.CoachActivity;
 import com.point.april.ui.activity.screensaver.DisplayInputActivity;
 import com.point.april.util.StatusBarCompat;
 
 import java.util.Date;
-import java.util.logging.LogManager;
 
 /**
  * @描述： @App首页
@@ -61,7 +61,9 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_april);
         StatusBarCompat.compat(this, 0xFF393A3E);
         onInitView();
-        new AddTask().execute();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+            new AddTask().execute();
+        }
         // 初始取得User可触碰屏幕的时间
         // lastUpdateTime = new Date(System.currentTimeMillis());
         // setStatusBar();
@@ -105,6 +107,7 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
         //mDisplayHandler.removeCallbacks(mDiaplyTask);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     private class AddTask extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -123,7 +126,9 @@ public class AprilActivity extends BaseActivity implements View.OnClickListener 
 
         @Override
         protected void onPostExecute(String result) {
-            super.onPostExecute(result);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+                super.onPostExecute(result);
+            }
             Log.d("AprilActivity", "onPostExecute : ");
         }
     }
