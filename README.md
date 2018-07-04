@@ -2,7 +2,7 @@
 
 Hello world, This is april.
 
-April project contains ClockMemo and so on.
+April project contains ClockMemo, Price and so on.
 
 ### ClockMemo TODO
 1、右滑退出   
