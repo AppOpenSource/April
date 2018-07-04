@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../config/quality.gradle'
 
 def releaseTime(){
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
@@ -14,6 +15,12 @@ android {
         versionCode rootProject.ext.price["versionCode"]
         versionName rootProject.ext.price["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //resConfigs "en"
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
     buildTypes {
         release {

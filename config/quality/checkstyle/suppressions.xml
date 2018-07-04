@@ -1,0 +1,3 @@
+<?xml version="1.0"?>
+<!-- 工程中不需要检查的可以在这里配置 -->
+<module name="suppression"/>

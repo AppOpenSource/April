@@ -1,0 +1,11 @@
+apply plugin 'checkstyle'
+
+task checkstyle(type: CheckStyle) {
+    configFile("${project.rootDir}/config/quality/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionsPath=file("${project.rootDir}/config/quality/checkstyle/suppressions.xml").absolutePath
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath=files()
+}
+
