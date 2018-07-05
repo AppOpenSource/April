@@ -4,13 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/April.iml" filepath="$PROJECT_DIR$/April.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\pisoft\AndroidStudioProjects\April\app\app.iml" filepath="C:\Users\pisoft\AndroidStudioProjects\April\app\app.iml" />
-      <module fileurl="file://C:\Users\pisoft\AndroidStudioProjects\April\april.iml" filepath="C:\Users\pisoft\AndroidStudioProjects\April\april.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
-      <module fileurl="file://C:\Users\pisoft\AndroidStudioProjects\April\base\base.iml" filepath="C:\Users\pisoft\AndroidStudioProjects\April\base\base.iml" />
-      <module fileurl="file://C:\Users\pisoft\AndroidStudioProjects\April\okhttp\okhttp.iml" filepath="C:\Users\pisoft\AndroidStudioProjects\April\okhttp\okhttp.iml" />
-      <module fileurl="file://C:\Users\pisoft\AndroidStudioProjects\April\retrofit2\retrofit2.iml" filepath="C:\Users\pisoft\AndroidStudioProjects\April\retrofit2\retrofit2.iml" />
-      <module fileurl="file://C:\Users\pisoft\AndroidStudioProjects\April\swipebackactivity\swipebackactivity.iml" filepath="C:\Users\pisoft\AndroidStudioProjects\April\swipebackactivity\swipebackactivity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clock_memo/clock_memo.iml" filepath="$PROJECT_DIR$/clock_memo/clock_memo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/price/price.iml" filepath="$PROJECT_DIR$/price/price.iml" />
     </modules>
   </component>
 </project>
