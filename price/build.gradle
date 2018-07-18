@@ -20,6 +20,8 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+
+        flavorDimensions "1.0.0"
     }
 
     buildTypes {
@@ -84,9 +86,11 @@ android {
     productFlavors {
         qihoo {
             applicationId rootProject.ext.price["applicationId"]
+            dimension '1.0.0'
         }
         baidu {
             applicationId rootProject.ext.price["applicationId"]
+            dimension '1.0.0'
         }
     }
 }
