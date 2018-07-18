@@ -21,7 +21,7 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
 
-        flavorDimensions "1.0.0"
+        flavorDimensions rootProject.ext.price["versionName"]
     }
 
     buildTypes {
@@ -86,11 +86,15 @@ android {
     productFlavors {
         qihoo {
             applicationId rootProject.ext.price["applicationId"]
-            dimension '1.0.0'
+            dimension rootProject.ext.price["versionName"]
         }
         baidu {
             applicationId rootProject.ext.price["applicationId"]
-            dimension '1.0.0'
+            dimension rootProject.ext.price["versionName"]
+        }
+        tencent {
+            applicationId rootProject.ext.price["applicationId"]
+            dimension rootProject.ext.price["versionName"]
         }
     }
 }
