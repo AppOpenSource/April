@@ -17,11 +17,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //resConfigs "en"
-
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -71,12 +71,23 @@ android {
             }
         }
     }
+
     dataBinding {
         enabled = true
     }
+
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+
+    productFlavors {
+        qihoo {
+            applicationId rootProject.ext.price["applicationId"]
+        }
+        baidu {
+            applicationId rootProject.ext.price["applicationId"]
+        }
     }
 }
 
