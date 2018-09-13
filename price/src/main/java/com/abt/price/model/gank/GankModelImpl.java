@@ -85,7 +85,7 @@ public class GankModelImpl implements IGankModel {
 
     //匹配同一天的福利描述和视频描述
     private String getVideoDesc(Date publishedAt, List<Gank> results) {
-        String videoDesc = "";
+        String videoDesc = " ";
         for (int i = 0; i < results.size(); i++) {
             Gank video = results.get(i);
             if (video.getPublishedAt() == null) video.setPublishedAt(video.getCreatedAt());

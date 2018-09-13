@@ -1,6 +1,7 @@
 package com.abt.price.ui;
 
 import com.abt.basic.arch.mvvm.view.load.IBaseView;
+import com.abt.price.di.AppComponent;
 
 /**
  * @描述： @IGankView
@@ -12,4 +13,5 @@ public interface IGankView extends IBaseView {
     /**
      * 实际项目中可能还有其他的接口，此处写出来便于拓展
      */
+    void setupComponent(AppComponent appComponent);
 }

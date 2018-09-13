@@ -22,4 +22,7 @@
     <string name="app_content">联系我</string>
     <string name="splash_info">In fact you really amazing</string>
     <string name="api_info">Price，是基于《枝干》App做的二次开发，只做学习用途，如有冒犯清联系我。</string>
+    <string name="api_github">www.github.com</string>
+
+
 </resources>
