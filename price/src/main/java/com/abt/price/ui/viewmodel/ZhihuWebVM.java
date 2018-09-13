@@ -6,12 +6,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.PriceApp;
 import com.abt.price.R;
-import com.abt.price.bean.zhihu.News;
+import com.abt.price.app.PriceApp;
+import com.abt.price.core.bean.zhihu.News;
 import com.abt.price.databinding.ActivityWebViewBinding;
-import com.abt.price.model.zhihu.ZhihuModelImpl;
 import com.abt.price.model.zhihu.IZhihuModel;
+import com.abt.price.model.zhihu.ZhihuModelImpl;
 import com.abt.price.ui.IZhihuWebView;
 import com.abt.price.ui.constant.PageConstant;
 import com.bumptech.glide.Glide;

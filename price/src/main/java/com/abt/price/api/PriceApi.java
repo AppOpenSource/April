@@ -1,6 +1,6 @@
 package com.abt.price.api;
 
-import com.abt.price.bean.price.PriceBean;
+import com.abt.price.core.bean.price.PriceBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;

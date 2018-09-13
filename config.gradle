@@ -1,7 +1,7 @@
 /**
  * 资源依赖配置表
  */
-def supportVersion      = "26.1.0"
+def supportVersion      = "27.1.0"
 def eventbusVersion     = "3.1.1"
 def constraintVerion    = "1.0.2"
 def streamVersion       = "1.0.8"
@@ -91,22 +91,22 @@ project.ext {
             "runner"          : "com.android.support.test:runner:${testRunnerVersion}",
             "espresso"        : "com.android.support.test.espresso:espresso-core:${testEspressoVersion}",
             "junit"           : "junit:junit:${testJunitVersion}",
-            "androidRunner"  : "android.support.test.runner.AndroidJUnitRunner",
+            "androidRunner"   : "android.support.test.runner.AndroidJUnitRunner",
             "bugtags"         : "com.bugtags.library:bugtags-lib:latest.integration"
     ]
 
     //----------------------------------------------------------------------- 依赖配置------------------------------------------------------------------------------------
     dependencies = [
-            "app-basic"                : "com.abt.basic:basic:${basicVersion}",
-            "app-common"                : "com.abt.common:common:${commonVersion}",
+            "app-basic"                   : "com.abt.basic:basic:${basicVersion}",
+            "app-common"                  : "com.abt.common:common:${commonVersion}",
             "build-gradle"                : "com.android.tools.build:gradle:${gradleToolVersion}",
 
             //android-support
             "support-v4"                  : "com.android.support:support-v4:${supportVersion}",
             "appcompat-v7"                : "com.android.support:appcompat-v7:${supportVersion}",
-            "design"                       : "com.android.support:design:${supportVersion}",
+            "design"                      : "com.android.support:design:${supportVersion}",
             "recyclerview-v7"             : "com.android.support:recyclerview-v7:${supportVersion}",
-            "cardview-v7"                  : "com.android.support:cardview-v7:${supportVersion}",
+            "cardview-v7"                 : "com.android.support:cardview-v7:${supportVersion}",
             "constraint-layout"           : "com.android.support.constraint:constraint-layout:${constraintVerion}",
 
             //处理65536依赖包
@@ -127,7 +127,7 @@ project.ext {
             "rxbinding-recyclerview-v7"   : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
 
             //retrofit
-            "retrofit"                     : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            "retrofit"                    : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             "adapter-rxjava"              : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
 
             "gson"                         : "com.google.code.gson:gson:${gsonVersion}",

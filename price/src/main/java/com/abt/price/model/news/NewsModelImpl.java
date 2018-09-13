@@ -1,7 +1,7 @@
 package com.abt.price.model.news;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.news.SimpleNewsBean;
+import com.abt.price.core.bean.news.SimpleNewsBean;
 
 import java.util.ArrayList;
 import java.util.List;

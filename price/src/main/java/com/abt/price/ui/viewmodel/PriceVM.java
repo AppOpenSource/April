@@ -1,12 +1,12 @@
 package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.ui.adapter.PriceAdapter;
-import com.abt.price.bean.price.SimplePriceBean;
-import com.abt.price.ui.constant.PageConstant;
+import com.abt.price.core.bean.price.SimplePriceBean;
 import com.abt.price.model.price.IPriceModel;
 import com.abt.price.model.price.PriceModelImpl;
 import com.abt.price.ui.IPriceView;
+import com.abt.price.ui.adapter.PriceAdapter;
+import com.abt.price.ui.constant.PageConstant;
 
 import java.util.List;
 

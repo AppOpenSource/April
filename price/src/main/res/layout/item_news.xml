@@ -7,7 +7,7 @@
 
         <variable
             name="simpleNewsBean"
-            type="com.abt.price.bean.news.SimpleNewsBean" />
+            type="com.abt.price.core.bean.news.SimpleNewsBean" />
 
         <variable
             name="adapter"

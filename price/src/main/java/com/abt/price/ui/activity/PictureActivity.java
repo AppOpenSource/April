@@ -15,12 +15,11 @@ import com.abt.price.R;
 import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityPicBinding;
 import com.bumptech.glide.Glide;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * @描述： @PictureActivity

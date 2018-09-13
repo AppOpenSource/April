@@ -1,8 +1,8 @@
 package com.abt.price.api;
 
-import com.abt.price.bean.gank.GankData;
-import com.abt.price.bean.gank.Meizhi;
-import com.abt.price.bean.gank.Video;
+import com.abt.price.core.bean.gank.GankData;
+import com.abt.price.core.bean.gank.Meizhi;
+import com.abt.price.core.bean.gank.Video;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

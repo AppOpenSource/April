@@ -11,7 +11,7 @@ import com.abt.basic.arch.mvvm.view.load.BaseAdapter;
 import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.gank.Gank;
+import com.abt.price.core.bean.gank.Gank;
 import com.abt.price.ui.activity.PictureActivity;
 import com.abt.price.ui.viewmodel.GankVM;
 

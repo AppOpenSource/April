@@ -1,12 +1,12 @@
 package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.ui.adapter.NewsAdapter;
-import com.abt.price.bean.news.SimpleNewsBean;
-import com.abt.price.ui.constant.PageConstant;
+import com.abt.price.core.bean.news.SimpleNewsBean;
 import com.abt.price.model.news.INewsModel;
 import com.abt.price.model.news.NewsModelImpl;
 import com.abt.price.ui.INewsView;
+import com.abt.price.ui.adapter.NewsAdapter;
+import com.abt.price.ui.constant.PageConstant;
 
 import java.util.List;
 

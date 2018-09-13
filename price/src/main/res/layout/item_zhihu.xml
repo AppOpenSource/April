@@ -11,7 +11,7 @@
 
         <variable
             name="simpleZhihuBean"
-            type="com.abt.price.bean.zhihu.Stories" />
+            type="com.abt.price.core.bean.zhihu.Stories" />
 
         <variable
             name="adapter"

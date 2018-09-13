@@ -1,4 +1,4 @@
-package com.abt.price.bean.gank;
+package com.abt.price.core.bean.gank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class GankData {
 
             List<Gank> mGankList = new ArrayList<>();
 
-            if (休息视频 != null) mGankList.addAll(0,休息视频);
+            if (休息视频 != null) mGankList.addAll(0, 休息视频);
             if (前端 != null) mGankList.addAll(前端);
             if (Android != null) mGankList.addAll(Android);
             if (iOS != null) mGankList.addAll(iOS);

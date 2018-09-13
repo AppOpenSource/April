@@ -10,7 +10,7 @@ import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.news.SimpleNewsBean;
+import com.abt.price.core.bean.news.SimpleNewsBean;
 
 /**
  * @描述： @NewsAdapter

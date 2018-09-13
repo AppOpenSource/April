@@ -9,7 +9,7 @@ import com.abt.basic.arch.mvvm.view.load.BaseAdapter;
 import com.abt.basic.arch.mvvm.view.load.BaseViewHolder;
 import com.abt.price.BR;
 import com.abt.price.R;
-import com.abt.price.bean.zhihu.Stories;
+import com.abt.price.core.bean.zhihu.Stories;
 import com.abt.price.ui.viewmodel.ZhihuVM;
 
 /**

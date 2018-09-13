@@ -1,13 +1,13 @@
-package com.abt.price.bean.news;
+package com.abt.price.core.bean.zhihu;
 
 import java.util.List;
 
 /**
- * @描述： @NewsBean
+ * @描述： @ZhihuBean
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class NewsBean {
+public class ZhihuBean {
     /**
      * limit : 1000
      * subscribed : []

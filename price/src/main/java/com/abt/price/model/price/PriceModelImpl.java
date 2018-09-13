@@ -6,8 +6,8 @@ import android.util.Log;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.api.ApiFactory;
 import com.abt.price.api.PriceApi;
-import com.abt.price.bean.price.PriceBean;
-import com.abt.price.bean.price.SimplePriceBean;
+import com.abt.price.core.bean.price.PriceBean;
+import com.abt.price.core.bean.price.SimplePriceBean;
 
 import java.util.ArrayList;
 import java.util.List;

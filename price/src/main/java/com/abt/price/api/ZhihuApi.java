@@ -1,8 +1,8 @@
 package com.abt.price.api;
 
-import com.abt.price.bean.zhihu.News;
-import com.abt.price.bean.zhihu.NewsTimeLine;
-import com.abt.price.bean.zhihu.SplashImage;
+import com.abt.price.core.bean.zhihu.News;
+import com.abt.price.core.bean.zhihu.NewsTimeLine;
+import com.abt.price.core.bean.zhihu.SplashImage;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

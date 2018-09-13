@@ -1,7 +1,7 @@
 package com.abt.price.model.gank;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.bean.gank.Gank;
+import com.abt.price.core.bean.gank.Gank;
 
 /**
  * @描述： @IGankModel

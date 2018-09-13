@@ -17,7 +17,7 @@
  * along with Meizhi.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.abt.price.bean.gank;
+package com.abt.price.core.bean.gank;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,7 +27,7 @@ import java.util.Date;
  * @作者： @黄卫旗
  * @创建时间： @10/06/2018
  */
-public class Gank implements Serializable{
+public class Gank implements Serializable {
 
     private String url;
     private String type;

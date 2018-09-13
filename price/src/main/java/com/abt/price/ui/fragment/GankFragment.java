@@ -34,7 +34,8 @@ public class GankFragment extends Fragment implements IGankView,
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         binding = FragmentGankBinding.inflate(inflater, container, false);
         gridLayoutManager = new GridLayoutManager(this.getActivity(),2);
         binding.contentRv.setLayoutManager(gridLayoutManager);

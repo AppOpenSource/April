@@ -1,13 +1,13 @@
-package com.abt.price.bean.price;
+package com.abt.price.core.bean.news;
 
 import java.util.List;
 
 /**
- * @描述： @PriceBean
+ * @描述： @NewsBean
  * @作者： @黄卫旗
  * @创建时间： @20/05/2018
  */
-public class PriceBean {
+public class NewsBean {
     /**
      * limit : 1000
      * subscribed : []
@@ -49,11 +49,19 @@ public class PriceBean {
          * id : 13
          * name : 日常心理学
          */
-        private int id;
-        private String title;
+        private int color;
         private String thumbnail;
         private String description;
-        private boolean done;
+        private int id;
+        private String name;
+
+        public int getColor() {
+            return color;
+        }
+
+        public void setColor(int color) {
+            this.color = color;
+        }
 
         public String getThumbnail() {
             return thumbnail;
@@ -61,14 +69,6 @@ public class PriceBean {
 
         public void setThumbnail(String thumbnail) {
             this.thumbnail = thumbnail;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
         }
 
         public String getDescription() {
@@ -87,12 +87,12 @@ public class PriceBean {
             this.id = id;
         }
 
-        public boolean getDone() {
-            return done;
+        public String getName() {
+            return name;
         }
 
-        public void setDone(boolean done) {
-            this.done = done;
+        public void setName(String name) {
+            this.name = name;
         }
     }
 }

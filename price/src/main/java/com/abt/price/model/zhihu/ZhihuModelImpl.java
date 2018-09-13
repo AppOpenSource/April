@@ -7,9 +7,9 @@ import android.util.Log;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.api.ApiFactory;
 import com.abt.price.api.ZhihuApi;
-import com.abt.price.bean.zhihu.News;
-import com.abt.price.bean.zhihu.NewsTimeLine;
-import com.abt.price.bean.zhihu.Stories;
+import com.abt.price.core.bean.zhihu.News;
+import com.abt.price.core.bean.zhihu.NewsTimeLine;
+import com.abt.price.core.bean.zhihu.Stories;
 
 import java.util.ArrayList;
 import java.util.List;

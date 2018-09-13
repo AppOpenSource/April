@@ -3,8 +3,8 @@ package com.abt.price.ui.viewmodel;
 import android.content.Intent;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.PriceApp;
-import com.abt.price.bean.zhihu.Stories;
+import com.abt.price.app.PriceApp;
+import com.abt.price.core.bean.zhihu.Stories;
 import com.abt.price.model.zhihu.IZhihuModel;
 import com.abt.price.model.zhihu.ZhihuModelImpl;
 import com.abt.price.ui.IZhihuView;

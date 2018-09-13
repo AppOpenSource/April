@@ -1,21 +1,37 @@
-package com.abt.price.bean.zhihu;
+package com.abt.price.core.bean.zhihu;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
- * @描述： @Stories
+ * @描述： @TopStories
  * @作者： @黄卫旗
  * @创建时间： @10/06/2018
  */
-public class Stories implements Serializable {
+public class TopStories implements Serializable{
 
     private String ga_prefix;
     private String id;
     private String multipic;
     private String title;
     private String type;
-    private String[] images;
+    private String image;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getGa_prefix() {
         return ga_prefix;
@@ -37,19 +53,19 @@ public class Stories implements Serializable {
         return type;
     }
 
-    public String[] getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
     @Override
     public String toString() {
-        return "Stories{" +
+        return "TopStories{" +
                 "ga_prefix='" + ga_prefix + '\'' +
                 ", id='" + id + '\'' +
                 ", multipic='" + multipic + '\'' +
                 ", title='" + title + '\'' +
                 ", type='" + type + '\'' +
-                ", images=" + Arrays.toString(images) +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

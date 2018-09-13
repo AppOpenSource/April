@@ -1,4 +1,4 @@
-package com.abt.price;
+package com.abt.price.app;
 
 import com.abt.common.app.BasicApplication;
 
@@ -13,4 +13,5 @@ public class PriceApp extends BasicApplication {
     public void initComplete() {
 
     }
+
 }

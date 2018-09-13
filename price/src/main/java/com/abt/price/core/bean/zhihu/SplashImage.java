@@ -1,4 +1,4 @@
-package com.abt.price.bean.zhihu;
+package com.abt.price.core.bean.zhihu;
 
 import java.io.Serializable;
 

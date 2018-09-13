@@ -1,15 +1,15 @@
-package com.abt.price.bean.zhihu;
+package com.abt.price.core.bean.price;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 /**
- * @描述： @SimpleZhihuBean
+ * @描述： @SimplePriceBean
  * @作者： @黄卫旗
  * @创建时间： @08/06/2018
  */
-public class SimpleZhihuBean {
+public class SimplePriceBean {
     public ObservableInt id = new ObservableInt();
     public ObservableField<String> title = new ObservableField<>();
     public ObservableField<String> thumbnail = new ObservableField<>();

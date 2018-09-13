@@ -1,4 +1,4 @@
-package com.abt.price.bean.gank;
+package com.abt.price.core.bean.gank;
 
 import java.io.Serializable;
 import java.util.List;

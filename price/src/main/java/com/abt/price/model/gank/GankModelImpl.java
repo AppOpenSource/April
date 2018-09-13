@@ -6,9 +6,9 @@ import android.util.Log;
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
 import com.abt.price.api.ApiFactory;
 import com.abt.price.api.GankApi;
-import com.abt.price.bean.gank.Gank;
-import com.abt.price.bean.gank.Meizhi;
-import com.abt.price.bean.gank.Video;
+import com.abt.price.core.bean.gank.Gank;
+import com.abt.price.core.bean.gank.Meizhi;
+import com.abt.price.core.bean.gank.Video;
 import com.abt.price.util.DateUtils;
 
 import java.util.ArrayList;
@@ -35,7 +35,6 @@ public class GankModelImpl implements IGankModel {
     @Override
     public void loadMeizhiData(final int page, final BaseLoadListener<Gank> loadListener) {
         Observable.zip(gankApi.getMeizhiData(page), gankApi.getVideoData(page), this::creatDesc)
-        //gankApi.getMeizhiData(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<Meizhi>() {

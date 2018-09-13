@@ -3,7 +3,7 @@ package com.abt.price.api;
 import android.annotation.TargetApi;
 import android.os.Build;
 
-import com.abt.price.PriceApp;
+import com.abt.price.app.PriceApp;
 import com.abt.price.util.StateUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

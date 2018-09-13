@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.abt.price.R;
+import com.abt.price.app.TagConstant;
+import com.abt.price.app.URLConstant;
 import com.abt.price.base.BaseActivity;
 import com.abt.price.databinding.ActivityMainBinding;
 import com.abt.price.ui.adapter.PagerAdapter;
@@ -38,11 +40,11 @@ public class MainActivity extends BaseActivity {
     //初始化Tab滑动
     public void initTabView() {
         fragmentList = new ArrayList<>();
-        fragmentList.add(new PriceFragment());
         fragmentList.add(new GankFragment());
         fragmentList.add(new ZhihuFragment());
-        binding.viewPager.setOffscreenPageLimit(3); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
-        binding.viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragmentList, "main_view_pager"));//给ViewPager设置适配器
+        fragmentList.add(new PriceFragment());
+        binding.viewPager.setOffscreenPageLimit(fragmentList.size()); // 设置至少3个fragment，防止重复创建和销毁，造成内存溢出
+        binding.viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragmentList, TagConstant.MAIN_VIEW_PAGER));//给ViewPager设置适配器
         binding.tabLayout.setupWithViewPager(binding.viewPager);//将TabLayout和ViewPager关联起来
     }
 
@@ -55,7 +57,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.today_github) {
-            String githubTrending = "https://github.com/trending";
+            String githubTrending = URLConstant.URL_TRENDING;
             startActivity(GankWebActivity.newIntent(this, githubTrending));
             return true;
         } else if (item.getItemId() == R.id.about_me) {

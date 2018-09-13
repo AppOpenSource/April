@@ -11,7 +11,7 @@
 
         <variable
             name="gank"
-            type="com.abt.price.bean.gank.Gank" />
+            type="com.abt.price.core.bean.gank.Gank" />
 
         <variable
             name="adapter"
