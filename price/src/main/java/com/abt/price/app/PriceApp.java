@@ -1,10 +1,10 @@
 package com.abt.price.app;
 
 import com.abt.common.app.BasicApplication;
-import com.abt.price.di.AppComponent;
-import com.abt.price.di.AppModule;
-import com.abt.price.di.DaggerAppComponent;
-import com.abt.price.di.GithubApiModule;
+import com.abt.price.di.component.AppComponent;
+import com.abt.price.di.component.DaggerAppComponent;
+import com.abt.price.di.module.AppModule;
+import com.abt.price.di.module.GankApiModule;
 
 /**
  * @描述： @PriceApp
@@ -20,13 +20,13 @@ public class PriceApp extends BasicApplication {
     public void onCreate() {
         super.onCreate();
         this.sInstance = this;
-        setupCompoent();
+        setupComponent();
     }
 
-    private void setupCompoent() {
+    private void setupComponent() {
         appComponent = DaggerAppComponent.builder()
-                .githubApiModule(new GithubApiModule())
                 .appModule(new AppModule(this))
+                .gankApiModule(new GankApiModule())
                 .build();
     }
 

@@ -1,8 +1,8 @@
 package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
+import com.abt.price.app.PriceApp;
 import com.abt.price.core.bean.gank.Gank;
-import com.abt.price.model.gank.GankModelImpl;
 import com.abt.price.model.gank.IGankModel;
 import com.abt.price.ui.IGankView;
 import com.abt.price.ui.adapter.GankAdapter;

@@ -13,12 +13,9 @@ import com.abt.common.helper.DialogHelper;
 import com.abt.common.util.ToastUtils;
 import com.abt.price.app.PriceApp;
 import com.abt.price.base.BaseFragment;
+import com.abt.price.core.bean.gank.Gank;
 import com.abt.price.databinding.FragmentGankBinding;
-import com.abt.price.di.AppComponent;
-import com.abt.price.di.DaggerMainComponent;
-import com.abt.price.di.MainComponent;
-import com.abt.price.di.MainModule;
-import com.abt.price.di.Repo;
+import com.abt.price.di.component.AppComponent;
 import com.abt.price.ui.IGankView;
 import com.abt.price.ui.adapter.GankAdapter;
 import com.abt.price.ui.viewmodel.GankVM;
@@ -40,24 +37,19 @@ public class GankFragment extends BaseFragment implements IGankView,
     private FragmentGankBinding binding;
     private GridLayoutManager gridLayoutManager;
     private GankAdapter gankAdapter;
-    //@Inject
     private GankVM gankVM;
     @Inject
-    Repo mRepo;
+    Gank gank;
 
     @Override
     public void setupComponent(AppComponent appComponent) {
         appComponent.inject(this);
-        // 构造桥梁对象
-        MainComponent component = DaggerMainComponent.builder().mainModule(new MainModule()).build();
-        //注入
-        component.inject(this);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate() = "+mRepo.language);
+        Log.d(TAG, "onCreate() gank.desc = "+ gank.desc);
     }
 
     @Nullable
@@ -91,7 +83,7 @@ public class GankFragment extends BaseFragment implements IGankView,
 
     @Override
     public void loadStart(int loadType) {
-        ToastUtils.show(PriceApp.getAppContext(), "setupComponent = "+mRepo.language);
+        ToastUtils.show(PriceApp.getAppContext(), "gank object != "+ gank.desc);
         if (loadType == FIRST_LOAD) {
             DialogHelper.getInstance().show(this.getActivity(), "加载中...");
         }

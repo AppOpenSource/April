@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.abt.price.app.PriceApp;
-import com.abt.price.di.AppComponent;
+import com.abt.price.di.component.AppComponent;
 
 /**
  * @描述： @BaseFragment

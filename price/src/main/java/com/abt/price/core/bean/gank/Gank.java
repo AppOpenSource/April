@@ -22,6 +22,8 @@ package com.abt.price.core.bean.gank;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.inject.Inject;
+
 /**
  * @描述： @Gank
  * @作者： @黄卫旗
@@ -37,6 +39,9 @@ public class Gank implements Serializable {
     private Date createdAt;
     private Date updatedAt;
     private Date publishedAt;
+
+    @Inject
+    public Gank() { }
 
     public String getUrl() {
         return url;

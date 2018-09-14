@@ -1,6 +1,8 @@
-package com.abt.price.di;
+package com.abt.price.di.module;
 
 import android.app.Application;
+
+import com.abt.price.core.bean.gank.Gank;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,4 +24,10 @@ public class AppModule {
     public Application provideApplication() {
         return application;
     }
+
+    @Provides
+    Gank providerGank() {
+        return new Gank();
+    }
+
 }
