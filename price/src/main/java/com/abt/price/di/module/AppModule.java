@@ -1,6 +1,6 @@
 package com.abt.price.di.module;
 
-import android.app.Application;
+import android.app.Activity;
 
 import com.abt.price.core.bean.gank.Gank;
 
@@ -14,20 +14,21 @@ import dagger.Provides;
  */
 @Module
 public class AppModule {
-    private Application application;
+    private Activity activity;
 
-    public AppModule(Application application) {
-        this.application = application;
-    }
-
-    @Provides
-    public Application provideApplication() {
-        return application;
+    public AppModule(Activity activity) {
+        this.activity = activity;
     }
 
     @Provides
     Gank providerGank() {
         return new Gank();
+    }
+
+    @Provides
+    Activity providesActivity() {
+        // 提供activity对象　
+        return activity;
     }
 
 }

@@ -12,7 +12,7 @@ def okHttpVersion       = "3.9.1"
 def gsonVersion         = "2.8.2"
 def stethoVersion       = "1.5.0"
 def butterKnifeVersion  = "8.8.1"
-def daggerVersion       = "2.8"
+def daggerVersion       = "2.15"
 def glideVersion        = "4.4.0"
 def multidexVersion     = "1.0.1"
 def nanohttpdVersion    = "2.3.1"
@@ -143,8 +143,11 @@ project.ext {
             "releaseCompile"              : "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}",
 
             //dagger
-            "dagger"                       : "com.google.dagger:dagger:${daggerVersion}",
-            "dagger-compiler"             : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            "dagger"                            : "com.google.dagger:dagger:${daggerVersion}",
+            "dagger-compiler"                   : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            "dagger-android"                    : "com.google.dagger:dagger-android:${daggerVersion}",
+            "dagger-android-support"            : "com.google.dagger:dagger-android-support:${daggerVersion}",
+            "dagger-android-processor"          : "com.google.dagger:dagger-android-processor:${daggerVersion}",
 
             //router
             //"router"                      : "com.baronzhang.android:router:${routerVersion}",

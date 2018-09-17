@@ -1,8 +1,8 @@
 package com.abt.price.ui.viewmodel;
 
 import com.abt.basic.arch.mvvm.view.load.BaseLoadListener;
-import com.abt.price.app.PriceApp;
 import com.abt.price.core.bean.gank.Gank;
+import com.abt.price.model.gank.GankModelImpl;
 import com.abt.price.model.gank.IGankModel;
 import com.abt.price.ui.IGankView;
 import com.abt.price.ui.adapter.GankAdapter;
@@ -10,6 +10,8 @@ import com.abt.price.ui.constant.PageConstant;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * @描述： @GankVM
@@ -24,6 +26,7 @@ public class GankVM implements BaseLoadListener<Gank> {
     private int currPage = 1; //当前页数
     private int loadType; //加载数据的类型
 
+    @Inject
     public GankVM(IGankView gankView, GankAdapter adapter) {
         this.mGankView = new WeakReference<>(gankView);
         this.mAdapter = adapter;

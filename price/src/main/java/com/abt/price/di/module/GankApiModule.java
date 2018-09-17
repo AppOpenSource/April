@@ -8,9 +8,7 @@ import com.abt.price.api.GankApi;
 import com.abt.price.model.gank.GankModelImpl;
 import com.abt.price.ui.IGankView;
 import com.abt.price.ui.adapter.GankAdapter;
-import com.abt.price.ui.viewmodel.GankVM;
-
-import javax.inject.Singleton;
+import com.abt.price.ui.fragment.GankFragment;
 
 import dagger.Module;
 import dagger.Provides;
@@ -26,6 +24,32 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public class GankApiModule {
+
+    private IGankView mIGankView;
+
+    public GankApiModule(IGankView iGankView) {
+        mIGankView = iGankView;
+    }
+
+    @Provides
+    public IGankView provideIGankView() {
+        return this.mIGankView;
+    }
+
+    @Provides
+    public GankAdapter provideGankAdapter(Activity context) {
+        return new GankAdapter(context);
+    }
+
+    @Provides
+    public GankFragment provideGankFragment() {
+        return new GankFragment();
+    }
+
+    @Provides
+    GankModelImpl provideGankModelImpl() {
+        return new GankModelImpl();
+    }
 
     @Provides
     public OkHttpClient provideOkHttpClient() {
@@ -51,21 +75,5 @@ public class GankApiModule {
         return retrofit.create(GankApi.class);
     }
 
-    @Provides
-    GankVM providerGankVM(IGankView gankView, GankAdapter adapter) {
-        return new GankVM(gankView, adapter);
-    }
-
-    @Provides
-    GankAdapter provideDataManager(Activity context) {
-        return new GankAdapter(context);
-    }
-
-
-    @Provides
-    @Singleton
-    GankModelImpl provideGankModelImpl() {
-        return new GankModelImpl();
-    }
 }
 

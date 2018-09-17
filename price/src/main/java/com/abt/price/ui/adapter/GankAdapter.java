@@ -17,6 +17,8 @@ import com.abt.price.ui.viewmodel.GankVM;
 
 import java.lang.ref.WeakReference;
 
+import javax.inject.Inject;
+
 /**
  * @描述： @GankAdapter
  * @作者： @黄卫旗
@@ -29,6 +31,7 @@ public class GankAdapter extends BaseAdapter<Gank, BaseViewHolder> {
     private ViewDataBinding dataBinding;
     private WeakReference<Activity> gankActivity;
 
+    @Inject
     public GankAdapter(Activity context) {
         super(context);
         this.gankActivity = new WeakReference<>(context);

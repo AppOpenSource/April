@@ -16,6 +16,9 @@ import com.abt.price.base.BaseFragment;
 import com.abt.price.core.bean.gank.Gank;
 import com.abt.price.databinding.FragmentGankBinding;
 import com.abt.price.di.component.AppComponent;
+import com.abt.price.di.component.DaggerAppComponent;
+import com.abt.price.di.module.AppModule;
+import com.abt.price.di.module.GankApiModule;
 import com.abt.price.ui.IGankView;
 import com.abt.price.ui.adapter.GankAdapter;
 import com.abt.price.ui.viewmodel.GankVM;
@@ -36,35 +39,30 @@ public class GankFragment extends BaseFragment implements IGankView,
     private static final String TAG = GankFragment.class.getSimpleName();
     private FragmentGankBinding binding;
     private GridLayoutManager gridLayoutManager;
-    private GankAdapter gankAdapter;
-    private GankVM gankVM;
     @Inject
-    Gank gank;
-
-    @Override
-    public void setupComponent(AppComponent appComponent) {
-        appComponent.inject(this);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate() gank.desc = "+ gank.desc);
-    }
+    GankAdapter gankAdapter;
+    @Inject
+    GankVM gankVM;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        DaggerAppComponent.builder()
+                .gankApiModule(new GankApiModule(this))
+                .appModule(new AppModule(this.getActivity()))
+                .build()
+                .inject(this);
+
         binding = FragmentGankBinding.inflate(inflater, container, false);
         gridLayoutManager = new GridLayoutManager(this.getActivity(), 2);
         binding.contentRv.setLayoutManager(gridLayoutManager);
         binding.contentRv.setLoadingListener(this);
 
-        gankAdapter = new GankAdapter(this.getActivity());
+        //gankAdapter = new GankAdapter(this.getActivity());
         binding.contentRv.setAdapter(gankAdapter);
 
-        gankVM = new GankVM(this, gankAdapter);
+        //gankVM = new GankVM(this, gankAdapter);
         gankAdapter.setGankVM(gankVM);
         return binding.getRoot();
     }
@@ -83,7 +81,6 @@ public class GankFragment extends BaseFragment implements IGankView,
 
     @Override
     public void loadStart(int loadType) {
-        ToastUtils.show(PriceApp.getAppContext(), "gank object != "+ gank.desc);
         if (loadType == FIRST_LOAD) {
             DialogHelper.getInstance().show(this.getActivity(), "加载中...");
         }

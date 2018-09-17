@@ -1,1 +1,1 @@
-include ':app', ':clock_memo', ':price'
+include ':app'/*, ':clock_memo'*/, ':price'
