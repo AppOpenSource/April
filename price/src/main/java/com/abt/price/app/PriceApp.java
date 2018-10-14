@@ -1,5 +1,7 @@
 package com.abt.price.app;
 
+import android.util.Log;
+
 import com.abt.common.app.BasicApplication;
 
 /**
@@ -9,12 +11,14 @@ import com.abt.common.app.BasicApplication;
  */
 public class PriceApp extends BasicApplication {
 
+    private static final String TAG = "PriceApp";
     private static PriceApp sInstance;
 
     @Override
     public void onCreate() {
         super.onCreate();
         this.sInstance = this;
+        Log.d(TAG, "onCreate() called");
     }
 
     public static PriceApp getsInstance() {
@@ -23,7 +27,7 @@ public class PriceApp extends BasicApplication {
 
     @Override
     public void initComplete() {
-
+        Log.d(TAG, "initComplete() called");
     }
 
 }
