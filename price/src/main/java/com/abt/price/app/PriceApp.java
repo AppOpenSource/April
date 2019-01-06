@@ -19,6 +19,7 @@ public class PriceApp extends BasicApplication {
         super.onCreate();
         this.sInstance = this;
         Log.d(TAG, "onCreate() called");
+
     }
 
     public static PriceApp getsInstance() {
