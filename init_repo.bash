@@ -6,8 +6,8 @@ echo 'git add -A'
 git add -A
 echo 'git commit -m "init repo"'
 git commit -m "init repo"
-echo 'git remote add origin https://github.com/AppOpenSource/April.git'
-git remote add origin https://github.com/AppOpenSource/April.git
+echo 'git remote add origin https://github.com/AppOpenSource/Assistant.git'
+git remote add origin https://github.com/AppOpenSource/Assistant.git
 echo 'git push -u origin master'
 git push -u origin master
 # git bash DONE
