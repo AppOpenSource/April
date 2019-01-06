@@ -1,7 +1,7 @@
 /**
  * 资源依赖配置表
  */
-def supportVersion      = "27.1.0"
+def supportVersion      = "28.0.0-alpha1"
 def eventbusVersion     = "3.1.1"
 def constraintVerion    = "1.0.2"
 def streamVersion       = "1.0.8"
@@ -81,9 +81,9 @@ project.ext {
     //----------------------------------------------------------------------- android配置------------------------------------------------------------------------------------
     //android config
     android = [
-            compileSdkVersion: 26,
-            minSdkVersion    : 23,
-            targetSdkVersion : 26,
+            compileSdkVersion: 28,
+            minSdkVersion    : 21,
+            targetSdkVersion : 28,
     ]
 
     //----------------------------------------------------------------------- test配置------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ def releaseTime() {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
@@ -77,21 +77,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    /*productFlavors {
-        qihoo {
-            applicationId rootProject.ext.price["applicationId"]
-            dimension rootProject.ext.price["versionName"]
-        }
-        baidu {
-            applicationId rootProject.ext.price["applicationId"]
-            dimension rootProject.ext.price["versionName"]
-        }
-        tencent {
-            applicationId rootProject.ext.price["applicationId"]
-            dimension rootProject.ext.price["versionName"]
-        }
-    }*/
-    buildToolsVersion '27.0.3'
 }
 
 dependencies {
